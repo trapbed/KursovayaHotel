@@ -201,8 +201,7 @@ body{
     flex-direction: column;
     align-items: center;
     width: 90vmax;
-    height: 51.5vmax;
-    background-color: dodgerblue;
+    height: 51vmax;
 }
 #whyUs>h3{
     font-family: 'Times New Roman', Times, serif;
@@ -210,7 +209,247 @@ body{
     text-transform: uppercase;
     font-size: 2.3vmax;
     line-height: 480%;
-    background-color: darkred;
+}
+#fourSecWhyUs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 33.5vmax;
+}
+.blockWhy{
+    flex-direction: row;
+    align-self: self-start;
+    justify-content: space-between;
+    width: 40vmax;
+    height: 17vmax;
+}
+.blockWhyEnd{
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: flex-end;
+    width: 40vmax;
+    height: 14vmax;
+}
+#marginWhy{
+    margin-right: 4vmax;
+}
+.blockWhyImg{
+    width: 8vmax;
+}
+#whyHeight1{
+    height: 7.4vmax;
+}
+#whyHeight2{
+    height: 7.2vmax;
+}
+#whyHeight3{
+    height: 8vmax;
+}
+#whyHeight4{
+    height: 7.6vmax;
+}
+.blockWhyDiv{
+    width: 30vmax;
+}
+.blockWhyDiv>h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
+    color: #9D7C3C;
+    line-height: 160%;
+    font-size: 2.3vmax;
+}
+.whyEmty{
+    width: 100%;
+    height: 1.65vmax;
+}
+.blockWhyDiv>span{
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 160%;
+    font-size: 1.2vmax;
+    width: 95%;
+}
+
+/* ROOMS */
+#roomsIndex{
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vmax;
+    height: 41.7vmax;
+}
+#roomsIndex>h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
+    font-size: 2.2vmax;
+    line-height: 1;
+    text-transform: uppercase;
+}
+#sliderRoomsIndex{
+    width: 100%;
+    height: 34.5vmax;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#arrowSliderRoomLeft{
+    width: 6vmax;
+    height: 6vmax;
+    background-image: url(/images/arrow.svg);
+    background-size: cover;
+    /* background-color: aqua; */
+}
+#roomImg{
+    flex-direction: column;
+    justify-content: end;
+    background-image: url(/images/roomSliderIndex/img1.png);
+    width: 73vmax;
+    height: 100%;
+    background-size: cover;
+    border-radius: 1vmax;
+}
+#roomImgDesc{
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(30, 30, 30, 0.4);
+    height: 10.5vmax;
+    width: 100%;
+}
+#roomImgDesc>h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.2vmax;
+    font-weight: 200;
+    line-height: 200%;
+    color: #D9D9D9;
+}
+#roomImgDesc>span{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3vmax;
+    line-height: 120%;
+    color: #D9D9D9;
+    text-align: center;
+    width: 65vmax;
+}
+#arrowSliderRoomRight{
+    width: 6vmax;
+    height: 6vmax;
+    background-image: url(/images/arrow.svg);
+    background-size: cover;
+    rotate: 180deg;
+}
+#emtyBetweenRoomsContacts{
+    width: 100%;
+    height: 6vmax;
+}
+
+/* CONTACTS */
+#contacts{
+    align-items: center;
+    width: 88.5vmax;
+    height: 43vmax;
+}
+#contacts>h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.25vmax;
+    text-transform: uppercase;
+    font-weight: 200;
+    line-height: 0.8;
+}
+#contactEmty{
+    width: 100%;
+    height: 3.3vmax;
+}
+#contactMap{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 38vmax;
+}
+#contactMap>iframe{
+    width: 53vmax;
+    height: 37.8vmax;
+}
+#contactContacts{
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28vmax;
+    height: 29vmax;
+}
+.infoContact{
+    flex-direction: column;
+    justify-content: space-between;
+}
+#addr{
+    width: 26vmax;
+    height: 7.5vmax;
+}
+#phone{
+    width: 26vmax;
+    height: 7vmax;
+}
+#emil{
+    width: 26vmax;
+    height: 5.5vmax;
+}
+.goldContact{
+    color: #9D7C3C;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6vmax;
+    line-height: 190%;
+}
+.blackContact{
+    color: #1E1E1E;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6vmax;
+    text-transform: uppercase;
+}
+#emtyBetweenContactsFooter{
+    width: 100%;
+    height: 6.2vmax;
+}
+/* FOOTER */
+#upFooter{
+    width: 76vmax;
+    height: 0.1vmax;
+    border: transparent;
+    background-color: #1E1E1E;
+}
+#emtyUpFooter{
+    width: 100%;
+    height: 4.2vmax;
+}
+footer{
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 87vmax;
+    height: 21vmax;
+}
+#columnFooter{
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+#logoFoo{
+    width: 15vmax;
+    height: 6.8vmax;
+}
+.columnFoo>span{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3vmax;
+    line-height: 220%;
+}
+#coopyright{
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5vmax;
+    line-height: 340%;
+}
+#coopyright>span{
+    display: inline;
+    color: #9D7C3C;
 }
 @font-face {
     font-family: 'TNR';
