@@ -54,28 +54,163 @@ body{
     background-image:url(/images/sliderGeneralMain/image\ 1.png);
     background-size: cover;
     width: 100%;
-    height: 41vmax;
+    height: 42vmax;
 }
 #emtyGeneralMain{
     width: 100%;
     height: 32vmax;
-    background-color: pink;
 }
 #formGeneralMain{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    width: 90vmax;
+    width: 86vmax;
+    padding: 0 1.4vmax;
     height: 6.5vmax;
     border-radius: 0.5vmax;
     background-color: rgba(237, 240, 244, 0.5);
 }
-#formGeneralMain>input[type=date]{
-    width: 20vmax;
+#inputsDatePeople>input[type=date]{
+    display: flex;
+    justify-content: center;
+    width: 18vmax;
+    height: 3.6vmax;
+    padding: 0 1vmax;
+    border-radius: 0.6vmax;
+    border-color: transparent;
 }
-#formGeneralMain>input[type=number]{
-    width: 20.4vmax;
+#inputsDatePeople>input[type=date]::-webkit-calendar-picker-indicator{
+    background: url("/images/calendar.png") no-repeat;
+    background-size: cover;
+}
+#forSelect{
+    width: 18vmax;
+    border-radius: 0.6vmax;
+    background-color: white;
+}
+#inputsDatePeople>#forSelect>select{
+    display: flex;
+    justify-content: center;
+    width: 18vmax;
+    height: 3.6vmax;
+    padding: 1.1vmax 1vmax 0 1vmax;
+    border-radius: 0.6vmax;
+    border-color: transparent;
+}
+#inputsDatePeople>#forSelect>select{
+    appearance: none;
+    /* background-color: white; */
+    background: url("/images/people.png") no-repeat;
+    background-position: 95%;
+    background-size: 1vmax;
+    margin-right: 5vmax;
+}
+#formGeneralMain>input[type=submit]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10vmax;
+    padding: 0 0.5vmax;
+    height: 3.6vmax;
+    border-radius: 0.6vmax;
+    border-color: transparent;
+}
+#inputsDatePeople{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 65vmax;
+}
+.fontArial{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+    color: #909090;
+}
+/* SERVICES */
+#services{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 86vmax;
+    height: 18vmax;
+}
+#services>h3{
+    font-family: 'Times New Roman', Times, serif;
+    color: #1E1E1E;
+    font-size: 2.1vmax;
+    line-height: 240%;
+    letter-spacing: 0.01vmax;
+}
+#services>span{
+    text-align: center;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1E1E1E;
+    font-size: 1.25vmax;
+    letter-spacing: 0.02vmax;
+    line-height: 160%;
+}
+#services>span>a{
+    display: inline;
+    color: #1E1E1E;
+}
+/* SERVICES IMAGES */
+#forServicesImg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 2.5vmax;
+    width: 89vmax;
+    height: 33.5vmax;
+}
+#servicesImg{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 66vmax;
+    height: 100%;
+}
+#servicesImg>#img1{
+    align-self: flex-start;
+    width: 27vmax;
+    height: 16vmax;
+}
+#servicesImg>#img2{
+    width: 37vmax;
+    height: 16vmax;
+}
+#serImgEmty{
+    width: 100%;
+    height: 1.4vmax;
+}
+#servicesImg>#img3{
+    align-self: flex-end;
+    width: 44vmax;
+    height: 16vmax;
+}
+#servicesImg>#img4{
+    width: 20vmax;
+    height: 16vmax;
+}
+/* WHY US */
+#whyUs{
+    flex-direction: column;
+    align-items: center;
+    width: 90vmax;
+    height: 51.5vmax;
+    background-color: dodgerblue;
+}
+#whyUs>h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
+    text-transform: uppercase;
+    font-size: 2.3vmax;
+    line-height: 480%;
+    background-color: darkred;
 }
 @font-face {
     font-family: 'TNR';
