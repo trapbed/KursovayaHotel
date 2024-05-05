@@ -8,6 +8,227 @@ body{
     align-items: center;
 }
 
+
+
+/* MODAL WINDOWS */
+#backgroundModal{
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: -50vmax;
+    left: 50vmax;
+    z-index: 1;
+    width: 100vmax;
+    height: 100vmin;
+    background-color: rgba(217, 217, 217, 0.4);
+}
+        #signinDiv{
+            position: fixed;
+            transform: translate(-50%, -50%);
+            top: -50vmax;
+            left: 50vmax;
+            z-index: 2;
+            width: 60vmax;
+            height: 33vmax;
+            border-radius: 0.5vmax;
+            background-color: #A0895D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #frameSignin{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4vmax;
+            width: 52vmax;
+            height: 26vmax;
+            border-radius: 1vmax;
+            border: 0.2vmax solid rgba(105, 83, 41, 0.25);
+        }
+        #frameSignin{
+            position: relative;
+        }
+        #frameSignin>h1{
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 200;
+            font-size: 2.3vmax;
+            line-height: 280%;
+            color: #EDF0F4;
+        }
+        #closeSignin{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -1.5vmax;
+            right: -1vmax;
+            width: 3.4vmax;
+            height: 3.4vmax;
+            border-radius: 3vmax;
+            background-color: #D9D9D9;
+        }
+        #closeSignin>img, #closeSignup>img{
+            width: 1.6vmax;
+        }
+        #signinFromSignin{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 48vmax;
+            height: 18.5vmax;
+        }
+        #signinFromSignin>label{
+            display: flex;
+            flex-direction: column;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3vmax;
+            line-height: 0.8;
+            color: #D9D9D9;
+            gap: 0.8vmax;
+        }
+        #signinFromSignin>label>input{
+            width: 100%;
+            height: 2.4vmax;
+            border-radius: 0.5vmax;
+            border: transparent;
+            outline: transparent;
+            background-color: #D9D9D9;
+
+        }
+        #signinBtns{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            height: 3vmax;
+        }
+        #signinBtn{
+            border: transparent;
+            outline: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-end;
+            border-radius: 0.5vmax;
+            width: 7.5vmax;
+            height: 3vmax;
+            background-color: rgba(105, 83, 41, 0.25);
+            color: #D9D9D9;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3vmax;
+        }
+        #toSignup{
+            color: #D9D9D9;
+            display: flex;
+            flex-direction: row;
+            font-family: Arial, Helvetica, sans-serif;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3vmax;
+            border-radius: 0.5vmax;
+        }
+        #toSignupBtn{
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: 0.1vmax underline #D9D9D9;
+        }    
+
+
+        #signUpDiv{
+            position: fixed;
+            transform: translate(-50%, -50%);
+            top: -50vmax;
+            left: 50vmax;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #A0895D;
+            border-radius: 0.5vmax;
+            height: 45vmax;
+            width: 43vmax;
+        }
+        #borderSignUpDiv{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 0.5vmax;
+            height: 38.4vmax;
+            width: 38vmax;
+            border: 0.1vmax solid rgba(105, 83, 41, 0.25);
+            position: relative;
+        }
+        #borderSignUpDiv>h1{
+            color: #D9D9D9;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 200;
+            font-size: 2.3vmax;
+            line-height: 240%;
+            color: #EDF0F4;
+        }
+        #signupFormSignup{
+            display: flex;
+            flex-direction: column;
+            /* background-color: thistle; */
+            width: 32vmax;
+            gap: 1.6vmax;
+        }
+        #signupFormSignup>label{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5vmax;
+            color: #D9D9D9;
+            font-size: 1.3vmax;
+            line-height: 140%;
+        }
+        #signupFormSignup>label>input{
+            width: 100%;
+            height: 2.5vmax;
+            border: transparent;
+            outline: transparent;
+            background-color: #EDF0F4;
+            border-radius: 0.5vmax;
+        }
+        #signUpBtn{
+            align-self: flex-end;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 13.8vmax;
+            height: 2.6vmax;
+            border-radius: 0.5vmax;
+            border: transparent;
+            background-color: rgba(105, 83, 41, 0.25);
+            color: #EDF0F4;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3vmax;
+            font-weight: 200;
+        }
+        #emtySignup{
+            width: 100%;
+            height: 1.9vmax;
+        }
+        #endSignup{
+            display: flex;
+            flex-direction: row;
+            font-size: 1.3vmax;
+            color: #EDF0F4;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #closeSignup{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -1.5vmax;
+            right: -1vmax;
+            width: 3.4vmax;
+            height: 3.4vmax;
+            border-radius: 3vmax;
+            background-color: #D9D9D9;
+        }
+        #toSigninbtn{
+            text-decoration: 0.1vmax underline #D9D9D9;
+        }
 /* NAVIGATION */
 #headerNav{
     display: flex;
@@ -15,7 +236,7 @@ body{
     align-items: center;
     justify-content: space-between;
     width: 90vmax;
-    height: 6vmax;
+    height: 10vmax;
 }
 #logoNav{
     width: 10.5vmax;
@@ -45,7 +266,13 @@ body{
 #headerNavigation>a:hover{
     text-decoration: underline;
 }
-
+#sign{
+    display: flex;
+    flex-direction: row;
+    font-family: 'Times New Roman';
+    font-size: 1.3vmax;
+    gap: 2vmax;
+}
 /* GENERAL MAIN */
 #general{
     display: flex;
@@ -55,10 +282,6 @@ body{
     background-size: cover;
     width: 100%;
     height: 42vmax;
-}
-#emtyGeneralMain{
-    width: 100%;
-    height: 32vmax;
 }
 #formGeneralMain{
     display: flex;
@@ -125,7 +348,7 @@ body{
 .fontArial{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2vmax;
-    color: #909090;
+    color: black;
 }
 /* SERVICES */
 #services{
@@ -182,10 +405,6 @@ body{
 #servicesImg>#img2{
     width: 37vmax;
     height: 16vmax;
-}
-#serImgEmty{
-    width: 100%;
-    height: 1.4vmax;
 }
 #servicesImg>#img3{
     align-self: flex-end;
@@ -259,10 +478,6 @@ body{
     color: #9D7C3C;
     line-height: 160%;
     font-size: 2.3vmax;
-}
-.whyEmty{
-    width: 100%;
-    height: 1.65vmax;
 }
 .blockWhyDiv>span{
     font-family: Arial, Helvetica, sans-serif;
@@ -338,10 +553,6 @@ body{
     background-size: cover;
     rotate: 180deg;
 }
-#emtyBetweenRoomsContacts{
-    width: 100%;
-    height: 6vmax;
-}
 
 /* CONTACTS */
 #contacts{
@@ -356,16 +567,13 @@ body{
     font-weight: 200;
     line-height: 0.8;
 }
-#contactEmty{
-    width: 100%;
-    height: 3.3vmax;
-}
 #contactMap{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 38vmax;
+    gap: 3vmax;
 }
 #contactMap>iframe{
     width: 53vmax;
@@ -396,36 +604,29 @@ body{
 .goldContact{
     color: #9D7C3C;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.6vmax;
+    font-size: 1.4vmax;
     line-height: 190%;
 }
 .blackContact{
     color: #1E1E1E;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.6vmax;
+    font-size: 1.4vmax;
     text-transform: uppercase;
-}
-#emtyBetweenContactsFooter{
-    width: 100%;
-    height: 6.2vmax;
 }
 /* FOOTER */
 #upFooter{
+    align-self: center;
     width: 76vmax;
     height: 0.1vmax;
     border: transparent;
     background-color: #1E1E1E;
-}
-#emtyUpFooter{
-    width: 100%;
-    height: 4.2vmax;
 }
 footer{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 87vmax;
-    height: 21vmax;
+    height: 17vmax;
 }
 #columnFooter{
     flex-direction: row;
@@ -433,23 +634,685 @@ footer{
     width: 100%;
 }
 #logoFoo{
-    width: 15vmax;
-    height: 6.8vmax;
+    width: 12vmax;
+    height: 5.4vmax;
 }
 .columnFoo>span{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.3vmax;
+    font-size: 1vmax;
     line-height: 220%;
 }
 #coopyright{
     display: block;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5vmax;
+    font-size: 1vmax;
     line-height: 340%;
 }
 #coopyright>span{
     display: inline;
     color: #9D7C3C;
+}
+/* CONTACT US */
+#contactUsDiv{
+    align-items: center;
+    gap: 1.6vmax;
+}
+#contactUs1{
+    width: 90vmax;
+    height: 34vmax;
+}
+.titleContactUs{
+    font-size: 2.1vmax;
+    line-height: 1;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    color: #9D7C3C;
+}
+#contactUsP{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 46vmax;
+    align-items: center;
+    font-size: 1.3vmax;
+    line-height: 140%;
+    text-align: center;
+}
+#contactUsP>a{
+    color: #9D7C3C;
+}
+/*  */
+#contactsAboutHotel{
+    width: 90vmax;
+    height: 9vmax;
+    flex-direction: row;
+    gap: 18vmax;
+}
+.aboutCon{
+    flex-direction: column;
+    align-items: center;
+}
+.numberAboutCon{
+    color: #9D7C3C;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4.4vmax;
+    font-weight: 100;
+}
+.textAboutCon{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+    text-align: center;
+}
+#contactUs2{
+    width: 90vmax;
+    height: 29vmax;
+}
+/*  */
+#numbersContact{
+    width: 90vmax;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.numberPhone{
+    align-items: center;
+    gap: 1.2vmax;
+}
+.numberPhone>h6{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    font-size: 2vmax;
+    line-height: 1;
+    color: #9D7C3C;
+}
+.numberPhone>span{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 1.4vmax;
+    width: 26vmax;
+    line-height: 160%;
+}
+/*  */
+#contactsNMap{
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90vmax;
+}
+#contactContacts{
+    width: 35vmax;
+    height: auto;
+    gap: 3.4vmax;
+}
+#contactContacts>h6{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.2vmax;
+    font-weight: 200;
+}
+#AddrCoorIndex{
+    gap: 2vmax;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#AddrCoorIndex>div{
+    gap: 2vmax;
+}
+#AddrCoorIndex>div>h6{
+    color: #9D7C3C;
+    font-size: 1.6vmax;
+    font-weight: 200
+}
+#AddrCoorIndex>div>span{
+    font-size: 1.4vmax;
+    line-height: 160%;
+    width: ;
+}
+
+
+
+
+
+/* SERVICES */
+#titleServices{
+    font-size: 2.4vmax;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
+    flex-direction: row;
+    align-items: center;
+    width: 90vmax;
+    height: 4.5vmax;
+}
+#servicesMain{
+    width: 90vmax;
+    height: auto;
+    flex-direction: column;
+    gap: 1.2vmax;
+}
+
+.nameHrCatServ{
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    width: 90vmax;
+    height: 2vmax;
+    /* gap: 3vmax; */
+}
+.nameCatServ{
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
+    font-size: 1.8vmax;
+    /* min-width: 10vmax; */
+    width: auto;
+
+}
+.hrNameCatServ{
+    position: absolute;
+    width: 90vmax;
+    height: 0.05vmax;
+    background-color: #1E1E1E;
+}
+
+.oneRowServ{
+    width: 90vmax;
+    flex-direction: row;
+    align-items: center;
+    gap: 2vmax;
+    /* height: 18vmax; */
+}
+.oneService{
+    position: relative;
+    color: transparent;
+    width: 21vmax;
+    height: 16vmax;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1vmax;
+    /* margin-right: 1vmax; */
+}
+.oneService>img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1vmax;
+    filter: grayscale(20%);
+    background-image: url(../images/services/dummy.png);
+    background-size: cover;
+}
+.oneService>form{
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+}
+.oneService>form>input[type=submit]{
+    background-color: transparent;
+    border: transparent;
+    width: 21vmax;
+    height: 16vmax;
+}
+.nameService{
+    position: absolute;
+    z-index: 2;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.6vmax;
+    color: white;
+    width: 80%;
+    text-align: center;
+    text-shadow: 0 0 1vmax black;
+}
+#catalogRooms{
+    width: 90vmax;
+    gap: 4.2vmax;
+    flex-direction: column;
+
+}
+#sortCatalog{
+    flex-direction: row;
+    align-items: center;
+    width: 78.5vmax;
+    height: 3.8vmax;
+}
+#sortCatalog>form{
+    flex-direction: row;
+    gap: 4vmax;
+}
+#sortCatalog>form>select{
+    width: 10vmax;
+    height: 2vmax;
+    background-color: transparent;
+    font-size: 1.2vmax;
+    border: transparent;
+    text-transform: capitalize;
+    color: #9D7C3C;
+    border-bottom: 0.1vmax solid #9D7C3C;
+}
+.priceSort{
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6vmax;
+    color: #9D7C3C;
+    border-bottom: 0.1vmax solid #9D7C3C;
+}
+.priceSort>input{
+    background-color: transparent;
+    border: transparent;
+    outline: transparent;
+    width: 8.5vmax;
+    padding-left: 0.5vmax;
+    font-size: 1.6vmax;
+}
+#submitSortCat{
+    width: 2vmax;
+    height: 2vmax;
+    border: transparent;
+    background-color: transparent;
+    background-size: cover;
+    background-image: url(../images/search.svg);
+}
+.oneRoomCatalog{
+    flex-direction: row;
+    align-items: center;
+    gap: 3vmax;
+    width: 90vmax;
+    height: 24vmax;
+}
+.oneRoomCatalog>img{
+    height: 24vmax;
+    border-radius: 1vmax;
+    width: 43vmax;
+}
+.textRoom{
+    justify-content: space-between;
+    align-items: center;
+    height: 22vmax;
+    width: 45vmax;
+}
+.nameRoom{
+    width: 40vmax;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.2vmax;
+    line-height: 120%;
+    font-weight: 300;
+    align-items: center;
+    justify-content: center;
+    color: #9D7C3C;
+    text-align: center;
+}
+.aboutRoomCenter{
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+
+.goldenAccent{
+    flex-direction: row;
+    color: #9D7C3C;
+}
+
+.person, .category, .square{
+    flex-direction: row;
+}
+.category{
+    text-transform: capitalize;
+}
+/* .square>sup{
+    display: block;
+} */
+.descRoomCatalog{
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border: transparent;
+    resize: none;
+    width: 100%;
+    height: 4vmax;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+.priceNFormCatalog{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.priceNFormCatalog>span{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2vmax;
+    color: #9D7C3C;
+}
+.priceNFormCatalog>form>input[type=submit]{
+    width: 15vmax;
+    height: 3.5vmax;
+    border: 0.1vmax solid #9D7C3C;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: transparent;
+    font-size: 1.4vmax;
+    color: #9D7C3C;
+    border-radius: 1vmax;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+/* ONE ROOM */
+#mainOneRoom{
+    width: 90vmax;
+    height: auto;
+    background-color: ;
+    gap: 3.8vmax;
+    flex-direction: column;
+    align-items: center;
+}
+#nameRoom{
+    align-self: start;
+    flex-direction: column;
+    justify-content: end;
+    background-color: palevioletred;
+    height: 4vmax;
+}
+#infoAboutRoom{
+    flex-direction: row;
+    gap: 2vmax;
+    background-color: forestgreen;
+    width: 90vmax;
+    height: 36vmax;
+}
+#infoAboutRoom>img{
+    border-radius: 1vmax;
+    width: 66vmax;
+    height: 36vmax;
+}
+#infoDivRoom{
+    flex-direction: column;
+    gap: 2.4vmax;
+}
+#infoDivRoom>span, #infoDivRoom>span>span{
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6vmax;
+    line-height: 140%;
+}
+#descRoom{
+    text-align: center;
+    background-color: saddlebrown;
+    width: 90vmax;
+    height: 10vmax;
+}
+#constantRoom{
+    width: 74vmax;
+    height: 8vmax;
+}
+#account{
+    display: flex;
+    flex-direction: row;
+    gap: 11vmax;
+    width: 90vmax;
+    /* background-color: lightgrey; */
+    /* height: 33vmax; */
+}
+#accountNav{
+    display: flex;
+    flex-direction: column;
+    gap: 3vmax;
+}
+#accountNav>a{
+    font-size: 1.6vmax;
+    line-height: 1;
+    font-family: 'Times New Roman', Times, serif;
+    color: #1E1E1E;
+    /* text-decoration: transparent; */
+}
+#noActivePageUser{
+    text-decoration: transparent;
+}
+#infoAcc{
+    display: flex;
+    flex-direction: column;
+    gap: 3vmax;
+    width: auto;
+    height: 100%;
+}
+#nameSnmae{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.4vmax;
+    font-weight: 100;
+    line-height: 130%;
+}
+#allInfoUser{
+    display: flex;
+    flex-direction: column;
+}
+#allInfoUser>table{
+    display: flex;
+    flex-direction: column;
+    gap: 100vmax;
+}
+.noDataUser{
+    text-decoration:  0.1vmax underline;
+    color: #741818;
+}
+.trInfoUser{
+    display: flex;
+    flex-direction: row;
+}
+.nameRowUser{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.1vmax;
+    font-weight: 300;
+    line-height: 140%;
+    height: 6vmax;
+    width: 28.5vmax;
+}
+.valueRowUser{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.1vmax;
+    font-weight: 300;
+    line-height: 140%;
+    height: 6vmax;
+    width: 45.5vmax;
+}
+#inputPass{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.1vmax;
+    font-weight: 300;
+    line-height: 140%;
+    background-color: transparent;
+    border: transparent;
+    outline: transparent;
+}
+#eyeOpen{
+    display: none;
+    align-self: center;
+    background-image: url(/images/eyes/open.png);
+    background-size: cover;
+    width: 3vmax;
+    height: 3vmax;
+}#eyeClose{
+    align-self: center;
+    background-image: url(/images/eyes/close.png);
+    background-size: cover;
+    width: 3vmax;
+    height: 2.2vmax;
+}
+#toChangeAcc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 1.4vmax;
+    color: #A0895D;
+    background-color: transparent;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 300;
+    width: 26vmax;
+    height: 4vmax;
+    border: 0.1vmax solid #A0895D;
+    border-radius: 0.5vmax;
+}
+/* CHANGE ACC */
+#headerUserData{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 72vmax;
+    height: 2vmax;
+    /* background-color: silver; */
+}
+#headerUserData>span{
+    position: absolute;
+    z-index: 1;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5vmax;
+    background-color: white;
+}
+#headerUserData>hr{
+    width: 100%;
+    height: 0.1vmax;
+    border: transparent;
+    background-color: #1E1E1E;
+}
+#changeAcc{
+    display: flex;
+    flex-direction: column;
+    gap: 1.4vmax;
+}
+#personalData{
+    display: flex;
+    flex-direction: column;
+    gap: 2vmax;
+}
+.personalUserData{
+    display: flex;
+    flex-direction: row;
+    gap: 6vmax;
+}
+.personalUserData>label, #contactUserData>label, #securityData>label, #changeLPform>label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3vmax;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6vmax;
+}
+.personalUserData>label>input, #contactUserData>label>input, #securityData>label>input, #changeLPform>label>input{
+    width: 31.5vmax;
+    height: 3.4vmax;
+    padding-left: 1vmax;
+    border: transparent;
+    background-color: #D9D9D9;
+    /* align-items: center; */
+    justify-content: center;
+    outline: transparent;
+    border-radius: 0.5vmax;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2vmax;
+}
+#contactUserData, #securityData{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 6vmax;
+    height: 8.8vmax;
+}
+#passwordChange{
+    position: relative;
+}
+.passwordAbs{
+    position: absolute;
+    bottom: 0.3vmax;
+    left: 46vmax;
+}
+#saveChangeUser{
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5vmax;
+    text-transform: uppercase;
+    border: 0.1vmax solid #A0895D;
+    color: #A0895D;
+    background-color: transparent;
+    width: 15vmax;
+    height: 3.8vmax;
+    border-radius: 0.5vmax;
+}
+#titleChangeLP{
+    width: 90vmax;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.4vmax;
+    font-weight: 300;
+    line-height: 120%;
+}
+#changeLPform{
+    width: 90vmax;
+    gap: 3.6vmax;
+}
+#changeLPform>div{
+    display: flex;
+    align-items: end;
+    width: 51vmax;
+}
+#changeLPform>div>input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.6vmax;
+    font-weight: 300;
+    width: 15vmax;
+    height: 3.5vmax;
+    border-radius: 0.5vmax;
+    border: 0.1vmax solid #A0895D;
+    background-color: transparent;
+    color: #A0895D;
+}
+#changeLPform>label>.LPInput{
+    width: 50vmax;
+}
+#changeLP{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2vmax;
+}
+#penChangePass{
+    width: 2.6vmax;
+}
+/* EMPTYS */
+.serImgEmty, .empty14{
+    width: 100%;
+    height: 1.4vmax;
+}
+.whyEmty, .empty16{
+    width: 100%;
+    height: 1.65vmax;
+}
+.empty26{
+    width: 100%;
+    height: 2.6vmax;
+}
+.contactEmty, .empty33{
+    width: 100%;
+    height: 3.3vmax;
+}
+.emtyUpFooter, .empty42{
+    width: 100%;
+    height: 4.2vmax;
+}
+.emtyBetweenRoomsContacts, .empty60{
+    width: 100%;
+    height: 6vmax;
+}
+.emtyBetweenContactsFooter, .empty62{
+    width: 100%;
+    height: 6.2vmax;
+}
+.emtyGeneralMain, .empty320{
+    width: 100%;
+    height: 32vmax;
 }
 @font-face {
     font-family: 'TNR';

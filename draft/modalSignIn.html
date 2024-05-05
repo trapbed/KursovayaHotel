@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.8vmax;
+            /* width: 100vmax; */
+            /* overflow-x: hidden; */
+        }
+        #signinDiv{
+            width: 60vmax;
+            height: 33vmax;
+            border-radius: 0.5vmax;
+            background-color: #A0895D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #frameSignin{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4vmax;
+            width: 52vmax;
+            height: 26vmax;
+            border-radius: 1vmax;
+            border: 0.2vmax solid rgba(105, 83, 41, 0.25);
+        }
+        #frameSignin{
+            position: relative;
+        }
+        #frameSignin>h1{
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 200;
+            font-size: 2.3vmax;
+            line-height: 280%;
+            color: #EDF0F4;
+        }
+        #closeSignin{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -1.5vmax;
+            right: -1vmax;
+            width: 3.4vmax;
+            height: 3.4vmax;
+            border-radius: 3vmax;
+            background-color: #D9D9D9;
+        }
+        #closeSignin>img, #closeSignup>img{
+            width: 1.6vmax;
+        }
+        #signinFromSignin{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 48vmax;
+            height: 18.5vmax;
+        }
+        #signinFromSignin>label{
+            display: flex;
+            flex-direction: column;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3vmax;
+            line-height: 0.8;
+            color: #D9D9D9;
+            gap: 0.8vmax;
+        }
+        #signinFromSignin>label>input{
+            width: 100%;
+            height: 2.4vmax;
+            border-radius: 0.5vmax;
+            border: transparent;
+            outline: transparent;
+            background-color: #D9D9D9;
+
+        }
+        #signinBtns{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            height: 3vmax;
+        }
+        #signinBtn{
+            border: transparent;
+            outline: transparent;
+            align-self: flex-end;
+            border-radius: 0.5vmax;
+            width: 7.5vmax;
+            height: 3vmax;
+            background-color: rgba(105, 83, 41, 0.25);
+            color: #D9D9D9;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3vmax;
+        }
+        #toSignup{
+            color: #D9D9D9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3vmax;
+            border-radius: 0.5vmax;
+        }
+        #toSignup>span{
+            text-decoration: double;
+        }
+        #toSignuoBtn{
+            
+        }
+
+
+        
+
+
+        #signUpDiv{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #A0895D;
+            border-radius: 0.5vmax;
+            height: 45vmax;
+            width: 43vmax;
+        }
+        #borderSignUpDiv{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 0.5vmax;
+            height: 38.4vmax;
+            width: 38vmax;
+            border: 0.1vmax solid rgba(105, 83, 41, 0.25);
+            position: relative;
+        }
+        #borderSignUpDiv>h1{
+            color: #D9D9D9;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 200;
+            font-size: 2.3vmax;
+            line-height: 240%;
+            color: #EDF0F4;
+        }
+        #signupFormSignup{
+            display: flex;
+            flex-direction: column;
+            /* background-color: thistle; */
+            width: 32vmax;
+            gap: 1.6vmax;
+        }
+        #signupFormSignup>label{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5vmax;
+            color: #D9D9D9;
+            font-size: 1.3vmax;
+            line-height: 140%;
+        }
+        #signupFormSignup>label>input{
+            width: 100%;
+            height: 2.5vmax;
+            border: transparent;
+            outline: transparent;
+            background-color: #EDF0F4;
+            border-radius: 0.5vmax;
+        }
+        #signUpBtn{
+            align-self: flex-end;
+            width: 13.8vmax;
+            height: 2.6vmax;
+            border-radius: 0.5vmax;
+            border: transparent;
+            background-color: rgba(105, 83, 41, 0.25);
+            color: #EDF0F4;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3vmax;
+            font-weight: 200;
+        }
+        #emtySignup{
+            width: 100%;
+            height: 1.9vmax;
+        }
+        #endSignup{
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3vmax;
+            color: #EDF0F4;
+        }
+        #closeSignup{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -1.5vmax;
+            right: -1vmax;
+            width: 3.4vmax;
+            height: 3.4vmax;
+            border-radius: 3vmax;
+            background-color: #D9D9D9;
+        }
+    </style>
+</head>
+<body>
+    <div id="signinDiv">
+        <div id="frameSignin">
+            <div id="closeSignin">
+                <img src="../images/x.svg" alt="exit">
+            </div>
+            <h1>Авторизуйтесь</h1>
+            <div id="signinForm">
+                <form id="signinFromSignin" action="" method="POST">
+                    <label for="email" >Почта
+                        <input type="email" name="email">
+                    </label>
+                    <label for="password">Пароль
+                        <input type="password" name="password">
+                    </label>
+                        <input id="signinBtn" type="submit" value="Войти">
+                    <span id="toSignup">Еще нет аккаунта? <span id="toSignuoBtn"> Зарегистрируйтесь</span></span>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="signUpDiv">
+        <div id="borderSignUpDiv">
+            <div id="closeSignup">
+                <img src="../images/x.svg" alt="exit">
+            </div>
+            <h1>Зарегистрируйтесь</h1>
+            <form action="" method="get" id="signupFormSignup">
+                <label name="">Логин<input type="text"></label>
+                <label name="">Дата рождения<input type="text"></label>
+                <label name="">Почта<input type="text"></label>
+                <label name="">Пароль<input type="text"></label>
+                <input id="signUpBtn" type="submit" value="Зарегистрироваться">
+            </form>
+            <div id="emtySignup"></div>
+            <span id="endSignup">Уже есть аккаунт? <span>Войдите</span></span>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
