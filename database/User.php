@@ -17,8 +17,8 @@ class User extends Connect {
     private $user_exist_valid = false;
     protected $adult;
 
-    public function user_exist($login, $pass){
-        $user_exist = mysqli_query($this->conn, "SELECT id_user, login, password, role FROM users WHERE login ='$login'");
+    public function user_exist($email, $pass){
+        $user_exist = mysqli_query($this->conn, "SELECT id_user, email, password, role FROM users WHERE email ='$email'");
         if(mysqli_num_rows($user_exist) != 0){
             $user_exist_valid = true;
             return $user_exist_valid;
@@ -38,15 +38,15 @@ class User extends Connect {
         return $adult;
     }
 
-    public function signin($login, $pass){
+    public function signin($pass, $email){
 
-        if($login && $pass){
-            $user_exist = $this->user_exist($login, $pass);
+        if($email && $pass){
+            $user_exist = $this->user_exist($email, $pass);
             if($user_exist == true){
-                $user = mysqli_fetch_array(mysqli_query($this->conn, "SELECT id_user, login, password, role FROM users WHERE login ='$login' AND password= '$pass'"));
+                $user = mysqli_fetch_array(mysqli_query($this->conn, "SELECT id_user, email, password, role FROM users WHERE email ='$email' AND password= '$pass'"));
                 if($user){
                     $_SESSION['id_user'] = $user['id_user'];
-                    $_SESSION['login'] = $user['login'];
+                    $_SESSION['email'] = $user['email'];
                     $_SESSION['role'] = $user['role'];
                     echo $_SESSION['id_user'];
                     echo $user['role'];
@@ -81,13 +81,13 @@ class User extends Connect {
 
         }
         else{
-            if(!$login){
+            if(!$email){
                 $error = 'Введите логин';
             }
             if(!$pass){
                 $error = 'Введите пароль ';
             }
-            if(!$login && !$pass){
+            if(!$email && !$pass){
                 $error = 'Введите данные';
             }
             echo "
@@ -99,29 +99,43 @@ class User extends Connect {
         }
     }
 
-    public function signup($login, $bday, $email, $pass){
-        $user_exist = $this->user_exist($login, $pass);
+    public function signup( $email,$bday, $pass){
+        $user_exist = $this->user_exist($email, $pass);
         $check_bday = $this->check_bday($bday);
 
-        if(!$login || !$bday || !$email || !$pass){
+        if(!$bday || !$email || !$pass){
             $error = "Введите данные!";
         }
         
-        if($user_exist == true){
-            $error = "Такой пользователь существует! Войдите в аккаунт!";
+        $today =date('Y-m-d');
+        echo $today;
+        echo "<br>";
+        echo $bday;
+        $res = strtotime($today)-strtotime($bday);
+        $res = $res/31536000;
+        echo "<br>";
+        echo $res;
+        
+        if($res > 0 ){
+            if($user_exist == true){
+                $error = "Такой пользователь существует! Войдите в аккаунт!";
+            }
+            else{
+                
+                $insert_user = mysqli_query($this->conn,"INSERT INTO users (email, password) VALUES ('$email','$pass')");
+                $id_user = mysqli_insert_id($this->conn);
+                $insert_byuer = mysqli_query($this->conn,"INSERT INTO buyer (id_user ,birthday) VALUES ($id_user, '$bday')");
+                $_SESSION['id_user'] = $id_user;
+                $_SESSION['email'] = $email;
+                $_SESSION['role'] = $user['role'];
+                $error = "Вы успешно зарегистрировались!";
+                if($check_bday == false){
+                    $error .= "Вам еще нет 18! Вы не сможете забронировать номер!";
+                }
+            }
         }
         else{
-            
-            $insert_user = mysqli_query($this->conn,"INSERT INTO users (login, password) VALUES ('$login','$pass')");
-            $id_user = mysqli_insert_id($this->conn);
-            $insert_byuer = mysqli_query($this->conn,"INSERT INTO buyer (id_user ,birthday, mail) VALUES ($id_user, '$bday','$email')");
-            $_SESSION['id_user'] = $id_user;
-            $_SESSION['login'] = $login;
-            $_SESSION['role'] = $user['role'];
-            $error = "Вы успешно зарегистрировались!";
-            if($check_bday == false){
-                $error .= "Вам еще нет 18! Вы не сможете забронировать номер!";
-            }
+            $error = "Вы слишком молоды что-бы пользоваться нашей системой!";
         }
         echo "<script>
         alert('$error');
@@ -132,13 +146,13 @@ class User extends Connect {
     public function get_info_user($id){
         
         $user_info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT 
-        users.id_user, name, sname, pathronymic, birthday, phone, mail, password, login, blocked 
+        users.id_user, name, sname, pathronymic, birthday, phone, email, password, blocked 
         FROM buyer JOIN users ON users.id_user=buyer.id_user WHERE users.id_user = ".$id));
         return $user_info;
     }
 
-    public function get_login_pass($id){
-        $user_info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT login, password FROM users WHERE id_user =".$id));
+    public function get_email_pass($id){
+        $user_info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT email, password FROM users WHERE id_user =".$id));
         return $user_info;
     }
 
@@ -223,18 +237,18 @@ class User extends Connect {
         
     }
 
-    public function changeLoginPass($id, $login, $pass){
-        $check_user = $this->get_login_pass($id);
+    public function changeLoginPass($id, $email, $pass){
+        $check_user = $this->get_email_pass($id);
         $query = "";
         $check_comma = false;
-        if($check_user[1] != $login || $check_user[2] != $pass){
+        if($check_user[1] != $email || $check_user[2] != $pass){
             $query = "UPDATE users SET ";
-            if($check_user[1] != $login ){
+            if($check_user[1] != $email ){
                 if($check_comma == true){
                     $query .= " , ";
                 }
                 $check_comma = true;
-                $query .= "login = '$login'";
+                $query .= "email = '$email'";
             }
             if($check_user[2] != $pass){
                 if($check_comma == true){
@@ -246,7 +260,7 @@ class User extends Connect {
             $query .= " WHERE users.id_user =".$id;
             $query = mysqli_query($this->conn, $query);
             if($query){
-                $_SESSION['login'] = $login;
+                $_SESSION['email'] = $email;
                 echo "
                 <script>
                     alert('Данные обновлены!');

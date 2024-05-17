@@ -1,16 +1,17 @@
 
 <?php
     include "header.php";
+    // print_r($_SESSION);
 ?> 
 <!-- MAIN -->
     <main id="general">
-        <div class="emtyGeneralMain"></div>
+        <!-- <div class="emtyGeneralMain"></div>
         <form id='formGeneralMain' action="catalog.php" method='POST'>
             <div id='inputsDatePeople'>
-                <input class='fontArial' type="date" name="" id="" value='2024-04-04'>
+                <input class='fontArial' type="date" name="date" id="" value='2024-04-04'>
                 <input class='fontArial' type="date" name="" id="" value=''>
                 <div id='forSelect'>
-                    <select class='fontArial' name="" id="">
+                    <select class='fontArial' name="numPers" id="">
                         <option value=""></option>
                         <option value="">1 гость</option>
                         <option value="">2 гость</option>
@@ -19,7 +20,7 @@
                 </div>
             </div>
             <input class='fontArial' type="submit" value="Искать">
-        </form>
+        </form> -->
     </main>
 <!-- SERVICES TEXT -->
     <div id='services'>

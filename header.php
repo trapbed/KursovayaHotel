@@ -23,8 +23,8 @@ session_start();
             <h1>Авторизуйтесь</h1>
             <div id="signinForm">
                 <form id="signinFromSignin" action="/user/signin-db.php" method="POST">
-                    <label for="login" >Логин
-                        <input type="login" name="login">
+                    <label for="email" >Почта
+                        <input type="email" name="email">
                     </label>
                     <label for="pass">Пароль
                         <input type="password" name="pass">
@@ -44,10 +44,9 @@ session_start();
             </div>
             <h1>Зарегистрируйтесь</h1>
             <form action="/user/signup-db.php" method="post" id="signupFormSignup">
-                <label for='login'>Логин<input type="text" name="login"></label>
-                <label for="bday">Дата рождения<input type="date" name='bday' placeholder = 'гггг-мм-дд' pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'></label>
                 <label for="email">Почта<input type="mail" name='email'></label>
                 <label for="pass">Пароль<input type="password" name='pass'></label>
+                <label id='dateInput' for="bday">Дата рождения<input type="date" name='bday' placeholder = 'гггг-мм-дд' pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'></label>
                 <input id="signUpBtn" type="submit" value="Зарегистрироваться">
             </form>
             <div id="emtySignup"></div>
@@ -55,8 +54,54 @@ session_start();
         </div>
     </div>
 
+    <?php
+    if(isset($_SESSION['id_user']) && $_SESSION['role'] == 'admin'){
+        echo"
+            <nav id='headerNav'>
+            <img src='../images/logo.png' alt='logo' id='logoNav'>
+            <div id='headerNavSpans'>
+                <div id='headerNavigation'>
+                    <a href='../admin/index.php'>Админ панель</a>
+                    
+                </div>
+                <div id='sign'>";
 
-    <nav id='headerNav'>
+                    echo "<a href='../exit.php'>Выйти</a><a id='userLogin' href='../account.php?'>".$_SESSION['email']."</a>";
+                    
+                echo "</div>
+            </div>
+        </nav>
+            ";}
+        else{
+            echo"
+                <nav id='headerNav'>
+                <img src='../images/logo.png' alt='logo' id='logoNav'>
+                <div id='headerNavSpans'>
+                    <div id='headerNavigation'>
+                        <a href='../'>Главная</a>
+                        <a href='../catalog.php'>Каталог</a>
+                        <a href='../contacts.php'>Контакты</a>
+                        <a href='../services.php'>Услуги</a>
+                    </div>
+                    <div id='sign'>";
+
+                        if(isset($_SESSION['id_user'])){
+                            echo "<a href='../exit.php'>Выйти</a><a id='userLogin' href='../account.php?'>".$_SESSION['email']."</a>";
+                        }
+                        else{
+                            echo "<span id='signup'>Регистрация</span> <span id='signin'>Авторизация</span>";
+                        }
+
+                    echo "</div>
+                </div>
+            </nav>
+                ";
+        }
+    
+
+    ?>
+
+    <!-- <nav id='headerNav'>
         <img src="../images/logo.png" alt="logo" id='logoNav'>
         <div id="headerNavSpans">
             <div id="headerNavigation">
@@ -68,14 +113,14 @@ session_start();
             <div id="sign">
                 <?php
 
-                if(isset($_SESSION['id_user'])){
-                    echo "<a href='../exit.php'>Выйти</a><a id='userLogin' href='../account.php?'>".$_SESSION['login']."</a>";
-                }
-                else{
-                    echo "<span id='signup'>Регистрация</span> <span id='signin'>Авторизация</span>";
-                }
+                // if(isset($_SESSION['id_user'])){
+                //     echo "<a href='../exit.php'>Выйти</a><a id='userLogin' href='../account.php?'>".$_SESSION['email']."</a>";
+                // }
+                // else{
+                //     echo "<span id='signup'>Регистрация</span> <span id='signin'>Авторизация</span>";
+                // }
 
                 ?>
             </div>
         </div>
-    </nav>
+    </nav> -->
