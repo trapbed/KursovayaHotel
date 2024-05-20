@@ -16,9 +16,9 @@ body{
     transform: translate(-50%, -50%);
     top: -50vmax;
     left: 50vmax;
-    z-index: 1;
+    z-index: 3;
     width: 100vmax;
-    height: 103.5vmin;
+    height: 100vmin;
     background-color: rgba(217, 217, 217, 0.4);
 }
         #signinDiv{
@@ -26,7 +26,7 @@ body{
             transform: translate(-50%, -50%);
             top: -50vmax;
             left: 50vmax;
-            z-index: 2;
+            z-index: 4;
             width: 60vmax;
             height: 33vmax;
             border-radius: 0.5vmax;
@@ -90,15 +90,16 @@ body{
             display: flex;
             flex-direction: row;
             align-items: center;
+            padding-left: 2%;
+            width: 98%;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1.2vmax;
-            width: 97%;
-            padding-left: 3%;
+            color: #9D7C3C;
             height: 2.4vmax;
             border-radius: 0.5vmax;
             border: transparent;
             outline: transparent;
-            background-color: #EDF0F4;
+            background-color: #D9D9D9;
 
         }
         #signinBtns{
@@ -144,15 +145,20 @@ body{
             transform: translate(-50%, -50%);
             top: -50vmax;
             left: 50vmax;
-            z-index: 2;
+            z-index: 4;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: #A0895D;
             border-radius: 0.5vmax;
-            height: 38vmax;
+            height: 39vmax;
             width: 43vmax;
         }
+        #dateInput::-webkit-calendar-picker-indicator{
+            background: #9D7C3C;
+        }
+        
+
         #borderSignUpDiv{
             display: flex;
             flex-direction: column;
@@ -190,10 +196,11 @@ body{
             display: flex;
             flex-direction: row;
             align-items: center;
-            width: 95%;
             padding-left: 5%;
+            width: 95%;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1.2vmax;
+            color: #9D7C3C;
             height: 2.5vmax;
             border: transparent;
             outline: transparent;
@@ -269,21 +276,46 @@ body{
     width: 46vmax;
     height: 100%;
 }
-#headerNavigation>a, #headerNavSpans>span{
-    text-decoration: none;
+#headerNavigationAdmin{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 50vmax;
+    height: 100%;
+}
+#headerNavigation>a, #headerNavigationAdmin>a, #headerNavSpans>span, #headerNavigationAdmin>form>select{
     color: #1E1E1E;
     font-size: 1.3vmax;
-    font-family: TNR;
+    font-family: 'Times New Roman', Times, serif;
+    outline: transparent;
+    border: transparent;
+    background-color: transparent;
+}
+#headerNavigation>a{
+    text-decoration: none;
 }
 #headerNavigation>a:hover{
     text-decoration: underline;
 }
 #sign{
-    display: flex;
-    flex-direction: row;
     font-family: 'Times New Roman';
     font-size: 1.3vmax;
+    color: #1E1E1E;
+    display: flex;
+    flex-direction: row;
     gap: 2vmax;
+}
+#sign>a{
+    font-family: 'Times New Roman';
+    font-size: 1.3vmax;
+    color: #1E1E1E;
+    text-decoration: transparent;
+}
+#userLogin{
+    font-family: 'Times New Roman';
+    font-size: 1.3vmax;
+    width: 12vmax;
 }
 /* GENERAL MAIN */
 #general{
@@ -565,7 +597,154 @@ body{
     background-size: cover;
     rotate: 180deg;
 }
+#noRoomsCat{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
 
+#catalogRooms{
+    width: 90vmax;
+    gap: 4.2vmax;
+    flex-direction: column;
+
+}
+#sortCatalog{
+    flex-direction: row;
+    align-items: center;
+    width: 78.5vmax;
+    height: 3.8vmax;
+}
+#sortCatalog>form{
+    flex-direction: row;
+    align-items: end;
+    gap: 4vmax;
+}
+#sortCatalog>form>select{
+    width: 10vmax;
+    height: 2vmax;
+    background-color: transparent;
+    font-size: 1.2vmax;
+    border: transparent;
+    text-transform: capitalize;
+    color: #9D7C3C;
+    border-bottom: 0.1vmax solid #9D7C3C;
+}
+.priceSort{
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6vmax;
+    color: #9D7C3C;
+    border-bottom: 0.1vmax solid #9D7C3C;
+}
+.priceSort>input{
+    background-color: transparent;
+    border: transparent;
+    outline: transparent;
+    width: 8.5vmax;
+    padding-left: 0.5vmax;
+    font-size: 1.6vmax;
+}
+#submitSortCat{
+    width: 2vmax;
+    height: 2vmax;
+    border: transparent;
+    background-color: transparent;
+    background-size: cover;
+    background-image: url(../images/search.svg);
+}
+.oneRoomCatalog{
+    flex-direction: row;
+    align-items: center;
+    gap: 3vmax;
+    width: 90vmax;
+    height: 24vmax;
+}
+.oneRoomCatalog>img{
+    height: 24vmax;
+    border-radius: 1vmax;
+    width: 43vmax;
+}
+.textRoom{
+    justify-content: space-between;
+    align-items: center;
+    height: 22vmax;
+    width: 45vmax;
+}
+.nameRoom{
+    width: 40vmax;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.2vmax;
+    line-height: 120%;
+    font-weight: 300;
+    align-items: center;
+    justify-content: center;
+    color: #9D7C3C;
+    text-align: center;
+}
+.aboutRoomCenter{
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+
+.goldenAccent{
+    flex-direction: row;
+    color: #9D7C3C;
+}
+
+.person, .category, .square{
+    flex-direction: row;
+}
+.category{
+    text-transform: capitalize;
+}
+/* .square>sup{
+    display: block;
+} */
+.descRoomCatalog{
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border: transparent;
+    resize: none;
+    width: 100%;
+    height: 4vmax;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+.priceNFormCatalog{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.priceNFormCatalog>span{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2vmax;
+    color: #9D7C3C;
+}
+.priceNFormCatalog>form>input[type=submit]{
+    width: 15vmax;
+    height: 3.5vmax;
+    border: 0.1vmax solid #9D7C3C;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: transparent;
+    font-size: 1.4vmax;
+    color: #9D7C3C;
+    border-radius: 1vmax;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+#resetFormCatalog{
+    font-family: Arial, Helvetica, sans-serif;
+    align-self: center;
+    color: #1E1E1E;
+    font-size: 1.2vmax;
+    text-decoration: none;
+}
 /* CONTACTS */
 #contacts{
     align-items: center;
@@ -773,7 +952,7 @@ footer{
 #AddrCoorIndex>div>span{
     font-size: 1.4vmax;
     line-height: 160%;
-    /* width: ; */
+    width: ;
 }
 
 
@@ -871,145 +1050,11 @@ footer{
     text-align: center;
     text-shadow: 0 0 1vmax black;
 }
-#catalogRooms{
-    width: 90vmax;
-    gap: 4.2vmax;
-    flex-direction: column;
-
-}
-#sortCatalog{
-    flex-direction: row;
-    align-items: center;
-    width: 78.5vmax;
-    height: 3.8vmax;
-}
-#sortCatalog>form{
-    flex-direction: row;
-    gap: 4vmax;
-}
-#sortCatalog>form>select{
-    width: 10vmax;
-    height: 2vmax;
-    background-color: transparent;
-    font-size: 1.2vmax;
-    border: transparent;
-    text-transform: capitalize;
-    color: #9D7C3C;
-    border-bottom: 0.1vmax solid #9D7C3C;
-}
-.priceSort{
-    flex-direction: row;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.6vmax;
-    color: #9D7C3C;
-    border-bottom: 0.1vmax solid #9D7C3C;
-}
-.priceSort>input{
-    background-color: transparent;
-    border: transparent;
-    outline: transparent;
-    width: 8.5vmax;
-    padding-left: 0.5vmax;
-    font-size: 1.6vmax;
-}
-#submitSortCat{
-    width: 2vmax;
-    height: 2vmax;
-    border: transparent;
-    background-color: transparent;
-    background-size: cover;
-    background-image: url(../images/search.svg);
-}
-.oneRoomCatalog{
-    flex-direction: row;
-    align-items: center;
-    gap: 3vmax;
-    width: 90vmax;
-    height: 24vmax;
-}
-.oneRoomCatalog>img{
-    height: 24vmax;
-    border-radius: 1vmax;
-    width: 43vmax;
-}
-.textRoom{
-    justify-content: space-between;
-    align-items: center;
-    height: 22vmax;
-    width: 45vmax;
-}
-.nameRoom{
-    width: 40vmax;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2.2vmax;
-    line-height: 120%;
-    font-weight: 300;
-    align-items: center;
-    justify-content: center;
-    color: #9D7C3C;
-    text-align: center;
-}
-.aboutRoomCenter{
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2vmax;
-}
-
-.goldenAccent{
-    flex-direction: row;
-    color: #9D7C3C;
-}
-
-.person, .category, .square{
-    flex-direction: row;
-}
-.category{
-    text-transform: capitalize;
-}
-/* .square>sup{
-    display: block;
-} */
-.descRoomCatalog{
-    text-align: center;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    border: transparent;
-    resize: none;
-    width: 100%;
-    height: 4vmax;
-    background-color: transparent;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2vmax;
-}
-.priceNFormCatalog{
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.priceNFormCatalog>span{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2vmax;
-    color: #9D7C3C;
-}
-.priceNFormCatalog>form>input[type=submit]{
-    width: 15vmax;
-    height: 3.5vmax;
-    border: 0.1vmax solid #9D7C3C;
-    font-family: 'Times New Roman', Times, serif;
-    background-color: transparent;
-    font-size: 1.4vmax;
-    color: #9D7C3C;
-    border-radius: 1vmax;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-}
 /* ONE ROOM */
 #mainOneRoom{
     width: 90vmax;
     height: auto;
+    background-color: ;
     gap: 3.8vmax;
     flex-direction: column;
     align-items: center;
@@ -1361,14 +1406,15 @@ footer{
 } */
 #scrollContainerAdmin{
     overflow-y: scroll;
-    width: 74vmax;
+    width: 90vmax;
+    /* background-color: darkgoldenrod; */
     height: 24vmax;
 }
 #containerAdminInfo{
     display: flex;
     gap: 1vmax;
     /* overflow-y: scroll; */
-    width: 74vmax;
+    width: 88vmax;
     /* height: 34vmax; */
     /* background-color: saddlebrown; */
 }
@@ -1377,9 +1423,15 @@ footer{
     display: flex;
     flex-direction: row;
 }
-#tableHeadUsers, #tableHeadUsersText{
+/* ADMIN USERS */
+#tableHeadUsers, #tableHeadUsersInfo{
+    /* justify-content: space-between; */
     gap: 2vmax;
-
+}
+#tableHeadUsersInfo{
+    display: flex;
+    flex-direction: row;
+    gap: 2vmax;
 }
 #tableHeadUsers>td, #tableHeadRooms>td, #tableHeadCatRooms>td, #tableHeadServ>td, #tableHeadRoomcatServ>td, #tableHeadRoomBook>td{
     font-family: 'Times New Roman', Times, serif;
@@ -1399,81 +1451,144 @@ footer{
     font-size: 1vmax;
 }
 .adminUserName{
-    width: 12.5vmax;
+    width: 15.3vmax;
 }
 .adminUserBday{
-    width: 9vmax;
+    width: 9.5vmax;
 }
 .adminUserPhone{
-    width: 11.2vmax;
+    width: 12vmax;
 }
 .adminUserEmail{
-    width: 13.2vmax;
+    width: 16vmax;
+}
+.adminUserRole{
+    width: 6.5vmax;
 }
 .adminUserSatus{
-    width: 8vmax;
+    width: 9.7vmax;
 }
 .adminUserAction{
-    width: 7vmax;
+    width: 5vmax;
+    align-items: center;
+}
+.imgStatusUser{
+    width: 3.2vmax;
 }
 
+.adminUserName, .adminUserBday, .adminUserPhone, .adminUserEmail, .adminUserRole,  .adminUserSatus, .adminUserAction{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2vmax;
+}
+.adminUserAdmin{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2vmax;
+    color: #9D7C3C;
+    text-decoration: underline;
+}
+#tableHeadUsersInfo>td{
+    height: 6vmax;
+    justify-content: center;
+}
 
 .adminButtonAdd{
     width: 5vmax;
 }
 /* ADMIN ROOMS */
 #tableHeadRooms, #tableHeadRoomsText{
-    gap: 1vmax;
+    gap: 4.4vmax;
+}
+#tableHeadRooms{
+    width: 89vmax;
+}
+#tableHeadRooms>td{
+    text-align: center;
+    align-items: start;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3vmax;
+    height: 4vmax;
+}
+#tableHeadRoomsText>td, #tableHeadRoomsText>td>a{
+    background-color: gainsboro;
+    
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3vmax;
+    height: 4vmax;
+}
+#tableHeadRoomsText>td, #tableHeadRoomsText>td>a {
+    align-items: center;
+    justify-content: center;
+}
+#tableHeadRoomsText{
+    align-items: center;
+    height: 10vmax;
+}
+#tableHeadRoomsText>td>img{
+    width: 12.2vmax;
+    height: 7vmax;
 }
 .adminRoomImg{
-    width: 7.8vmax;
+    width: 12.2vmax;
 }
 .adminRoomSmallName{
-    width: 13vmax;
+    width: 10.5vmax;
 }
 .adminRoomCat{
-    width: 7.5vmax;
+    width: 11.7vmax;
 }
-.adminRoomDesc{
-    width: 16.4vmax;
-}
-.adminRoomLongName{
-    width: 7.4vmax;
+.adminRoomDesc, .adminRoomLongName{
+    width: 7vmax;
 }
 .adminRoomAmount{
-    width: 7vmax;
+    width:7vmax;
 }
-.adminRoomAction{
+.adminRoomAction, .adminAction{
     width: 7vmax;
+    flex-direction: row;
+    justify-content: space-between !important;
+}
+.adminRoomAction>a>img{
+    width: 2vmax;
 }
 /* USER CAT ROOMS */
-#tableHeadCatRooms, #tableHeadCatRoomsText{
-    gap: 3.6vmax;
+#tableHeadCatRooms, #tableHeadCatRoomsText, #tableHeadCatRoomsText>td>a{
+    gap: 6vmax;
+    text-align: center;
+    align-items: start;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3vmax;
+    height: 4vmax;
 
+}
+#tableHeadCatRooms{
+    width: 89vmax;
+    background-color: darkblue;
 }
 .adminNameCat{
     background-color: teal;
-    width: 16.3vmax;
+    width: 17.3vmax;
 }
 .adminSquare{
     background-color: teal;
-    width: 6.6vmax;
+    width: 8vmax;
 }
 .adminNumPers{
     background-color: teal;
-    width: 7.3vmax;
+    width: 6.8vmax;
 }
 .adminNumRooms{
     background-color: teal;
-    width: 6.6vmax;
+    width: 6.8vmax;
 }
 .adminPrice{
     background-color: teal;
-    width: 6vmax;
+    width: 7.2vmax;
 }
 .adminAction{
     background-color: teal;
-    width: 7vmax;
+    width: 8.2vmax;
 }
 
 

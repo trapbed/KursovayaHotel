@@ -18,6 +18,10 @@ class Service extends Connect{
         $catServ = mysqli_fetch_all(mysqli_query($this->conn, "SELECT * FROM cat_services"));
         return $catServ;
     }
+    public function services_all($cat){
+        $servicesAll = mysqli_query($this->conn, "SELECT * FROM service WHERE cat_service=".$cat);
+        return $servicesAll;
+    }
 }
 ?>
 

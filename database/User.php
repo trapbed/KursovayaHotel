@@ -43,31 +43,36 @@ class User extends Connect {
         if($email && $pass){
             $user_exist = $this->user_exist($email, $pass);
             if($user_exist == true){
-                $user = mysqli_fetch_array(mysqli_query($this->conn, "SELECT id_user, email, password, role FROM users WHERE email ='$email' AND password= '$pass'"));
-                if($user){
-                    $_SESSION['id_user'] = $user['id_user'];
-                    $_SESSION['email'] = $user['email'];
-                    $_SESSION['role'] = $user['role'];
-                    echo $_SESSION['id_user'];
-                    echo $user['role'];
-                    echo "<script>
-                        alert('Вы успешно зашли в свой аккаунт!');";
-                    if($user['role']== 'user'){
-                        echo "location.href = '/account.php'";
-                    }
-                    else{
-                        echo "location.href = '/admin/index.php'";
-                    }
-                    echo "</script>";
+                $user = mysqli_fetch_array(mysqli_query($this->conn, "SELECT id_user, email, password, role, blocked FROM users WHERE email ='$email' AND password= '$pass'"));
+                if($user[4] == 1){
+                    $_SESSION['message'] = "Вы заблокированны и не можете войти в аккаунт";
+                    header("Location: ../index.php");
                 }
                 else{
-                    echo "
-                    <script>
-                        alert('Неверный пароль!');
-                        location.href='/';
-                    </script>";
+                    if($user){
+                        $_SESSION['id_user'] = $user['id_user'];
+                        $_SESSION['email'] = $user['email'];
+                        $_SESSION['role'] = $user['role'];
+                        echo $_SESSION['id_user'];
+                        echo $user['role'];
+                        echo "<script>
+                            alert('Вы успешно зашли в свой аккаунт!');";
+                        if($user['role']== 'user'){
+                            echo "location.href = '/account.php'";
+                        }
+                        else{
+                            echo "location.href = '/admin/index.php'";
+                        }
+                        echo "</script>";
+                    }
+                    else{
+                        echo "
+                        <script>
+                            alert('Неверный пароль!');
+                            location.href='/';
+                        </script>";
+                    }
                 }
-                
             }
             else {
                 echo "

@@ -2,6 +2,13 @@
 session_start();
 // include "C:\OSPanel\domains\coursework\connect\connection.php";
 
+if(isset($_SESSION['message'])){
+    echo "<script>
+        alert('".$_SESSION['message']."');
+        location.href='index.php';
+    </script>";
+    unset($_SESSION['message']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='../css/style.css'>
     <!-- <title>LION</title> -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     
 </head>
 <body>
@@ -53,6 +61,7 @@ session_start();
             <span id="endSignup">Уже есть аккаунт? <span id='toSigninbtn'> Войдите</span></span>
         </div>
     </div>
+    <!-- <a href='../admin/index.php'>Админ панель</a> -->
 
     <?php
     if(isset($_SESSION['id_user']) && $_SESSION['role'] == 'admin'){
@@ -60,9 +69,48 @@ session_start();
             <nav id='headerNav'>
             <img src='../images/logo.png' alt='logo' id='logoNav'>
             <div id='headerNavSpans'>
-                <div id='headerNavigation'>
-                    <a href='../admin/index.php'>Админ панель</a>
-                    
+                <div id='headerNavigationAdmin'>
+                    <a href='../admin/index.php?page_admin=users' class='";
+                    if (isset($_GET['page_admin']) && $_GET['page_admin']=='users'){
+                        echo "activeNavbar'";
+                    }
+                    else{
+                        echo "inactiveNavbar'";
+                    } 
+                    echo ">Пользователи</a>
+                    <a href='../admin/index.php?page_admin=bookings' class='";
+                    if(isset($_GET['page_admin']) && $_GET['page_admin']=='bookings'){
+                        echo "activeNavbar'";
+                    } else{
+                        echo "inactiveNavbar'";
+                    }
+                    echo ">Брони</a>
+                    <form method='GET' action='../admin/index.php' id='roomAdminForm'>
+                        <select name='page_admin' id='roomSelect' class='";
+                        if(isset($_GET['page_admin']) && ($_GET['page_admin']=='rooms' || $_GET['page_admin']=='catRooms')){
+                            echo "activeNavbar'";
+                        } else{
+                            echo "inactiveNavbar'";
+                        }
+                        echo ">
+                            <option value=''>Управление номерами</option>
+                            <option value='rooms'>Номера</option>
+                            <option value='catRooms'>Категории номеров</option>
+                        </select>
+                    </form>
+                    <form method='GET' action='../admin/index.php' id='servAdminForm'>
+                        <select name='page_admin' id='servSelect' class='";
+                        if(isset($_GET['page_admin']) && ($_GET['page_admin']=='services' || $_GET['page_admin']=='catServices')){
+                            echo "activeNavbar'";
+                        } else{
+                            echo "inactiveNavbar'";
+                        }
+                        echo ">
+                            <option value=''>Управление услугами</option>
+                            <option value='services'>Услуги</option>
+                            <option value='catServices'>Категории услуг</option>
+                        </select>
+                    </form>
                 </div>
                 <div id='sign'>";
 
