@@ -4,7 +4,7 @@
 class Info extends Connect{
     // ИНФА О НОМЕРАХ
         public function get_info_room(){
-            $query = mysqli_fetch_all(mysqli_query($this->conn , "SELECT rooms.img_room, rooms.short_name_room, cat_rooms.name_cat_room, rooms.desc_room, rooms.long_name_room, rooms.amount_in_hotel FROM rooms JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room;"));
+            $query = mysqli_fetch_all(mysqli_query($this->conn , "SELECT rooms.img_room, rooms.short_name_room, cat_rooms.name_cat_room, rooms.desc_room, rooms.long_name_room, rooms.amount_in_hotel, rooms.id_room FROM rooms JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room;"));
             return $query;
         }
     // ИНФА О ПОЛЬЗОВАТЕЛЯХ
@@ -22,5 +22,37 @@ class Info extends Connect{
         public function get_cats_room(){
             $query_cat_room = mysqli_fetch_all(mysqli_query($this->conn, "SELECT * FROM `cat_rooms`"));
             return $query_cat_room;
+        }
+    // ИНФОРМАЦИЯ О НОМЕРАХ
+        public function get_all_book(){
+            $book = mysqli_fetch_all(mysqli_query($this->conn, "SELECT id_book, users.email, rooms.short_name_room, date_arrival, date_departure, book.status, cat_rooms.price_cat_room FROM `book` JOIN users ON users.id_user=book.id_user JOIN rooms ON rooms.id_room=book.id_room JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room"));
+            return $book;
+        }
+    // ИНФА ОБ УСЛУГАХ
+        public function get_info_serv(){
+            $query_services = mysqli_fetch_all(mysqli_query($this->conn, "SELECT service.name_service, service.desc_service, cat_services.name_cat_service, service.img_service, service.price_service, id_service FROM `service` JOIN cat_services ON cat_services.id_cat_service=service.cat_service"));
+            return $query_services;
+        }
+    // 
+        public function get_info_cat_serv(){
+            $query_cat_serv = mysqli_fetch_all(mysqli_query($this->conn, "SELECT * FROM cat_services"));
+            return $query_cat_serv;
+        }
+    
+    // 
+        public function get_more_info($what, $id){
+            if($what == 'room_desc'){
+                $info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT desc_room FROM rooms WHERE id_room = $id"));
+                // $info = $info[0];
+            }
+            else if($what == 'room_long_name'){
+                $info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT long_name_room FROM rooms WHERE id_room = $id"));
+                // $info = $info[0];
+            }
+            else if($what == 'serv_desc'){
+                $info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT desc_service FROM service WHERE id_service = $id"));
+                // $info = $info[0];
+            }
+            return $info;
         }
 }

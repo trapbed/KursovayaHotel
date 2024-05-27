@@ -4,7 +4,7 @@ if(!isset($_GET['page'])){
 }
 session_start();
 
-include "./database/User.php";
+include "database/User.php";
 include "./header.php";
 $id_user = $_SESSION['id_user'];
 $role = $_SESSION['role'];
@@ -32,7 +32,6 @@ if($role == 'admin'){
         ?>
         <div id='allInfoUser'>
             <?php 
-                $id = $user[0] ;
                 if(!isset($user[1]) && !isset($user[2]) && !isset($user[3])){
                     $name = "<a href='changeAcc.php' class='noDataUser'>Заполните ФИО</a>";
                 }

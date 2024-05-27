@@ -153,6 +153,7 @@ class User extends Connect {
         $user_info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT 
         users.id_user, name, sname, pathronymic, birthday, phone, email, password, blocked 
         FROM buyer JOIN users ON users.id_user=buyer.id_user WHERE users.id_user = ".$id));
+        
         return $user_info;
     }
 

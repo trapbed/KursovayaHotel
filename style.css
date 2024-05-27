@@ -16,9 +16,9 @@ body{
     transform: translate(-50%, -50%);
     top: -50vmax;
     left: 50vmax;
-    z-index: 3;
+    z-index: 1;
     width: 100vmax;
-    height: 100vmin;
+    height: 103.5vmin;
     background-color: rgba(217, 217, 217, 0.4);
 }
         #signinDiv{
@@ -26,7 +26,7 @@ body{
             transform: translate(-50%, -50%);
             top: -50vmax;
             left: 50vmax;
-            z-index: 4;
+            z-index: 2;
             width: 60vmax;
             height: 33vmax;
             border-radius: 0.5vmax;
@@ -90,16 +90,15 @@ body{
             display: flex;
             flex-direction: row;
             align-items: center;
-            padding-left: 2%;
-            width: 98%;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1.2vmax;
-            color: #9D7C3C;
+            width: 97%;
+            padding-left: 3%;
             height: 2.4vmax;
             border-radius: 0.5vmax;
             border: transparent;
             outline: transparent;
-            background-color: #D9D9D9;
+            background-color: #EDF0F4;
 
         }
         #signinBtns{
@@ -145,20 +144,15 @@ body{
             transform: translate(-50%, -50%);
             top: -50vmax;
             left: 50vmax;
-            z-index: 4;
+            z-index: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: #A0895D;
             border-radius: 0.5vmax;
-            height: 39vmax;
+            height: 38vmax;
             width: 43vmax;
         }
-        #dateInput::-webkit-calendar-picker-indicator{
-            background: #9D7C3C;
-        }
-        
-
         #borderSignUpDiv{
             display: flex;
             flex-direction: column;
@@ -196,11 +190,10 @@ body{
             display: flex;
             flex-direction: row;
             align-items: center;
-            padding-left: 5%;
             width: 95%;
+            padding-left: 5%;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1.2vmax;
-            color: #9D7C3C;
             height: 2.5vmax;
             border: transparent;
             outline: transparent;
@@ -276,46 +269,21 @@ body{
     width: 46vmax;
     height: 100%;
 }
-#headerNavigationAdmin{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 50vmax;
-    height: 100%;
-}
-#headerNavigation>a, #headerNavigationAdmin>a, #headerNavSpans>span, #headerNavigationAdmin>form>select{
+#headerNavigation>a, #headerNavSpans>span{
+    text-decoration: none;
     color: #1E1E1E;
     font-size: 1.3vmax;
-    font-family: 'Times New Roman', Times, serif;
-    outline: transparent;
-    border: transparent;
-    background-color: transparent;
-}
-#headerNavigation>a{
-    text-decoration: none;
+    font-family: TNR;
 }
 #headerNavigation>a:hover{
     text-decoration: underline;
 }
 #sign{
-    font-family: 'Times New Roman';
-    font-size: 1.3vmax;
-    color: #1E1E1E;
     display: flex;
     flex-direction: row;
+    font-family: 'Times New Roman';
+    font-size: 1.3vmax;
     gap: 2vmax;
-}
-#sign>a{
-    font-family: 'Times New Roman';
-    font-size: 1.3vmax;
-    color: #1E1E1E;
-    text-decoration: transparent;
-}
-#userLogin{
-    font-family: 'Times New Roman';
-    font-size: 1.3vmax;
-    width: 12vmax;
 }
 /* GENERAL MAIN */
 #general{
@@ -597,154 +565,7 @@ body{
     background-size: cover;
     rotate: 180deg;
 }
-#noRoomsCat{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2vmax;
-}
 
-#catalogRooms{
-    width: 90vmax;
-    gap: 4.2vmax;
-    flex-direction: column;
-
-}
-#sortCatalog{
-    flex-direction: row;
-    align-items: center;
-    width: 78.5vmax;
-    height: 3.8vmax;
-}
-#sortCatalog>form{
-    flex-direction: row;
-    align-items: end;
-    gap: 4vmax;
-}
-#sortCatalog>form>select{
-    width: 10vmax;
-    height: 2vmax;
-    background-color: transparent;
-    font-size: 1.2vmax;
-    border: transparent;
-    text-transform: capitalize;
-    color: #9D7C3C;
-    border-bottom: 0.1vmax solid #9D7C3C;
-}
-.priceSort{
-    flex-direction: row;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.6vmax;
-    color: #9D7C3C;
-    border-bottom: 0.1vmax solid #9D7C3C;
-}
-.priceSort>input{
-    background-color: transparent;
-    border: transparent;
-    outline: transparent;
-    width: 8.5vmax;
-    padding-left: 0.5vmax;
-    font-size: 1.6vmax;
-}
-#submitSortCat{
-    width: 2vmax;
-    height: 2vmax;
-    border: transparent;
-    background-color: transparent;
-    background-size: cover;
-    background-image: url(../images/search.svg);
-}
-.oneRoomCatalog{
-    flex-direction: row;
-    align-items: center;
-    gap: 3vmax;
-    width: 90vmax;
-    height: 24vmax;
-}
-.oneRoomCatalog>img{
-    height: 24vmax;
-    border-radius: 1vmax;
-    width: 43vmax;
-}
-.textRoom{
-    justify-content: space-between;
-    align-items: center;
-    height: 22vmax;
-    width: 45vmax;
-}
-.nameRoom{
-    width: 40vmax;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2.2vmax;
-    line-height: 120%;
-    font-weight: 300;
-    align-items: center;
-    justify-content: center;
-    color: #9D7C3C;
-    text-align: center;
-}
-.aboutRoomCenter{
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2vmax;
-}
-
-.goldenAccent{
-    flex-direction: row;
-    color: #9D7C3C;
-}
-
-.person, .category, .square{
-    flex-direction: row;
-}
-.category{
-    text-transform: capitalize;
-}
-/* .square>sup{
-    display: block;
-} */
-.descRoomCatalog{
-    text-align: center;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    border: transparent;
-    resize: none;
-    width: 100%;
-    height: 4vmax;
-    background-color: transparent;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2vmax;
-}
-.priceNFormCatalog{
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.priceNFormCatalog>span{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2vmax;
-    color: #9D7C3C;
-}
-.priceNFormCatalog>form>input[type=submit]{
-    width: 15vmax;
-    height: 3.5vmax;
-    border: 0.1vmax solid #9D7C3C;
-    font-family: 'Times New Roman', Times, serif;
-    background-color: transparent;
-    font-size: 1.4vmax;
-    color: #9D7C3C;
-    border-radius: 1vmax;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-}
-#resetFormCatalog{
-    font-family: Arial, Helvetica, sans-serif;
-    align-self: center;
-    color: #1E1E1E;
-    font-size: 1.2vmax;
-    text-decoration: none;
-}
 /* CONTACTS */
 #contacts{
     align-items: center;
@@ -952,7 +773,7 @@ footer{
 #AddrCoorIndex>div>span{
     font-size: 1.4vmax;
     line-height: 160%;
-    width: ;
+    /* width: ; */
 }
 
 
@@ -1050,11 +871,145 @@ footer{
     text-align: center;
     text-shadow: 0 0 1vmax black;
 }
+#catalogRooms{
+    width: 90vmax;
+    gap: 4.2vmax;
+    flex-direction: column;
+
+}
+#sortCatalog{
+    flex-direction: row;
+    align-items: center;
+    width: 78.5vmax;
+    height: 3.8vmax;
+}
+#sortCatalog>form{
+    flex-direction: row;
+    gap: 4vmax;
+}
+#sortCatalog>form>select{
+    width: 10vmax;
+    height: 2vmax;
+    background-color: transparent;
+    font-size: 1.2vmax;
+    border: transparent;
+    text-transform: capitalize;
+    color: #9D7C3C;
+    border-bottom: 0.1vmax solid #9D7C3C;
+}
+.priceSort{
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6vmax;
+    color: #9D7C3C;
+    border-bottom: 0.1vmax solid #9D7C3C;
+}
+.priceSort>input{
+    background-color: transparent;
+    border: transparent;
+    outline: transparent;
+    width: 8.5vmax;
+    padding-left: 0.5vmax;
+    font-size: 1.6vmax;
+}
+#submitSortCat{
+    width: 2vmax;
+    height: 2vmax;
+    border: transparent;
+    background-color: transparent;
+    background-size: cover;
+    background-image: url(../images/search.svg);
+}
+.oneRoomCatalog{
+    flex-direction: row;
+    align-items: center;
+    gap: 3vmax;
+    width: 90vmax;
+    height: 24vmax;
+}
+.oneRoomCatalog>img{
+    height: 24vmax;
+    border-radius: 1vmax;
+    width: 43vmax;
+}
+.textRoom{
+    justify-content: space-between;
+    align-items: center;
+    height: 22vmax;
+    width: 45vmax;
+}
+.nameRoom{
+    width: 40vmax;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.2vmax;
+    line-height: 120%;
+    font-weight: 300;
+    align-items: center;
+    justify-content: center;
+    color: #9D7C3C;
+    text-align: center;
+}
+.aboutRoomCenter{
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+
+.goldenAccent{
+    flex-direction: row;
+    color: #9D7C3C;
+}
+
+.person, .category, .square{
+    flex-direction: row;
+}
+.category{
+    text-transform: capitalize;
+}
+/* .square>sup{
+    display: block;
+} */
+.descRoomCatalog{
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border: transparent;
+    resize: none;
+    width: 100%;
+    height: 4vmax;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+.priceNFormCatalog{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.priceNFormCatalog>span{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2vmax;
+    color: #9D7C3C;
+}
+.priceNFormCatalog>form>input[type=submit]{
+    width: 15vmax;
+    height: 3.5vmax;
+    border: 0.1vmax solid #9D7C3C;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: transparent;
+    font-size: 1.4vmax;
+    color: #9D7C3C;
+    border-radius: 1vmax;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
 /* ONE ROOM */
 #mainOneRoom{
     width: 90vmax;
     height: auto;
-    background-color: ;
     gap: 3.8vmax;
     flex-direction: column;
     align-items: center;
@@ -1063,14 +1018,13 @@ footer{
     align-self: start;
     flex-direction: column;
     justify-content: end;
-    /* align-items: center; */
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2.35vmax;
+    background-color: palevioletred;
     height: 4vmax;
 }
 #infoAboutRoom{
     flex-direction: row;
     gap: 2vmax;
+    background-color: forestgreen;
     width: 90vmax;
     height: 36vmax;
 }
@@ -1081,13 +1035,7 @@ footer{
 }
 #infoDivRoom{
     flex-direction: column;
-    gap: 2.5vmax;
-}
-#infoDivRoom>span{
-    gap: 0.5vmax;
-}
-#infoDivRoom>span>span{
-    color: #A0895D;
+    gap: 2.4vmax;
 }
 #infoDivRoom>span, #infoDivRoom>span>span{
     flex-direction: row;
@@ -1095,53 +1043,15 @@ footer{
     font-size: 1.6vmax;
     line-height: 140%;
 }
-#bookRoomButton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.5vmax;
-    border: 0.15vmax solid #9D7C3C;
-    color: #9D7C3C;
-    background-color: transparent;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2vmax;
-    width: 20.5vmax;
-    height: 5vmax;
-}
 #descRoom{
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.6vmax;
-    text-align: center;
+    background-color: saddlebrown;
     width: 90vmax;
-    height: auto;
+    height: 10vmax;
 }
 #constantRoom{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: start;
     width: 74vmax;
     height: 8vmax;
-}
-.oneConstRoom{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.4vmax;
-    font-family: Arial, Helvetica, sans-serif;
-    width: 14vmax;
-}
-.goldCR{
-    color: #A0895D;
-    font-size: 3vmax;
-    line-height: 85%;
-}
-.descCR{
-    font-size: 1.3vmax;
-    font-weight: 300;
-    text-align: center;
-    text-transform: uppercase;
 }
 #account{
     display: flex;
@@ -1451,18 +1361,14 @@ footer{
 } */
 #scrollContainerAdmin{
     overflow-y: scroll;
-    width: 90vmax;
-    display: flex;
-    flex-direction: column;
-    gap: 2vmax;
-    /* background-color: darkgoldenrod; */
+    width: 74vmax;
     height: 24vmax;
 }
 #containerAdminInfo{
     display: flex;
     gap: 1vmax;
     /* overflow-y: scroll; */
-    width: 88vmax;
+    width: 74vmax;
     /* height: 34vmax; */
     /* background-color: saddlebrown; */
 }
@@ -1471,15 +1377,9 @@ footer{
     display: flex;
     flex-direction: row;
 }
-/* ADMIN USERS */
-#tableHeadUsers, #tableHeadUsersInfo{
-    /* justify-content: space-between; */
+#tableHeadUsers, #tableHeadUsersText{
     gap: 2vmax;
-}
-#tableHeadUsersInfo{
-    display: flex;
-    flex-direction: row;
-    gap: 2vmax;
+
 }
 #tableHeadUsers>td, #tableHeadRooms>td, #tableHeadCatRooms>td, #tableHeadServ>td, #tableHeadRoomcatServ>td, #tableHeadRoomBook>td{
     font-family: 'Times New Roman', Times, serif;
@@ -1488,7 +1388,7 @@ footer{
     flex-direction: row;
     justify-content: start;
     /* text-align: center; */
-    font-size: 1.4vmax;
+    font-size: 1.2vmax;
     line-height: 150%;
 }
 #tableHeadUsersText>td, #tableHeadRoomsText>td, #tableHeadCatRoomsText>td, #tableHeadServText>td, #tableHeadRoomcatServText>td, #tableHeadRoomBookText>td{
@@ -1499,305 +1399,171 @@ footer{
     font-size: 1vmax;
 }
 .adminUserName{
-    width: 15.3vmax;
+    width: 12.5vmax;
 }
 .adminUserBday{
-    width: 9.5vmax;
+    width: 9vmax;
 }
 .adminUserPhone{
-    width: 12vmax;
+    width: 11.2vmax;
 }
 .adminUserEmail{
-    width: 16vmax;
-}
-.adminUserRole{
-    width: 6.5vmax;
+    width: 13.2vmax;
 }
 .adminUserSatus{
-    width: 9.7vmax;
+    width: 8vmax;
 }
 .adminUserAction{
-    width: 5vmax;
-    align-items: center;
-}
-.imgStatusUser{
-    width: 3.2vmax;
+    width: 7vmax;
 }
 
-.adminUserName, .adminUserBday, .adminUserPhone, .adminUserEmail, .adminUserRole,  .adminUserSatus, .adminUserAction{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.2vmax;
-}
-.adminUserAdmin{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.2vmax;
-    color: #9D7C3C;
-    text-decoration: underline;
-}
-#tableHeadUsersInfo>td{
-    height: 6vmax;
-    justify-content: center;
-}
 
 .adminButtonAdd{
     width: 5vmax;
 }
 /* ADMIN ROOMS */
 #tableHeadRooms, #tableHeadRoomsText{
-    gap: 4.4vmax;
-}
-#tableHeadRooms{
-    width: 89vmax;
-}
-#tableHeadRooms>td{
-    text-align: center;
-    align-items: start;
-    justify-content: center;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.3vmax;
-    height: 4vmax;
-}
-#tableHeadRoomsText>td, #tableHeadRoomsText>td>a{    
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.3vmax;
-    height: 4vmax;
-}
-#tableHeadRoomsText>td, #tableHeadRoomsText>td>a {
-    align-items: center;
-    justify-content: center;
-}
-#tableHeadRoomsText{
-    align-items: center;
-    height: 10vmax;
-}
-#tableHeadRoomsText>td>img{
-    width: 12.2vmax;
-    height: 7vmax;
+    gap: 1vmax;
 }
 .adminRoomImg{
-    width: 12.2vmax;
+    width: 7.8vmax;
 }
 .adminRoomSmallName{
-    width: 10.5vmax;
+    width: 13vmax;
 }
 .adminRoomCat{
-    width: 11.7vmax;
+    width: 7.5vmax;
 }
-.adminRoomDesc, .adminRoomLongName{
-    width: 7vmax;
+.adminRoomDesc{
+    width: 16.4vmax;
+}
+.adminRoomLongName{
+    width: 7.4vmax;
 }
 .adminRoomAmount{
-    width:7vmax;
-}
-.adminRoomAction, .adminAction{
     width: 7vmax;
-    flex-direction: row;
-    justify-content: space-between !important;
 }
-.adminRoomAction>a>img{
-    width: 2vmax;
+.adminRoomAction{
+    width: 7vmax;
 }
 /* USER CAT ROOMS */
-#tableHeadCatRooms, #tableHeadCatRoomsText, #tableHeadCatRoomsText>td>a{
-    gap: 6vmax;
-    text-align: center;
-    align-items: start;
-    justify-content: center;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.3vmax;
-    height: 4vmax;
+#tableHeadCatRooms, #tableHeadCatRoomsText{
+    gap: 3.6vmax;
 
-}
-#tableHeadCatRooms{
-    width: 89vmax;
 }
 .adminNameCat{
-    width: 17.3vmax;
+    background-color: teal;
+    width: 16.3vmax;
 }
 .adminSquare{
-    width: 8vmax;
+    background-color: teal;
+    width: 6.6vmax;
 }
 .adminNumPers{
-    width: 6.8vmax;
-    justify-content: center;
+    background-color: teal;
+    width: 7.3vmax;
 }
 .adminNumRooms{
-    width: 6.8vmax;
-    justify-content: center;
+    background-color: teal;
+    width: 6.6vmax;
 }
 .adminPrice{
-    width: 7.2vmax;
+    background-color: teal;
+    width: 6vmax;
 }
 .adminAction{
-    width: 8.2vmax;
-}
-#scrollContainerAdmin>*>*>*{
-    display: flex;
-    align-items: center;
+    background-color: teal;
+    width: 7vmax;
 }
 
-#scrollContainerAdmin>*>*>*>td{
-    font-size: 1.2vmax;
-    /* align-self: center; */
-}
 
-/* SERVICES */
 #tableHeadServ, #tableHeadServText{
-    gap: 2.8vmax;
+    gap: 2.3vmax;
+
 }
 .adminServiceName{
-    width: 18vmax;
-    font-family: 'Times New Roman', Times, serif;
+    width: 15vmax;
+    background-color: teal;
 }
 .adminServiceDesc{
-    width: 8vmax;
+    width: 6.6vmax;
+    background-color: teal;
 }
 .adminServiceCat{
-    width: 19.5vmax;
+    width: 16.3vmax;
+    background-color: teal;
 }
 .adminServiceImg{
-    width: 11.8vmax;
-}
-.adminServiceImg>img{
-    border-radius: 1vmax;
-    filter: grayscale(20%);
-    background-image: url(../images/services/dummy.png);
-    background-size: cover;
-}
-.imgServAdmin{
-    width: 10vmax;
+    width: 9.8vmax;
+    background-color: teal;
 }
 .adminServicePrice{
-    width: 7.6vmax;
+    width: 6.5vmax;
+    background-color: teal;
 }
 .adminServiceAction{
-    width: 8vmax;
-}
-.adminServiceAction>a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 7vmax;
-    height: 3vmax;
-    border-radius: 0.5vmax;
-    border: 0.1vmax solid #9D7C3C;
-    color: #9D7C3C;
-    text-decoration: transparent;
+    width: 6.4vmax;
+    background-color: teal;
 }
 
-/* CATEGORIES ROOMS */
 #tableHeadRoomcatServ, #tableHeadRoomcatServText{
-    display: flex;
-    align-items: start;
-    gap: 13.8vmax;
+    gap: 11.5vmax;
+
 }
+
 .adminRoomCatServId{
-    width: 17vmax;
+    background-color: teal;
+    width: 13.8vmax;
 }
 .adminRoomCatServName{
-    width: 32vmax;
+    background-color: teal;
+    width: 28vmax;
 }
 .adminRoomCatServAction{
-    width: 11vmax;
+    background-color: teal;
+    width: 8vmax;
 }
 
 #tableHeadRoomBook, #tableHeadRoomBookText{
     gap: 1vmax;
+
 }
 
 .adminBooksId{
-    width: 5.2vmax;
+    background-color: palegoldenrod;
+    width: 4.2vmax;
 }
 .adminBooksName{
+    background-color: palegoldenrod;
     width: 15vmax;
 }
 .adminBooksNameRoom{
-    width: 14.5vmax;
+    background-color: palegoldenrod;
+    width: 11.8vmax;
 }
 .adminBooksDateArrival{
-    width: 8vmax;
+    background-color: palegoldenrod;
+    width: 8.8vmax;
 }
 .adminBooksDateDeparture{
-    width: 8vmax;
+    background-color: palegoldenrod;
+    width: 8.8vmax;
 }
 .adminBooksSumPrice{
-    width: 9.5vmax;
+    background-color: palegoldenrod;
+    width: 7.5vmax;
 }
 .adminBooksStatus{
-    width: 7vmax;
+    background-color: palegoldenrod;
+    width: 9vmax;
 }
-.adminBooksChangeStatus{
-    width: 14vmax;
-    display: flex;
-    flex-direction: row;
-    gap: 2vmax;
-}
-.NoActionBooks{
-    color: #D9D9D9;
-}
-.completedBook{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.5vmax;
-    width: 7vmax;
-    height: 3vmax;
-    background-color: #105D1D;
-    color: #EDF0F4;
-    text-decoration: none;
-}
-.rejectBook{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.5vmax;
-    width: 7vmax;
-    height: 3vmax;
-    background-color: #741818;
-    color: #EDF0F4;
-    text-decoration: none;
-}
+
 
 .linkNoreAdmin{
     color: black;
     font-family: 'Times New Roman', Times, serif;
     font-size: 1vmax;
     text-decoration: transparent;
-}
-
-#bgAdminInfo{
-    position: fixed;
-    z-index: 5;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(30, 30, 30, 0.4);
-}
-#seeMoreAdmin{
-    position: relative;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50vmax;
-    height: auto;
-    top: 14vmax;
-    left: 25vmax;
-    z-index: 6;
-    background-color: pink;
-    border: 0.2vmax solid #A0895D;
-    background-color: #EDF0F4;
-    border-radius: 0.5vmax;
-}
-#seeMoreAdmin>span{
-    font-family: Arial, Helvetica, sans-serif;
-    width: 44vmax;
-    padding: 4vmax 0;
-}
-#xAdminInfo{
-    position: relative;
-    top: 2vmax;
-    right: -22vmax;
-    width: 2vmax;
 }
 @font-face {
     font-family: 'TNR';

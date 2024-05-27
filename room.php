@@ -24,19 +24,23 @@ $desc = $room[3];
     <div id='infoAboutRoom'>
         <img src="../images/rooms/<?=$img?>" alt="<?=$name?>">
         <div id="infoDivRoom">
-            <span>Категория : &nbsp;<span><?=$cat?></span></span>
-            <span>Количество комнат : &nbsp;<span><?=$numRoom?></span></span>
-            <span>Количество гостей : &nbsp;<span><?=$numPers?></span></span>
-            <span>Стоимость : &nbsp;<span><?=$price?>&nbsp; руб/ночь</span></span>
-            <span>Площадь : &nbsp;<span><?=$square?>м<sup>2</sup></span></span>
+            <span>Категория :<span><?=$cat?></span></span>
+            <span>Количество комнат :<span><?=$numRoom?></span></span>
+            <span>Количество гостей :<span><?=$numPers?></span></span>
+            <span>Стоимость :<span><?=$price?>&nbsp; руб/ночь</span></span>
+            <span>Площадь :<span><?=$square?>м<sup><small>2</small></sup></span></span>
             <form action="" method="POST">
                 <input type="hidden" value="<?=$id_room?>" name="idRoom">
-                <input type="submit" value="Забронировать">
+                <input id='bookRoomButton' type="submit" value="Забронировать">
             </form>
         </div>
     </div>
     <span id='descRoom'><?=$desc?></span>
-    <div id='constantRoom'></div>
+    <div id='constantRoom'>
+        <div class="oneConstRoom"><span class="goldCR">24  /  7</span><span class="descCR">работает стойка регистрации</span></div>
+        <div class="oneConstRoom"><span class="goldCR">12  :  00</span><span class="descCR">выезд</span></div>
+        <div class="oneConstRoom"><span class="goldCR">14  :  00</span><span class="descCR">заезд</span></div>
+    </div>
 </div>
 
 <?php

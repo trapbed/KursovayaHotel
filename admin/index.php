@@ -1,10 +1,35 @@
 <?php
+
 include "../header.php";
 require_once "../database/Admin_info.php";
+if(isset($_GET['see'])){
+    $what = isset($_GET['see']) ? $_GET['see'] : false;
+    $id = isset($_GET['id']) ? $_GET['id'] : false ;
+    $more_info = new Info();
+    $more_info = $more_info->get_more_info($what, $id);
+
+    $page = isset($_GET['page_admin']) ? $_GET['page_admin'] : false;
+    
+    echo "
+    <a id='bgAdminInfo' href='index.php?page_admin=$page'></a>
+    <div id='seeMoreAdmin'>
+        <a href='index.php?page_admin=$page'><img id='xAdminInfo' src='../images/x.svg' alt='info'></a>
+        <span>$more_info[0]</span>
+    </div>
+    ";
+    // echo $more_info[0];
+}
+
+
+
+
 
 if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
     header("Location: ../index.php");
 }
+
+
+echo "<div id='modalInfoAdmin'></div>";
 ?>
 
 <div id="containerAdmin">
@@ -78,12 +103,13 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
             echo "<table>
                 <tr id='tableHeadRoomBook'>
                     <td class='adminBooksId'> Номер <br> брони</td>
-                    <td class='adminBooksName'> Фамилия Имя покупателя</td>
+                    <td class='adminBooksName'> Почта </td>
                     <td class='adminBooksNameRoom'> Название номера</td>
                     <td class='adminBooksDateArrival'> Дата заселения</td>
                     <td class='adminBooksDateDeparture'> Дата выезда</td>
                     <td class='adminBooksSumPrice'> Сумма брони</td>
                     <td class='adminBooksStatus'> Статус</td>
+                    <td class='adminBooksChangeStatus'> Действия</td>
                 </tr>
             </table>";
         }
@@ -115,8 +141,8 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
                     <td class='adminRoomImg'><img src='../images/rooms/".$room[0]."' alt='".$room[1]."'></td>
                     <td class='adminRoomSmallName'>".$room[1]."</td>
                     <td class='adminRoomCat'>".$room[2]."</td>
-                    <td class='adminRoomDesc'><a class='linkNoreAdmin' href='' alt=''>Смотреть</a></td>
-                    <td class='adminRoomLongName'><a class='linkNoreAdmin' href='' alt=''>Смотреть</a></td>
+                    <td class='adminRoomDesc'><a class='linkNoreAdmin' href='index.php?see=room_desc&page_admin=rooms&id=$room[6]'>Смотреть</a></td>
+                    <td class='adminRoomLongName'><a class='linkNoreAdmin' href='index.php?see=room_long_name&page_admin=rooms&id=$room[6]'>Смотреть</a></td>
                     <td class='adminRoomAmount'>".$room[5]."</td>
                     <td class='adminRoomAction'><a href='deleteRoom.php'><img src='../images/admin/bin.svg' alt='delete'></a><a href='updateRoom.php'><img src='../images/admin/update.svg' alt='update'></a></td>
                 </tr>
@@ -129,6 +155,7 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
 
             foreach($categoriesRoom as $cats){
                 $price = substr($cats[6],0 ,-3);
+                $price = $price."	&#8381;";
                 echo "<table>
                 <tr id='tableHeadCatRoomsText'>
                     <td class='adminNameCat'>".$cats[1]."</td>
@@ -142,65 +169,71 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
             }
         }
         if($_GET['page_admin'] == 'services'){
-            // echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../images/add.svg' alt='add'></a>";
-            
-            // echo "<div class='empty14'></div>";
-
-            // echo "<table>
-            //     <tr id='tableHeadServ'>
-            //         <td class='adminServiceName'> Название </td>
-            //         <td class='adminServiceDesc'> Описание </td>
-            //         <td class='adminServiceCat'> Категория </td>
-            //         <td class='adminServiceImg'> Изображение </td>
-            //         <td class='adminServicePrice'> Цена </td>
-            //         <td class='adminServiceAction'> Действия </td>
-            //     </tr>
-            // </table>";
+            $serv = new Info();
+            $serv = $serv->get_info_serv();
+            foreach($serv as $s){
+                $price = $s[4];
+                if($price == '0.00'){
+                    $price = "Бесплатно";
+                }
+                else{
+                    $price = substr($price, 0, -3);
+                    $price = $price."	&#8381;";
+                }
+                echo "<table>
+                <tr id='tableHeadServ'>
+                    <td class='adminServiceName'> $s[0] </td>
+                    <td class='adminServiceDesc'> <a href='index.php?see=serv_desc&page_admin=services&id=$s[5]'>Смотреть </a></td>
+                    <td class='adminServiceCat'> $s[2] </td>
+                    <td class='adminServiceImg'> <img class='imgServAdmin' src='../images/services/$s[3]' alt='$s[0]'> </td>
+                    <td class='adminServicePrice'> $price </td>
+                    <td class='adminServiceAction'> <a href='change-service.php?id_serv=$s[5]'>Изменить</a> </td>
+                </tr>
+            </table><hr>";
+            }
         }
         if($_GET['page_admin'] == 'catServices'){
-            // echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../images/add.svg' alt='add'></a>";
-            
-            // echo "<div class='empty14'></div>";
+            $cat_serv = new Info();
+            $cat_serv = $cat_serv->get_info_cat_serv();
+            foreach($cat_serv as $cs){
+                echo "<table><tr id='tableHeadRoomcatServ'>
+                    <td class='adminRoomCatServId'> $cs[0] </td>
+                    <td class='adminRoomCatServName'> $cs[1] </td>
+                    <td class='adminRoomCatServAction'> Действия </td> 
+                </tr></table><hr>";
+            }
 
-            // echo "<table>
-            //     <tr id='tableHeadRoomcatServ'>
-            //         <td class='adminRoomCatServId'> Идентификатор <br> категории услуги </td>
-            //         <td class='adminRoomCatServName'> Название категории услуги </td>
-            //         <td class='adminRoomCatServAction'> Действия </td> 
-            //     </tr>
-            // </table>";
         }
         if($_GET['page_admin'] == 'bookings'){
-            // echo "<table>
-            //     <tr id='tableHeadRoomBook'>
-            //         <td class='adminBooksId'> Номер <br> брони</td>
-            //         <td class='adminBooksName'> Фамилия Имя покупателя</td>
-            //         <td class='adminBooksNameRoom'> Название номера</td>
-            //         <td class='adminBooksDateArrival'> Дата заселения</td>
-            //         <td class='adminBooksDateDeparture'> Дата выезда</td>
-            //         <td class='adminBooksSumPrice'> Сумма брони</td>
-            //         <td class='adminBooksStatus'> Статус</td>
-            //     </tr>
-            // </table>";
-        }
-        
-        
-        
-        
-        
+            $books = new Info();
+            $books = $books->get_all_book();
+            foreach ($books as $book){
+                echo "<table>
+                        <tr id='tableHeadRoomBook'>
+                            <td class='adminBooksId'>$book[0]</td>
+                            <td class='adminBooksName'>$book[1]</td>
+                            <td class='adminBooksNameRoom'>$book[2]</td>
+                            <td class='adminBooksDateArrival'> $book[3] </td>
+                            <td class='adminBooksDateDeparture'> $book[4] </td>
+                            <td class='adminBooksSumPrice'> $book[6] </td>
+                            <td class='adminBooksStatus'> $book[5] </td>
+                            <td class='adminBooksChangeStatus'>";
+                            if($book[5] == 'принят'){
+                                echo "
+                                <a class='completedBook' href='../admin/action-book.php?act=completed&id=$book[0]'>Выполнить</a>
+                                <a class='rejectBook' href='../admin/action-book.php?act=reject&id=$book[0]'>Отклонить</a>";
+                            }
+                            else{
+                                echo "<span class='NoActionBooks'>Нет действий</span>";
+                            }
+                            echo "</td>
+                        </tr>
+                    </table><hr>";
+            }
+           
+        } 
     }
     else{
-        // echo "<table>
-        //         <tr id='tableHeadUsers'>
-        //             <td class='adminUserName'>Фамилия Имя</td>
-        //             <td class='adminUserBday'>Дата рождения</td>
-        //             <td class='adminUserPhone'>Телефонный номер</td>
-        //             <td class='adminUserEmail'>Почта</td>
-        //             <td class='adminUserSatus'>Статус</td>
-        //             <td class='adminUserAction'>Действия</td>
-        //         </tr>
-        //     </table>";
-
         $allUsers = new Info();
         $allUsers= $allUsers->get_info_user();
         
@@ -259,19 +292,16 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
     </div>
 </div>
 
-
-
-
 </div>
 <?php
-
 include "../footer.php";
 ?>
+
 <script>
-        $("#roomSelect").change(function() {
-            $("#roomAdminForm").submit();
-        });
-        $("#servSelect").change(function() {
-            $("#servAdminForm").submit();
-        });
-  </script>
+    $("#roomSelect").change(function() {
+        $("#roomAdminForm").submit();
+    });
+    $("#servSelect").change(function() {
+        $("#servAdminForm").submit();
+    });
+</script>
