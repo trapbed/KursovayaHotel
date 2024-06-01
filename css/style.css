@@ -322,7 +322,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image:url(/images/sliderGeneralMain/image\ 1.png);
+    background-image:url("/img/sliderGeneralMain/image\ 1.png");
     background-size: cover;
     width: 100%;
     height: 42vmax;
@@ -348,7 +348,7 @@ body{
     border-color: transparent;
 }
 #inputsDatePeople>input[type=date]::-webkit-calendar-picker-indicator{
-    background: url("/images/calendar.png") no-repeat;
+    background: url("/img/calendar.png") no-repeat;
     background-size: cover;
 }
 #forSelect{
@@ -368,7 +368,7 @@ body{
 #inputsDatePeople>#forSelect>select{
     appearance: none;
     /* background-color: white; */
-    background: url("/images/people.png") no-repeat;
+    background: url("/img/people.png") no-repeat;
     background-position: 95%;
     background-size: 1vmax;
     margin-right: 5vmax;
@@ -555,14 +555,14 @@ body{
 #arrowSliderRoomLeft{
     width: 6vmax;
     height: 6vmax;
-    background-image: url(/images/arrow.svg);
+    background-image: url(/img/arrow.svg);
     background-size: cover;
     /* background-color: aqua; */
 }
 #roomImg{
     flex-direction: column;
     justify-content: end;
-    background-image: url(/images/roomSliderIndex/img1.png);
+    background-image: url(/img/roomSliderIndex/img1.png);
     width: 73vmax;
     height: 100%;
     background-size: cover;
@@ -593,7 +593,7 @@ body{
 #arrowSliderRoomRight{
     width: 6vmax;
     height: 6vmax;
-    background-image: url(/images/arrow.svg);
+    background-image: url(/img/arrow.svg);
     background-size: cover;
     rotate: 180deg;
 }
@@ -650,7 +650,7 @@ body{
     border: transparent;
     background-color: transparent;
     background-size: cover;
-    background-image: url(../images/search.svg);
+    background-image: url(../img/search.svg);
 }
 .oneRoomCatalog{
     flex-direction: row;
@@ -1024,7 +1024,7 @@ footer{
     height: 100%;
     border-radius: 1vmax;
     filter: grayscale(20%);
-    background-image: url(../images/services/dummy.png);
+    background-image: url(../img/services/dummy.png);
     background-size: cover;
 }
 .oneService>form{
@@ -1227,13 +1227,13 @@ footer{
 #eyeOpen{
     display: none;
     align-self: center;
-    background-image: url(/images/eyes/open.png);
+    background-image: url(/img/eyes/open.png);
     background-size: cover;
     width: 3vmax;
     height: 3vmax;
 }#eyeClose{
     align-self: center;
-    background-image: url(/images/eyes/close.png);
+    background-image: url(/img/eyes/close.png);
     background-size: cover;
     width: 3vmax;
     height: 2.2vmax;
@@ -1661,7 +1661,7 @@ footer{
 .adminServiceImg>img{
     border-radius: 1vmax;
     filter: grayscale(20%);
-    background-image: url(../images/services/dummy.png);
+    background-image: url("../img/services/dummy.png");
     background-size: cover;
 }
 .imgServAdmin{

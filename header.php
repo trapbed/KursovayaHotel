@@ -26,7 +26,7 @@ if(isset($_SESSION['message'])){
     <div id="signinDiv">
         <div id="frameSignin">
             <div id="closeSignin">
-                <img src="../images/x.svg" alt="exit">
+                <img src="../img/x.svg" alt="exit">
             </div>
             <h1>Авторизуйтесь</h1>
             <div id="signinForm">
@@ -48,7 +48,7 @@ if(isset($_SESSION['message'])){
     <div id="signUpDiv">
         <div id="borderSignUpDiv">
             <div id="closeSignup">
-                <img src="../images/x.svg" alt="exit">
+                <img src="../img/x.svg" alt="exit">
             </div>
             <h1>Зарегистрируйтесь</h1>
             <form action="/user/signup-db.php" method="post" id="signupFormSignup">
@@ -67,7 +67,7 @@ if(isset($_SESSION['message'])){
     if(isset($_SESSION['id_user']) && $_SESSION['role'] == 'admin'){
         echo"
             <nav id='headerNav'>
-            <img src='../images/logo.png' alt='logo' id='logoNav'>
+            <img src='../img/logo.png' alt='logo' id='logoNav'>
             <div id='headerNavSpans'>
                 <div id='headerNavigationAdmin'>
                     <a href='../admin/index.php?page_admin=users' class='";
@@ -123,7 +123,7 @@ if(isset($_SESSION['message'])){
         else{
             echo"
                 <nav id='headerNav'>
-                <img src='../images/logo.png' alt='logo' id='logoNav'>
+                <img src='../img/logo.png' alt='logo' id='logoNav'>
                 <div id='headerNavSpans'>
                     <div id='headerNavigation'>
                         <a href='../'>Главная</a>
@@ -150,7 +150,7 @@ if(isset($_SESSION['message'])){
     ?>
 
     <!-- <nav id='headerNav'>
-        <img src="../images/logo.png" alt="logo" id='logoNav'>
+        <img src="../img/logo.png" alt="logo" id='logoNav'>
         <div id="headerNavSpans">
             <div id="headerNavigation">
                 <a href="../">Главная</a>

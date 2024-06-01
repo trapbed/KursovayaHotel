@@ -22,7 +22,7 @@ $desc = $room[3];
 <div id="mainOneRoom">
     <span id='nameRoom'><?=$name?></span>
     <div id='infoAboutRoom'>
-        <img src="../images/rooms/<?=$img?>" alt="<?=$name?>">
+        <img src="../img/rooms/<?=$img?>" alt="<?=$name?>">
         <div id="infoDivRoom">
             <span>Категория :<span><?=$cat?></span></span>
             <span>Количество комнат :<span><?=$numRoom?></span></span>

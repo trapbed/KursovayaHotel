@@ -13,7 +13,7 @@ if(isset($_GET['see'])){
     echo "
     <a id='bgAdminInfo' href='index.php?page_admin=$page'></a>
     <div id='seeMoreAdmin'>
-        <a href='index.php?page_admin=$page'><img id='xAdminInfo' src='../images/x.svg' alt='info'></a>
+        <a href='index.php?page_admin=$page'><img id='xAdminInfo' src='../img/x.svg' alt='info'></a>
         <span>$more_info[0]</span>
     </div>
     ";
@@ -38,7 +38,7 @@ echo "<div id='modalInfoAdmin'></div>";
 <?php
     if(isset($_GET['page_admin'])  &&  $_GET['page_admin'] != 'users'){
         if($_GET['page_admin'] == 'rooms'){
-            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../images/admin/add.svg' alt='add'></a>";
+            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
             
             echo "<div class='empty14'></div>";
 
@@ -55,7 +55,7 @@ echo "<div id='modalInfoAdmin'></div>";
             </table>";
         }
         if($_GET['page_admin'] == 'catRooms'){
-            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../images/admin/add.svg' alt='add'></a>";
+            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
             
             echo "<div class='empty14'></div>";
 
@@ -71,7 +71,7 @@ echo "<div id='modalInfoAdmin'></div>";
             </table>";
         }
         if($_GET['page_admin'] == 'services'){
-            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../images/admin/add.svg' alt='add'></a>";
+            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
             
             echo "<div class='empty14'></div>";
 
@@ -87,7 +87,7 @@ echo "<div id='modalInfoAdmin'></div>";
             </table>";
         }
         if($_GET['page_admin'] == 'catServices'){
-            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../images/admin/add.svg' alt='add'></a>";
+            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
             
             echo "<div class='empty14'></div>";
 
@@ -138,13 +138,13 @@ echo "<div id='modalInfoAdmin'></div>";
             foreach($rooms as $room){
                 echo "<table>
                 <tr id='tableHeadRoomsText'>
-                    <td class='adminRoomImg'><img src='../images/rooms/".$room[0]."' alt='".$room[1]."'></td>
+                    <td class='adminRoomImg'><img src='../img/rooms/".$room[0]."' alt='".$room[1]."'></td>
                     <td class='adminRoomSmallName'>".$room[1]."</td>
                     <td class='adminRoomCat'>".$room[2]."</td>
                     <td class='adminRoomDesc'><a class='linkNoreAdmin' href='index.php?see=room_desc&page_admin=rooms&id=$room[6]'>Смотреть</a></td>
                     <td class='adminRoomLongName'><a class='linkNoreAdmin' href='index.php?see=room_long_name&page_admin=rooms&id=$room[6]'>Смотреть</a></td>
                     <td class='adminRoomAmount'>".$room[5]."</td>
-                    <td class='adminRoomAction'><a href='deleteRoom.php'><img src='../images/admin/bin.svg' alt='delete'></a><a href='updateRoom.php'><img src='../images/admin/update.svg' alt='update'></a></td>
+                    <td class='adminRoomAction'><a href='deleteRoom.php'><img src='../img/admin/bin.svg' alt='delete'></a><a href='updateRoom.php'><img src='../img/admin/update.svg' alt='update'></a></td>
                 </tr>
             </table><hr>";
             }   
@@ -163,7 +163,7 @@ echo "<div id='modalInfoAdmin'></div>";
                     <td class='adminNumPers'>".$cats[4]."</td>
                     <td class='adminNumRooms'>".$cats[2]."</td>
                     <td class='adminPrice'>".$price."</td>
-                    <td class='adminAction'><a href='deleteCatRoom.php'><img src='../images/admin/bin.svg' alt='delete'></a><a href='updateCatRoom.php'><img src='../images/admin/update.svg' alt='update'></a></td>
+                    <td class='adminAction'><a href='deleteCatRoom.php'><img src='../img/admin/bin.svg' alt='delete'></a><a href='updateCatRoom.php'><img src='../img/admin/update.svg' alt='update'></a></td>
                 </tr>
             </table><hr>";
             }
@@ -185,7 +185,7 @@ echo "<div id='modalInfoAdmin'></div>";
                     <td class='adminServiceName'> $s[0] </td>
                     <td class='adminServiceDesc'> <a href='index.php?see=serv_desc&page_admin=services&id=$s[5]'>Смотреть </a></td>
                     <td class='adminServiceCat'> $s[2] </td>
-                    <td class='adminServiceImg'> <img class='imgServAdmin' src='../images/services/$s[3]' alt='$s[0]'> </td>
+                    <td class='adminServiceImg'> <img class='imgServAdmin' src='../img/services/$s[3]' alt='$s[0]'> </td>
                     <td class='adminServicePrice'> $price </td>
                     <td class='adminServiceAction'> <a href='change-service.php?id_serv=$s[5]'>Изменить</a> </td>
                 </tr>
@@ -215,7 +215,7 @@ echo "<div id='modalInfoAdmin'></div>";
                             <td class='adminBooksNameRoom'>$book[2]</td>
                             <td class='adminBooksDateArrival'> $book[3] </td>
                             <td class='adminBooksDateDeparture'> $book[4] </td>
-                            <td class='adminBooksSumPrice'> $book[6] </td>
+                            <td class='adminBooksSumPrice'>".substr($book[6], 0, -3)."	&#8381;</td>
                             <td class='adminBooksStatus'> $book[5] </td>
                             <td class='adminBooksChangeStatus'>";
                             if($book[5] == 'принят'){
@@ -282,7 +282,7 @@ echo "<div id='modalInfoAdmin'></div>";
                 <td class='adminUserEmail'>".$user[1]."</td>
                 <td class='adminUserRole'>".$user[3]."</td>
                 <td class='adminUserSatus'>".$status."</td>
-                <td class='adminUserAction'><a href='changeUser.php?action=".$imgStatus."&&id=".$user[0]."'><img class='imgStatusUser' src='../images/admin/".$imgStatus.".svg' alt='".$imgStatus."'></a></td>
+                <td class='adminUserAction'><a href='changeUser.php?action=".$imgStatus."&&id=".$user[0]."'><img class='imgStatusUser' src='../img/admin/".$imgStatus.".svg' alt='".$imgStatus."'></a></td>
             </tr>
         </table><hr>";
         }

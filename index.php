@@ -30,20 +30,20 @@
 <!-- SERVICES IMGS -->
     <div id='forServicesImg'>
         <div id='servicesImg'>
-            <img id='img1' src="\images\servicesIndex\image1.png" alt="">
-            <img id='img2' src="\images\servicesIndex\image2.png" alt="">
+            <img id='img1' src="\img\servicesIndex\image1.png" alt="reseption">
+            <img id='img2' src="\img\servicesIndex\image2.png" alt="restoraunt">
             <div class="serImgEmty"></div>
-            <img id='img3' src="\images\servicesIndex\image3.png" alt="">
-            <img id='img4' src="\images\servicesIndex\image4.png" alt="">
+            <img id='img3' src="\img\servicesIndex\image3.png" alt="parking">
+            <img id='img4' src="\img\servicesIndex\image4.png" alt="cleaning">
         </div>
-        <img src="\images\servicesIndex\height.png" alt="">
+        <img src="\img\servicesIndex\height.png" alt="bankets">
     </div>
 <!-- WHY US -->
     <div id="whyUs">
         <h3>почему мы</h3>
         <div id="fourSecWhyUs">
             <div class="blockWhy">
-                <img class="blockWhyImg" src="images/whyUs/why1.png" id="whyHeight1" alt="why us">
+                <img class="blockWhyImg" src="img/whyUs/why1.png" id="whyHeight1" alt="why us">
                 <div class="blockWhyDiv">
                     <h3>Вежливый персонал</h3>
                     <div class="whyEmty"></div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="blockWhy" id="marginWhy">
-                <img class="blockWhyImg" src="images/whyUs/why2.png" id="whyHeight2" alt="why us">
+                <img class="blockWhyImg" src="img/whyUs/why2.png" id="whyHeight2" alt="why us">
                 <div class="blockWhyDiv">
                     <h3>Лучшее обслуживание</h3>
                     <div class="whyEmty"></div>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="blockWhyEnd">
-                <img class="blockWhyImg" src="images/whyUs/why3.png" id="whyHeight3" alt="why us">
+                <img class="blockWhyImg" src="img/whyUs/why3.png" id="whyHeight3" alt="why us">
                 <div class="blockWhyDiv">
                     <h3>Чистота в отеле</h3>
                     <div class="whyEmty"></div>
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="blockWhyEnd" id="marginWhy">
-                <img class="blockWhyImg" src="images/whyUs/why4.png" id="whyHeight4" alt="why us">
+                <img class="blockWhyImg" src="img/whyUs/why4.png" id="whyHeight4" alt="why us">
                 <div class="blockWhyDiv">
                     <h3>Высокий рейтинг</h3>
                     <div class="whyEmty"></div>

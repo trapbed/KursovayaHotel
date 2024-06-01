@@ -4,7 +4,7 @@
 <div class="empty14"></div>
 
 <div id="contactUsDiv">
-    <img id='contactUs1' src="../images/contactUs/contactUs1.png" alt="contact us 1">
+    <img id='contactUs1' src="../img/contactUs/contactUs1.png" alt="contact us 1">
     <h4 class="titleContactUs">Свяжитесь</h4>
     <span id='contactUsP'>Уточните данные о номерах в отеле или услугах у наших сотрудников, или узнайте данные о вашем заказе по телефону горячей линии
     <a href='#AddrCoorIndex'>Перейти к контактам.</a></span>
@@ -33,7 +33,7 @@
 
 <div class="empty42"></div>
 
-<img id='contactUs2' src='../images/contactUs/conactUs2.png' alt="">
+<img id='contactUs2' src='../img/contactUs/conactUs2.png' alt="">
 
 <div class="empty42"></div>
 

@@ -5,7 +5,7 @@
 
 <footer>
     <div id="columnFooter">
-    <img id="logoFoo" src="/images/logoFoo.png" alt="logo footer">
+    <img id="logoFoo" src="/img/logoFoo.png" alt="logo footer">
     <div class="columnFoo">
             <span>Главная</span>
             <span>Номера</span>

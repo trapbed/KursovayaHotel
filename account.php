@@ -68,7 +68,7 @@ if($role == 'admin'){
                     </tr>
                     <tr class='trInfoUser'>
                         <td class='nameRowUser'>Пароль</td>
-                        <td class='valueRowUser'><input id='inputPass' onclick='' type="password" name="" value='<?=$pass?>' readonly> <div id='eyeOpen'></div><div id='eyeClose'></div>&nbsp;&nbsp;&nbsp;<a href='loginPassChange.php'><img id='penChangePass' src="../images/pen.png" alt="chenge password"></a></td>
+                        <td class='valueRowUser'><input id='inputPass' onclick='' type="password" name="" value='<?=$pass?>' readonly> <div id='eyeOpen'></div><div id='eyeClose'></div>&nbsp;&nbsp;&nbsp;<a href='loginPassChange.php'><img id='penChangePass' src="../img/pen.png" alt="chenge password"></a></td>
                     </tr>
                     <tr class='trInfoUser'>
                         <td class='nameRowUser'>

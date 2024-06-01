@@ -87,7 +87,7 @@
             foreach($allRooms as $room){
             $price = substr($room[11], 0, -3);
             echo "<div class='oneRoomCatalog'>
-                    <img src='../images/rooms/$room[4]' alt='$room[1]'>
+                    <img src='../img/rooms/$room[4]' alt='$room[1]'>
                     <div class='textRoom' >
                         <h6 class='nameRoom'>$room[1]</h6>
                         <div class='aboutRoomCenter'>

@@ -33,7 +33,7 @@ $countServ = 1;
                             echo "<div class='oneRowServ'>";
                         }
                             echo "  <div class='oneService'>
-                                        <img src='../images/services/".$serv[4]."' alt='$serv[1]'>
+                                        <img src='../img/services/".$serv[4]."' alt='$serv[1]'>
                                         <form>
                                             <input type='hidden'>
                                             <input type='submit' value='' title='Подробнее о $serv[1]'>
