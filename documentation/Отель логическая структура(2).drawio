@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-01T07:54:33.629Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="tK-O9oS9xhMyTq82NZJJ" version="24.4.13" type="device" pages="4">
+<mxfile host="app.diagrams.net" modified="2024-06-01T10:00:18.246Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="5-iLoeirMVdKTMYH6-He" version="24.4.13" type="device" pages="4">
   <diagram name="Логическая (1)" id="8nunTRnJnk0Z7Gpdhql-">
     <mxGraphModel dx="940" dy="1242" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -454,7 +454,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="pVM-gn2nZFb3K0M7gVxG" name="Физическая">
-    <mxGraphModel dx="192" dy="105" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="2049" dy="1114" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
