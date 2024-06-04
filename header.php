@@ -5,7 +5,7 @@ session_start();
 if(isset($_SESSION['message'])){
     echo "<script>
         alert('".$_SESSION['message']."');
-        location.href='index.php';
+        location.href='';
     </script>";
     unset($_SESSION['message']);
 }

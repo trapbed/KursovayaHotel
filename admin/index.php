@@ -1,7 +1,11 @@
 <?php
 
+unset($_SESSION['create_serv']);
 include "../header.php";
 require_once "../database/Admin_info.php";
+if(isset($_GET['page_admin'])){
+    $_SESSION['page_admin'] = $_GET['page_admin'];
+}
 if(isset($_GET['see'])){
     $what = isset($_GET['see']) ? $_GET['see'] : false;
     $id = isset($_GET['id']) ? $_GET['id'] : false ;
@@ -10,10 +14,16 @@ if(isset($_GET['see'])){
 
     $page = isset($_GET['page_admin']) ? $_GET['page_admin'] : false;
     
+    if($page){
+        $title = new Info();
+        $title = $title->get_title( $id, $what);
+    }
+
     echo "
     <a id='bgAdminInfo' href='index.php?page_admin=$page'></a>
     <div id='seeMoreAdmin'>
         <a href='index.php?page_admin=$page'><img id='xAdminInfo' src='../img/x.svg' alt='info'></a>
+        <span id='moreInfoTitle'>$title</span>
         <span>$more_info[0]</span>
     </div>
     ";
@@ -38,12 +48,13 @@ echo "<div id='modalInfoAdmin'></div>";
 <?php
     if(isset($_GET['page_admin'])  &&  $_GET['page_admin'] != 'users'){
         if($_GET['page_admin'] == 'rooms'){
-            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
+            echo "<a class='adminButtonAdd' href='createRoom.php'><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
             
             echo "<div class='empty14'></div>";
 
             echo "<table>
                 <tr id='tableHeadRooms'>
+                    <td class='adminId'>ID</td>
                     <td class='adminRoomImg'>Изображение</td>
                     <td class='adminRoomSmallName'>Короткое название</td>
                     <td class='adminRoomCat'>Категория</td>
@@ -55,12 +66,13 @@ echo "<div id='modalInfoAdmin'></div>";
             </table>";
         }
         if($_GET['page_admin'] == 'catRooms'){
-            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
+            echo "<a class='adminButtonAdd' href='createAdmin.php?act=catRoom&page_admin=catRooms'><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
             
             echo "<div class='empty14'></div>";
 
             echo "<table>
                 <tr id='tableHeadCatRooms'>
+                    <td class='adminId'>ID</td>
                     <td class='adminNameCat'>Назвавние категории номера</td>
                     <td class='adminSquare'>Площадь</td>
                     <td class='adminNumPers'>Количество гостей</td>
@@ -71,12 +83,13 @@ echo "<div id='modalInfoAdmin'></div>";
             </table>";
         }
         if($_GET['page_admin'] == 'services'){
-            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
+            echo "<a class='adminButtonAdd' href='createService.php'><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
             
             echo "<div class='empty14'></div>";
 
             echo "<table>
                 <tr id='tableHeadServ'>
+                    <td class='adminId'> ID </td>
                     <td class='adminServiceName'> Название </td>
                     <td class='adminServiceDesc'> Описание </td>
                     <td class='adminServiceCat'> Категория </td>
@@ -87,7 +100,7 @@ echo "<div id='modalInfoAdmin'></div>";
             </table>";
         }
         if($_GET['page_admin'] == 'catServices'){
-            echo "<a class='adminButtonAdd' href=''><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
+            echo "<a class='adminButtonAdd' href='createCatServ.php'><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
             
             echo "<div class='empty14'></div>";
 
@@ -118,6 +131,7 @@ echo "<div id='modalInfoAdmin'></div>";
     else{
         echo "<table>
                 <tr id='tableHeadUsers'>
+                    <td class='adminId'>ID</td>
                     <td class='adminUserName'>Фамилия Имя</td>
                     <td class='adminUserBday'>Дата рождения</td>
                     <td class='adminUserPhone'>Телефонный номер</td>
@@ -138,6 +152,7 @@ echo "<div id='modalInfoAdmin'></div>";
             foreach($rooms as $room){
                 echo "<table>
                 <tr id='tableHeadRoomsText'>
+                    <td class='adminId'>".$room[6]."</td>
                     <td class='adminRoomImg'><img src='../img/rooms/".$room[0]."' alt='".$room[1]."'></td>
                     <td class='adminRoomSmallName'>".$room[1]."</td>
                     <td class='adminRoomCat'>".$room[2]."</td>
@@ -158,6 +173,7 @@ echo "<div id='modalInfoAdmin'></div>";
                 $price = $price."	&#8381;";
                 echo "<table>
                 <tr id='tableHeadCatRoomsText'>
+                    <td class='adminId'>".$cats[0]."</td>
                     <td class='adminNameCat'>".$cats[1]."</td>
                     <td class='adminSquare'>".$cats[5]."</td>
                     <td class='adminNumPers'>".$cats[4]."</td>
@@ -182,12 +198,16 @@ echo "<div id='modalInfoAdmin'></div>";
                 }
                 echo "<table>
                 <tr id='tableHeadServ'>
+                    <td class='adminId'> $s[5] </td>
                     <td class='adminServiceName'> $s[0] </td>
                     <td class='adminServiceDesc'> <a href='index.php?see=serv_desc&page_admin=services&id=$s[5]'>Смотреть </a></td>
                     <td class='adminServiceCat'> $s[2] </td>
                     <td class='adminServiceImg'> <img class='imgServAdmin' src='../img/services/$s[3]' alt='$s[0]'> </td>
                     <td class='adminServicePrice'> $price </td>
-                    <td class='adminServiceAction'> <a href='change-service.php?id_serv=$s[5]'>Изменить</a> </td>
+                    <td class='adminServiceAction'>
+                        <a href='change-service.php?id_serv=$s[5]'>Изменить</a>
+                        <a class='deleteServ' href='deleteService.php'><img src='../img/admin/bin.svg' alt='delete'></a>
+                    </td>
                 </tr>
             </table><hr>";
             }
@@ -276,6 +296,7 @@ echo "<div id='modalInfoAdmin'></div>";
             //
             echo "<table>
             <tr id='tableHeadUsersInfo'>
+                <td class='adminId'>".$user[0]."</td>
                 <td class='adminUserName'>".$nameUser."</td>
                 <td class='adminUserBday'>".$bday."</td>
                 <td class='adminUserPhone'>".$phone."</td>
@@ -297,11 +318,3 @@ echo "<div id='modalInfoAdmin'></div>";
 include "../footer.php";
 ?>
 
-<script>
-    $("#roomSelect").change(function() {
-        $("#roomAdminForm").submit();
-    });
-    $("#servSelect").change(function() {
-        $("#servAdminForm").submit();
-    });
-</script>

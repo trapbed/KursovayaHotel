@@ -33,13 +33,12 @@ class Info extends Connect{
             $query_services = mysqli_fetch_all(mysqli_query($this->conn, "SELECT service.name_service, service.desc_service, cat_services.name_cat_service, service.img_service, service.price_service, id_service FROM `service` JOIN cat_services ON cat_services.id_cat_service=service.cat_service"));
             return $query_services;
         }
-    // 
+    // ИНФА О КАТЕГОРИЯХ УСЛУГ
         public function get_info_cat_serv(){
             $query_cat_serv = mysqli_fetch_all(mysqli_query($this->conn, "SELECT * FROM cat_services"));
             return $query_cat_serv;
         }
-    
-    // 
+    // БОЛЬШЕ ИНфОРМАЦИИ
         public function get_more_info($what, $id){
             if($what == 'room_desc'){
                 $info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT desc_room FROM rooms WHERE id_room = $id"));
@@ -53,6 +52,27 @@ class Info extends Connect{
                 $info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT desc_service FROM service WHERE id_service = $id"));
                 // $info = $info[0];
             }
+            return $info;
+        }
+    // 
+        public function get_title($id, $what){
+            switch($what){
+                case 'room_desc':
+                    $title = 'Описание номера';
+                    break;
+                case 'room_long_name':
+                    $title = 'Полное название номера';
+                    break;
+                case 'serv_desc':
+                    $title = 'Описание услуги';
+                    break;
+            }
+            $title = $title."&nbsp;№".$id;
+            return $title;
+        }
+    // 
+        public function get_info_one_serv($id){
+            $info = mysqli_fetch_array(mysqli_query($this->conn, "SELECT cat_services.name_cat_service, `name_service`, `desc_service`, `cat_service`, `img_service`, `price_service` FROM `service` JOIN cat_services ON cat_services.id_cat_service=service.cat_service WHERE id_service=$id"));
             return $info;
         }
 }

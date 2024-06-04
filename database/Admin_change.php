@@ -1,9 +1,9 @@
 <?php
 
-require_once "Connect.php";
+require_once "Admin_info.php";
 session_start();
 
-class Change extends Connect{
+class Change extends Info{
     // БЛОКИРОВКА ПОЛЬЗОВАТЕЛЯ
     public function block_user($id){
         $query = mysqli_query($this->conn, "UPDATE `users` SET `blocked` = '1' WHERE `users`.`id_user` = $id");
@@ -40,6 +40,60 @@ class Change extends Connect{
             $_SESSION['message'] = "Не удалось изменить статус";
         }
         return;
+    }
+    // 
+    public function update_serv($id_serv, $name, $desc, $cat, $price, $img){
+        $check = new Info();
+        $check = $check->get_info_one_serv($id_serv);
+
+        $query = "UPDATE `service` SET ";
+        $bool = false;
+        if($check[0] != $name){
+            if($bool==true){
+                $query .= ", ";
+            }
+            $query .= "name_service = '$name'";
+            $bool = true;
+        }
+        if($check[2] != $desc){
+            if($bool==true){
+                $query .= ", ";
+            }
+            $query .= "desc_service = '$desc'";
+            $bool = true;
+        }
+        if($check[3] != $cat){
+            if($bool==true){
+                $query .= ", ";
+            }
+            $query .= "cat_service = $cat";
+            $bool = true;
+        }
+        if($check[4] != $img){
+            if($bool==true){
+                $query .= ", ";
+            }
+            $query .= "img_service = '$img'";
+            $bool = true;
+        }
+        if($check[5] != $price){
+            if($bool==true){
+                $query .= ", ";
+            }
+            $query .= "price_service = '$price'";
+            $bool = true;
+        }
+        $query .= "WHERE id_service=$id_serv";
+        $result = mysqli_query($this->conn, $query);
+        if($result){
+            $_SESSION['message'] = "Данные обновлены!";
+            move_uploaded_file($img, "img/services/".$img.")");
+            header("Location:../admin/index.php?page_admin=services");
+        }
+        else{
+            $_SESSION['message'] = "Данные актуальны!";
+            header("Location:../admin/index.php?page_admin=services");
+        }
     }
 }
 ?>

@@ -1498,6 +1498,10 @@ footer{
     text-align: center;
     font-size: 1vmax;
 }
+
+.adminId{
+    width: 2vmax;
+}
 .adminUserName{
     width: 15.3vmax;
 }
@@ -1511,7 +1515,7 @@ footer{
     width: 16vmax;
 }
 .adminUserRole{
-    width: 6.5vmax;
+    width: 4vmax;
 }
 .adminUserSatus{
     width: 9.7vmax;
@@ -1544,7 +1548,7 @@ footer{
 }
 /* ADMIN ROOMS */
 #tableHeadRooms, #tableHeadRoomsText{
-    gap: 4.4vmax;
+    gap: 3vmax;
 }
 #tableHeadRooms{
     width: 89vmax;
@@ -1578,7 +1582,7 @@ footer{
     width: 12.2vmax;
 }
 .adminRoomSmallName{
-    width: 10.5vmax;
+    width: 11vmax;
 }
 .adminRoomCat{
     width: 11.7vmax;
@@ -1599,7 +1603,7 @@ footer{
 }
 /* USER CAT ROOMS */
 #tableHeadCatRooms, #tableHeadCatRoomsText, #tableHeadCatRoomsText>td>a{
-    gap: 6vmax;
+    gap: 3vmax;
     text-align: center;
     align-items: start;
     justify-content: center;
@@ -1650,10 +1654,14 @@ footer{
     font-family: 'Times New Roman', Times, serif;
 }
 .adminServiceDesc{
-    width: 8vmax;
+    width: 6vmax;
+}
+.adminServiceDesc>a{
+    text-decoration: transparent;
+    color: #1E1E1E;
 }
 .adminServiceCat{
-    width: 19.5vmax;
+    width: 16vmax;
 }
 .adminServiceImg{
     width: 11.8vmax;
@@ -1668,10 +1676,10 @@ footer{
     width: 10vmax;
 }
 .adminServicePrice{
-    width: 7.6vmax;
+    width: 5.5vmax;
 }
 .adminServiceAction{
-    width: 8vmax;
+    width: 12vmax;
 }
 .adminServiceAction>a{
     display: flex;
@@ -1773,15 +1781,15 @@ footer{
     background-color: rgba(30, 30, 30, 0.4);
 }
 #seeMoreAdmin{
-    position: relative;
+    position: absolute;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 50vmax;
     height: auto;
-    top: 14vmax;
-    left: 25vmax;
+    top: 20vmax;
+    left: 50vmax;
     z-index: 6;
     background-color: pink;
     border: 0.2vmax solid #A0895D;
@@ -1791,13 +1799,94 @@ footer{
 #seeMoreAdmin>span{
     font-family: Arial, Helvetica, sans-serif;
     width: 44vmax;
-    padding: 4vmax 0;
+    padding: 2vmax 0;
 }
 #xAdminInfo{
     position: relative;
     top: 2vmax;
     right: -22vmax;
     width: 2vmax;
+}
+
+#moreInfoTitle{
+    color: #9D7C3C;
+    font-size: 1.2vmax;
+}
+
+/* CHANGE ADMIN */
+.changeAdminDiv{
+    display: flex;
+    flex-direction: column;
+    width: 90vmax;
+    gap: 3vmax;
+}
+.changeAdminDiv>h4{
+    font-size: 2.2vmax;
+    line-height: 80%;
+    color: #A0895D;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+}
+#formNOldImg{
+    display: flex;
+    flex-direction: row;
+    gap: 2vmax;
+}
+#formNOldImg>div>img{
+    width: 37vmax;
+    height: 25vmax;
+    border-radius: 1vmax;
+}
+#changeServAdmin{
+    display: flex;
+    flex-direction: column;
+    gap: 2.1vmax;
+    width: 51vmax;
+}
+#changeServAdmin>label{
+    display: flex;
+    flex-direction: column;
+    gap: 1.4vmax;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.6vmax;
+    line-height: 90%;
+}
+#changeServAdmin>label>input, #changeServAdmin>label>select, #changeServAdmin>label>select>option ,#changeServAdmin>input{
+    display: flex;
+    align-items: center;
+    height: 3.8vmax;
+    width: 49vmax;
+    border: transparent;
+    outline: transparent;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.4vmax;
+}
+#changeServAdmin>label>select, #changeServAdmin>label>select>option {
+    height: 3.8vmax;
+    padding: 1.2vmax 0 0 1vmax;
+}
+#changeServAdmin>label>input:not([type='file']) , #changeServAdmin>label>select, #changeServAdmin>input{
+    border-radius: 0.5vmax;
+    background-color: #D9D9D9;
+}
+#changeServAdmin>input{
+    justify-content: center;
+    width: 14vmax;
+    color: #9D7C3C;
+    border: 0.1vmax solid #9D7C3C;
+    background-color: transparent;
+    align-self: flex-end;
+    font-size: 1.8vmax;
+}
+#changeServAdmin>label>input:not([type=file]){
+    padding: 0 1vmax;
+}
+#oldServImg{
+    width: 100%;
+    height: 100%;
+}
+.deleteServ{
+    border: transparent !important; 
 }
 @font-face {
     font-family: 'TNR';

@@ -126,7 +126,6 @@ class User extends Connect {
                 $error = "Такой пользователь существует! Войдите в аккаунт!";
             }
             else{
-                
                 $insert_user = mysqli_query($this->conn,"INSERT INTO users (email, password) VALUES ('$email','$pass')");
                 $id_user = mysqli_insert_id($this->conn);
                 $insert_byuer = mysqli_query($this->conn,"INSERT INTO buyer (id_user ,birthday) VALUES ($id_user, '$bday')");
@@ -140,7 +139,7 @@ class User extends Connect {
             }
         }
         else{
-            $error = "Вы слишком молоды что-бы пользоваться нашей системой!";
+            $error = "Вы слишком молоды чтобы пользоваться нашей системой!";
         }
         echo "<script>
         alert('$error');
