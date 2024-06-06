@@ -30,3 +30,11 @@
     <span id="coopyright">(c) 2024 hotel <span>LION</span></span>
 </footer>
 <script src='../js/sign.js'></script>
+<script>
+    $("#roomSelect").change(function() {
+        $("#roomAdminForm").submit();
+    });
+    $("#servSelect").change(function() {
+        $("#servAdminForm").submit();
+    });
+</script>

@@ -2,14 +2,6 @@
     include "header.php";
     require "C:\OSPanel\domains\coursework\database\Rooms.php";
 
-    // if(isset($_GET['numPers']) || isset($_GET['numRooms']) || isset($_GET['cat']) || isset($_GET['priceFrom']) || isset($_GET['priceTo'])){
-    //     $search = new Rooms();
-    //     $search = $search->search_catalog($_GET['numPers'], $_GET['numRooms'], $_GET['cat'], $_GET['priceFrom'], $_GET['priceTo']);
-    // }
-    // // var_dump($_GET['numPers']);
-    // // echo $query;
-    // echo $search;
-
 ?>
     <div id="catalogRooms">
         <div id="sortCatalog">

@@ -1,6 +1,6 @@
 <?php
-
 unset($_SESSION['create_serv']);
+unset($_SESSION['create_room']);
 include "../header.php";
 require_once "../database/Admin_info.php";
 if(isset($_GET['page_admin'])){
@@ -150,17 +150,27 @@ echo "<div id='modalInfoAdmin'></div>";
             $rooms = new Info ();
             $rooms = $rooms->get_info_room();
             foreach($rooms as $room){
-                echo "<table>
-                <tr id='tableHeadRoomsText'>
-                    <td class='adminId'>".$room[6]."</td>
+                echo "<table>";
+                if($room[7] == '0'){
+                    echo"<tr class='tableHeadRoomsText'>";
+                }
+                else{
+                    echo"<tr class='tableHeadRoomsTextNoExist'>";
+                }
+                echo "<td class='adminId'>".$room[6]."</td>
                     <td class='adminRoomImg'><img src='../img/rooms/".$room[0]."' alt='".$room[1]."'></td>
                     <td class='adminRoomSmallName'>".$room[1]."</td>
                     <td class='adminRoomCat'>".$room[2]."</td>
                     <td class='adminRoomDesc'><a class='linkNoreAdmin' href='index.php?see=room_desc&page_admin=rooms&id=$room[6]'>Смотреть</a></td>
                     <td class='adminRoomLongName'><a class='linkNoreAdmin' href='index.php?see=room_long_name&page_admin=rooms&id=$room[6]'>Смотреть</a></td>
-                    <td class='adminRoomAmount'>".$room[5]."</td>
-                    <td class='adminRoomAction'><a href='deleteRoom.php'><img src='../img/admin/bin.svg' alt='delete'></a><a href='updateRoom.php'><img src='../img/admin/update.svg' alt='update'></a></td>
-                </tr>
+                    <td class='adminRoomAmount'>".$room[5]."</td>";
+                    if($room[7] == '1'){
+                        echo "<td class='adminRoomAction'><a href='actRoom.php?act=delete&id=$room[6]'><img src='../img/admin/bin.svg' alt='delete'></a>  <a href='updateRoom.php?id=$room[6]'><img src='../img/admin/update.svg' alt='update'></a></td>";
+                    }
+                    else{
+                        echo "<td class='adminRoomActionNoExist'><a href='actRoom.php?act=recover&id=$room[6]'><img src='../img/admin/recover.png' alt='delete'></a>  <a href='updateRoom.php?id=$room[6]'><img src='../img/admin/update.svg' alt='update'></a></td>";
+                    }
+                echo "</tr>
             </table><hr>";
             }   
         }
@@ -196,18 +206,35 @@ echo "<div id='modalInfoAdmin'></div>";
                     $price = substr($price, 0, -3);
                     $price = $price."	&#8381;";
                 }
-                echo "<table>
-                <tr id='tableHeadServ'>
-                    <td class='adminId'> $s[5] </td>
+                echo "<table>";
+                if($s[6] == '0'){
+                    echo "<tr class='tableHeadServNoExist'>";
+                }
+                else{
+                    echo "<tr id='tableHeadServ'>";
+                }
+                    echo "<td class='adminId'> $s[5] </td>
                     <td class='adminServiceName'> $s[0] </td>
                     <td class='adminServiceDesc'> <a href='index.php?see=serv_desc&page_admin=services&id=$s[5]'>Смотреть </a></td>
                     <td class='adminServiceCat'> $s[2] </td>
-                    <td class='adminServiceImg'> <img class='imgServAdmin' src='../img/services/$s[3]' alt='$s[0]'> </td>
+                    <td class='adminServiceImg'> <img ";
+                    if($s[6] == '0'){
+                        echo "class='imgServAdminNoExist'";
+                    }
+                    else{
+                        echo "class='imgServAdmin'";
+                    }
+                    echo " src='../img/services/$s[3]' alt='$s[0]'> </td>
                     <td class='adminServicePrice'> $price </td>
                     <td class='adminServiceAction'>
-                        <a href='change-service.php?id_serv=$s[5]'>Изменить</a>
-                        <a class='deleteServ' href='deleteService.php'><img src='../img/admin/bin.svg' alt='delete'></a>
-                    </td>
+                        <a href='change-service.php?id_serv=$s[5]'>Изменить</a>";
+                        if($s[6] == '0'){
+                            echo "<a class='deleteServ' href='actService.php?id=$s[5]&act=recover'><img src='../img/admin/recover.png' alt='delete'></a>";
+                        }
+                        else{
+                            echo "<a class='deleteServ' href='actService.php?id=$s[5]&act=delete'><img src='../img/admin/bin.svg' alt='delete'></a>";
+                        }
+                    echo "</td>
                 </tr>
             </table><hr>";
             }
@@ -216,10 +243,25 @@ echo "<div id='modalInfoAdmin'></div>";
             $cat_serv = new Info();
             $cat_serv = $cat_serv->get_info_cat_serv();
             foreach($cat_serv as $cs){
-                echo "<table><tr id='tableHeadRoomcatServ'>
-                    <td class='adminRoomCatServId'> $cs[0] </td>
+                echo "<table>";
+                if($cs[2] == '1'){
+                    echo "<tr id='tableHeadRoomcatServ'>";
+                }else{
+                    echo "<tr id='tableHeadRoomcatServNoExist'>";
+                }
+                    echo "<td class='adminRoomCatServId'> $cs[0] </td>
                     <td class='adminRoomCatServName'> $cs[1] </td>
-                    <td class='adminRoomCatServAction'> Действия </td> 
+                    <td class='adminRoomCatServAction'>";
+                    echo "<a href='updateCatServ.php?id=$cs[0]'><img src='../img/admin/update.svg' alt='update'></a>";
+
+                        if($cs[2] == '0'){
+                            echo "<a href='actCatService.php?act=recover&id=$cs[0]'><img src='../img/admin/recover.png' alt='update'></a>";
+                        }
+                        else{
+                            echo "<a href='actCatService.php?act=delete&id=$cs[0]'><img src='../img/admin/bin.svg' alt='delete'></a>";
+                        }
+
+                    echo "</td> 
                 </tr></table><hr>";
             }
 

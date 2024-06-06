@@ -95,5 +95,89 @@ class Change extends Info{
             header("Location:../admin/index.php?page_admin=services");
         }
     }
+    // 
+    public function update_status_service($id, $act){
+        $query = "UPDATE `service` SET `exist` =  ";
+        if($act == 'delete'){
+            $query .= " '0' ";
+        }
+        else{
+            $query .= " '1' ";
+        }
+        $query .= " WHERE `service`.`id_service` = $id";
+        echo $query;
+        $query = mysqli_query($this->conn, $query);
+        if($query){
+            $_SESSION['message'] = "Успешное изменение статуса!";
+        }
+        else{
+            $_SESSION['message'] = "Не удалось изменить статус услуги!";
+        }
+        header("Location: ../admin/index.php?page_admin=services");
+    }
+    // 
+    public function update_status_cat_service($id, $act){
+        $query = "UPDATE `cat_services` ";
+
+        if($act == 'recover'){
+            $query .= "SET `exist` = '1'";
+        }
+        if($act == 'delete'){
+            $query .= "SET `exist` = '0'";
+        }
+        $query .= " WHERE `cat_services`.`id_cat_service` = $id";
+        $result = mysqli_query($this->conn, $query);
+        if($result){
+            $_SESSION['message'] = "Статус категории услуг изменен!";
+        }
+        else{
+            $_SESSION['message'] = "Не удалось изменить статус категории услуг!";
+        }
+        header("Location: ../admin/index.php?page_admin=catServices");
+    }
+    // 
+    public function update_name_cat_serv($id, $name){
+        $query = "UPDATE `cat_services` SET `name_cat_service` = '$name' WHERE `cat_services`.`id_cat_service` = $id;";
+        $result = mysqli_query($this->conn, $query);
+        if($result){
+            $_SESSION['message'] = "Название категории успешно изменено!";
+        }
+        else{
+            $_SESSION['message'] = "Не удалось изменить название категории!";
+        }
+        header("Location: ../admin/index.php?page_admin=catServices");
+    }
+    // 
+    public function update_status_room($id, $act){
+        $query = "UPDATE `rooms` SET `exist` = ";
+        if($act == 'recover'){
+            $query .= " '1' ";
+        }
+        else{
+            $query .= " '0' ";
+        }
+        $query .= "WHERE `rooms`.`id_room` = $id";
+        $result = mysqli_query($this->conn, $query);
+        if($result){
+            $_SESSION['message'] = "Статус успешно изменен!";
+        }
+        else{
+            $_SESSION['message'] = "Не удалось изменить статус номера!";
+        }
+        header("Location: ../admin/index.php?page_admin=rooms");
+    }
+    public function update_room($id, $long, $short, $desc, $img, $cat, $amount){
+        $query = mysqli_query($this->conn, "UPDATE `rooms` SET `long_name_room` = '$long', `short_name_room` = '$short', `desc_room` = '$desc', `img_room` = '$img', `id_cat_room` = $cat, `amount_in_hotel` = $amount WHERE `rooms`.`id_room` = $id;");
+        if($query){
+            $_SESSION['message'] = "Данные успешно обновлены!";
+            header("Location: ../admin/index.php?page_admin=rooms");
+        }
+        else{
+            $_SESSION['message'] = "Данные успешно обновлены!";
+            header("Location: ../admin/index.php?page_admin=rooms");
+        }
+    }
 }
 ?>
+
+<!-- eckeu -->

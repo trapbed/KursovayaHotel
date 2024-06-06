@@ -27,7 +27,7 @@ class Rooms extends Connect{
     }
 // ВЫВОД ФИЛЬТР КАТЕГОРИИ
     public function get_cat_name(){
-        $cat_nameR = mysqli_fetch_all(mysqli_query($this->conn, "SELECT id_cat_room, name_cat_room FROM cat_rooms "));
+        $cat_nameR = mysqli_fetch_all(mysqli_query($this->conn, "SELECT id_cat_room, name_cat_room FROM cat_rooms WHERE exist='1'"));
         return $cat_nameR;
     }
 // ВЫВОД ФИЛЬР КОЛ-ВО ГОСТЕЙ
@@ -47,7 +47,7 @@ class Rooms extends Connect{
     }
 // ВЫВОД НОМЕРОВ
     public function get_rooms(){
-        $query = "SELECT id_room, long_name_room, short_name_room, desc_room, img_room, rooms.id_cat_room, amount_in_hotel , name_cat_room, amount_room_in_room, max_pers, square_cat_room, price_cat_room FROM rooms JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room";
+        $query = "SELECT id_room, long_name_room, short_name_room, desc_room, img_room, rooms.id_cat_room, amount_in_hotel , name_cat_room, amount_room_in_room, max_pers, square_cat_room, price_cat_room FROM rooms JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room  WHERE rooms.exist='1'";
         $rooms = mysqli_query($this->conn, $query);
         $check_rows = $this -> exist_rows($rooms);
         if($check_rows){
@@ -61,7 +61,7 @@ class Rooms extends Connect{
     }
 // ВЫВОД ИНФЫ ОДНОГО НОМЕРА
     public function get_one_room($id_room){
-        $room = mysqli_fetch_array(mysqli_query($this->conn, "SELECT id_room, long_name_room, short_name_room, desc_room, img_room, cat_rooms.name_cat_room, amount_in_hotel , name_cat_room, amount_room_in_room, max_pers, square_cat_room, price_cat_room FROM rooms JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room WHERE id_room=".$id_room));
+        $room = mysqli_fetch_array(mysqli_query($this->conn, "SELECT id_room, long_name_room, short_name_room, desc_room, img_room, cat_rooms.name_cat_room, amount_in_hotel , name_cat_room, amount_room_in_room, max_pers, square_cat_room, price_cat_room FROM rooms JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room WHERE id_room=".$id_room." AND exist='1'"));
         return $room;
     }
 // ЗАПРОС В КАТАЛОГЕ
@@ -73,7 +73,7 @@ class Rooms extends Connect{
         $priceTo = ($priceTo != "") ? $priceTo : false ;
         $check_and = false;
 
-        $query = "SELECT id_room, long_name_room, short_name_room, desc_room, img_room, rooms.id_cat_room, amount_in_hotel , name_cat_room, amount_room_in_room, max_pers, square_cat_room, price_cat_room FROM rooms JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room";
+        $query = "SELECT id_room, long_name_room, short_name_room, desc_room, img_room, rooms.id_cat_room, amount_in_hotel , name_cat_room, amount_room_in_room, max_pers, square_cat_room, price_cat_room FROM rooms JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room WHERE exist='1'";
            
         if($numPers){
                 $check_and =true;

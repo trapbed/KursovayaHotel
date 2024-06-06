@@ -1466,8 +1466,8 @@ footer{
     /* height: 34vmax; */
     /* background-color: saddlebrown; */
 }
-#tableHeadUsers, #tableHeadRooms, #tableHeadCatRooms, #tableHeadServ, #tableHeadRoomcatServ, #tableHeadRoomBook,
-#tableHeadUsersText, #tableHeadRoomsText, #tableHeadCatRoomsText, #tableHeadServText, #tableHeadRoomcatServText, #tableHeadRoomBookText{
+#tableHeadUsers, #tableHeadRooms, #tableHeadCatRooms, #tableHeadServ, .tableHeadServNoExist, #tableHeadRoomcatServ, #tableHeadRoomcatServNoExist,  #tableHeadRoomBook,
+#tableHeadUsersText, .tableHeadRoomsText, .tableHeadRoomsTextNoExist, #tableHeadCatRoomsText, #tableHeadServText, #tableHeadRoomcatServText, #tableHeadRoomBookText{
     display: flex;
     flex-direction: row;
 }
@@ -1481,7 +1481,7 @@ footer{
     flex-direction: row;
     gap: 2vmax;
 }
-#tableHeadUsers>td, #tableHeadRooms>td, #tableHeadCatRooms>td, #tableHeadServ>td, #tableHeadRoomcatServ>td, #tableHeadRoomBook>td{
+#tableHeadUsers>td, #tableHeadRooms>td, #tableHeadCatRooms>td, #tableHeadServ>td, #tableHeadRoomcatServ>td, #tableHeadRoomcatServNoExistNoExist,  #tableHeadRoomBook>td, .tableHeadServNoExist>td{
     font-family: 'Times New Roman', Times, serif;
     align-items: center;
     display: flex;
@@ -1491,14 +1491,19 @@ footer{
     font-size: 1.4vmax;
     line-height: 150%;
 }
-#tableHeadUsersText>td, #tableHeadRoomsText>td, #tableHeadCatRoomsText>td, #tableHeadServText>td, #tableHeadRoomcatServText>td, #tableHeadRoomBookText>td{
+#tableHeadRoomcatServNoExist{
+    color: #D9D9D9;
+}
+#tableHeadUsersText>td, .tableHeadRoomsText>td, .tableHeadRoomsText>td,  #tableHeadCatRoomsText>td, #tableHeadServText>td, #tableHeadRoomcatServText>td, #tableHeadRoomBookText>td{
     font-family: 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: row;
     text-align: center;
     font-size: 1vmax;
 }
-
+.tableHeadServNoExist>td , .tableHeadServNoExist>.adminServiceDesc>a{
+    color: #D9D9D9;
+}
 .adminId{
     width: 2vmax;
 }
@@ -1547,7 +1552,7 @@ footer{
     width: 5vmax;
 }
 /* ADMIN ROOMS */
-#tableHeadRooms, #tableHeadRoomsText{
+#tableHeadRooms, .tableHeadRoomsText, .tableHeadRoomsTextNoExist {
     gap: 3vmax;
 }
 #tableHeadRooms{
@@ -1561,22 +1566,30 @@ footer{
     font-size: 1.3vmax;
     height: 4vmax;
 }
-#tableHeadRoomsText>td, #tableHeadRoomsText>td>a{    
+.tableHeadRoomsText>td, .tableHeadRoomsText>td>a, .tableHeadRoomsTextNoExist>td, .tableHeadRoomsTextNoExist>td>a{    
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.3vmax;
     height: 4vmax;
 }
-#tableHeadRoomsText>td, #tableHeadRoomsText>td>a {
+.tableHeadRoomsText>td, .tableHeadRoomsText>td>a, .tableHeadRoomsTextNoExist>td, .tableHeadRoomsTextNoExist>td>a{
     align-items: center;
     justify-content: center;
 }
-#tableHeadRoomsText{
+.tableHeadRoomsText, .tableHeadRoomsTextNoExist{
     align-items: center;
     height: 10vmax;
 }
-#tableHeadRoomsText>td>img{
+.tableHeadRoomsText>td>img, .tableHeadRoomsTextNoExist>td>img{
     width: 12.2vmax;
     height: 7vmax;
+}
+.adminRoomImg>img{
+    width: 12.2vmax;
+    height: 7vmax;
+}
+
+.tableHeadRoomsText>td, .tableHeadRoomsText>td>a{
+    color: #D9D9D9;
 }
 .adminRoomImg{
     width: 12.2vmax;
@@ -1593,12 +1606,12 @@ footer{
 .adminRoomAmount{
     width:7vmax;
 }
-.adminRoomAction, .adminAction{
+.adminRoomAction, .adminAction, .adminRoomActionNoExist{
     width: 7vmax;
     flex-direction: row;
     justify-content: space-between !important;
 }
-.adminRoomAction>a>img{
+.adminRoomAction>a>img, .adminRoomActionNoExist>a>img{
     width: 2vmax;
 }
 /* USER CAT ROOMS */
@@ -1646,7 +1659,7 @@ footer{
 }
 
 /* SERVICES */
-#tableHeadServ, #tableHeadServText{
+#tableHeadServ, #tableHeadServText, .tableHeadServNoExist{
     gap: 2.8vmax;
 }
 .adminServiceName{
@@ -1675,6 +1688,10 @@ footer{
 .imgServAdmin{
     width: 10vmax;
 }
+.imgServAdminNoExist{
+    width: 10vmax;
+    filter: blur(80%);
+}
 .adminServicePrice{
     width: 5.5vmax;
 }
@@ -1692,9 +1709,11 @@ footer{
     color: #9D7C3C;
     text-decoration: transparent;
 }
-
+.adminServiceAction>a>img{
+    width: 3vmax;
+}
 /* CATEGORIES ROOMS */
-#tableHeadRoomcatServ, #tableHeadRoomcatServText{
+#tableHeadRoomcatServ, #tableHeadRoomcatServText, #tableHeadRoomcatServNoExist{
     display: flex;
     align-items: start;
     gap: 13.8vmax;
@@ -1707,6 +1726,13 @@ footer{
 }
 .adminRoomCatServAction{
     width: 11vmax;
+    display: flex;
+    flex-direction: row;
+    gap: 2vmax;
+    /* justify-content: space-between; */
+}
+.adminRoomCatServAction>a>img{
+    width: 2vmax;
 }
 
 #tableHeadRoomBook, #tableHeadRoomBookText{

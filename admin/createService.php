@@ -4,18 +4,13 @@
 include "../header.php";
 require_once "../database/Admin_info.php";
 $saved = isset($_SESSION['create_serv']) ? $_SESSION['create_serv'] : false;
-$name = false;
-$desc = false;
-$cat = false;
-$price = false;
-$img = false;
-if(isset($saved)){
-    $name =  $saved['name'];
-    $desc =  $saved['desc'];
-    $cat =   $saved['cat'];
-    $price = $saved['price'];
-    $img =   $saved['img'];
-}
+$name =  ($saved != false) ? $saved['name'] : false;
+$desc =  ($saved != false) ? $saved['desc']:false;
+$cat =   ($saved != false) ? $saved['cat']:false;
+$price = ($saved != false) ? $saved['price']:false;
+$img =   ($saved != false) ? $saved['img']:false;
+
+
 // print_r($saved);
     echo "<section class='changeAdminDiv'>
     <h4>Создание услуги</h4>
@@ -62,9 +57,5 @@ if(isset($saved)){
 
 
 require_once "../footer.php";
-
-?>
-
-
 
 ?>
