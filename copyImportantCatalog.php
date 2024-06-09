@@ -2,7 +2,7 @@
     include "header.php";
     require "C:\OSPanel\domains\coursework\database\Rooms.php";
     if(isset($_POST['numPers'])){
-        $numPers = $_GET['numPers'];
+        $numPers = $_POST['numPers'];
         header("Location: catalog.php?numPers=$numPers&numRooms=&cat=&dateArrival=&dateDeparture=");
     }
     else if(isset($_GET['numPers'])){
@@ -11,31 +11,18 @@
     else{
         $numPers = false;
     }
-    $date_depart = isset($_GET['dateDeparture']) ? $_GET['dateDeparture'] : false;
-    $date_arrival = isset($_GET['dateArrival']) ? $_GET['dateArrival'] : false;
-    $numPers = isset($_GET['numPers']) ? $_GET['numPers'] : false;
-    $numRooms = isset($_GET['numRooms']) ? $_GET['numRooms'] : false;
-    $cat = isset($_GET['cat']) ? $_GET['cat'] : false;
-
 
     $current_date = date('Y-m-d');
+    $ten = strtotime("$current_date +10 days");
     $tommorow = strtotime("$current_date +1 day");
     $tommorow = date("Y-m-d", $tommorow);
-
-    $ten = strtotime("$current_date +10 days");
     $max_date = date('Y-m-d',$ten);
 
-    $min_date = strtotime("$date_arrival+ 1 day");
-    $min_date = date('Y-m-d', $min_date);
-
-    $max_date_arrival = strtotime("$current_date +9 days");
-    $max_date_arrival = date('Y-m-d',$max_date_arrival);
-    
 ?>
     <div id="catalogRooms">
         <div id="sortCatalog">
-            <form action="catalog.php" method="get" id='formCatalog'>
-                <select name="numPers" id="selectNumPersCatalog">
+            <form action="catalog.php" method="get">
+                <select name="numPers" id="">
                     <option value="">кол-во гостей</option>
                     <option <?= (isset($numPers) && $numPers == 1) ? "selected" : '' ?> value="1">1 гость</option>
                     <option <?= (isset($numPers) && $numPers == 2) ? "selected" : '' ?> value="2">2 гостя</option>
@@ -43,7 +30,7 @@
                     <option <?= (isset($numPers) && $numPers == 4) ? "selected" : '' ?> value="4">4 гостя</option>
                 </select>
 
-                <select name="numRooms" id="selectNumRoomsCatalog">
+                <select name="numRooms" id="">
                     <option value="">кол-во комнат</option>
                     <?php
                         $roomInRoom = new Rooms();
@@ -61,7 +48,7 @@
                 </select>
 
 
-                <select name="cat" id="selectCatCatalog">
+                <select name="cat" id="">
                     <option value="">все категории</option>
                     <?php
                         $catRooms = new Rooms();
@@ -77,15 +64,14 @@
                     ?>
                 </select>
                 <!-- ОТ -->
-                 
                 <div class = 'dateSort'> с
                     <!-- <input value='<?= (isset($_GET['dateSort']) && $_GET['priceSort'] == 1) ? $_GET['priceSort']: '' ?>' name='priceFrom' type="text" pattern='[0-9]{0,}'> -->
-                    <input class='fontArial' type="date" name="dateArrival" id="" value='<?= isset($date_arrival) ? $date_arrival : $current_date?>' min='<?=$current_date?>' max='<?=$max_date_arrival?>'>
+                    <input class='fontArial' type="date" name="dateArrival" id="" value='<?=$current_date?>' min='<?=$current_date?>' max='<?=$max_date?>'>
                 </div>
                 <!-- ДО -->
                 <div class = 'dateSort'> по
                     <!-- <input value='<?= (isset($_GET['dateSort']) && $_GET['priceSort'] == 1) ? $_GET['priceSort']: '' ?>' name='priceTo' type="text" pattern='[0-9]{0,}'> -->
-                    <input class='fontArial' type="date" name="dateDeparture" id= " " value='<?= isset($date_depart) ? $date_depart : $tommorow?>' min='<?=$min_date?>' max='<?=$max_date?>'>
+                    <input class='fontArial' type="date" name="dateArrival" id= " " value='<?=$tommorow?>' min='<?=$tommorow?>' max='<?=$max_date?>'>
             
                 </div>
                 &nbsp;
@@ -98,7 +84,7 @@
         <?php
         if(isset($_GET['numPers']) || isset($_GET['numRooms']) || isset($_GET['cat']) || isset($_GET['dateArrival']) || isset($_GET['dateDeparture'])){
             $search = new Rooms();
-            $search = $search->search_catalog($numPers, $numRooms, $cat, $date_arrival, $date_depart);
+            $search = $search->search_catalog($_GET['numPers'], $_GET['numRooms'], $_GET['cat'], $_GET['dateArrival'], $_GET['dateDeparture']);
         }
         else{
             $search = new Rooms();
@@ -112,7 +98,6 @@
             $allRooms = new Rooms();
             $allRooms = $allRooms->output_info($search[1]);
             // print_r($allRooms);
-            // $date_depart = isset($_POST['']) ?  : ;
 
             foreach($allRooms as $room){
             $price = substr($room[11], 0, -3);
@@ -129,8 +114,6 @@
                         <div class='priceNFormCatalog'>
                             <span>$price руб/ночь</span>
                             <form action='room.php' method='post'>
-                                <input type='hidden' value='$date_arrival' name='date_arrival'>
-                                <input type='hidden' value='$date_depart' name='date_departure'>
                                 <input type='hidden' value='$room[0]' name='idRoom'>
                                 <input type='submit' value='Подробнее'>
                             </form>

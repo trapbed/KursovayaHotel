@@ -2,19 +2,33 @@
 <?php
     include "header.php";
     // print_r($_SESSION);
+    $date_arrival = isset($_GET['dateArrival']) ? $_GET['dateArrival'] : false;
+    $date_depart  = isset($_GET['dateDeparture']) ? $_GET['dateDeparture'] : false;
+    
     $current_date = date('Y-m-d');
-    $ten = strtotime("$current_date +10 days");
     $tommorow = strtotime("$current_date +1 day");
     $tommorow = date("Y-m-d", $tommorow);
+
+    $ten = strtotime("$current_date +10 days");
     $max_date = date('Y-m-d',$ten);
+
+    $min_date = strtotime("$date_arrival+ 1 day");
+    $min_date = date('Y-m-d', $min_date);
+
+    $max_date_arrival = strtotime("$current_date +9 days");
+    $max_date_arrival = date('Y-m-d',$max_date_arrival);
+    
+    if(isset($_GET['dateDeparture'])){
+        $max_date_arrival = $_GET['dateDeparture'];
+    }
 ?> 
 <!-- MAIN -->
     <main id="general">
         <div class="emtyGeneralMain"></div>
-        <form id='formGeneralMain' action="catalog.php" method='POST'>
+        <form id='formGeneralMain' action="catalog.php" method='GET'>
             <div id='inputsDatePeople'>
-                <input class='fontArial' type="date" name="date" id="" value='<?=$current_date?>' min='<?=$current_date?>' max='<?=$max_date?>' required>
-                <input class='fontArial' type="date" name="" id="" value='<?=$tommorow?>' min='<?=$current_date?>' max='<?=$max_date?>' reqired>
+                    <input class='fontArial' type="date" name="dateArrival" id="" value='<?= isset($date_arrival) ? $date_arrival : $current_date?>' min='<?=$current_date?>' max='<?=$max_date_arrival?>'>
+                    <input class='fontArial' type="date" name="dateDeparture" id= " " value='<?= isset($date_depart) ? $date_depart : $tommorow?>' min='<?=$min_date?>' max='<?=$max_date?>'>
                 <div id='forSelect'>
                     <select class='fontArial' name="numPers" id="">
                         <option value="">Количество гостей</option>

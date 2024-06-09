@@ -1,6 +1,10 @@
 <?php
 include "header.php";
 require "C:\OSPanel\domains\coursework\database\Rooms.php";
+// print_r($_POST);
+$date_depart = isset($_POST['date_departure']) ? $_POST['date_departure'] : false;
+$date_arrival = isset($_POST['date_arrival']) ? $_POST['date_arrival'] : false;
+    
 
 $id_room = isset($_POST['idRoom']) ? $_POST['idRoom'] : $_GET['idRoom'];
 $room = new Rooms();
@@ -27,8 +31,10 @@ $desc = $room[3];
             <span>Стоимость :<span><?=$price?>&nbsp; руб/ночь</span></span>
             <span>Площадь :<span><?=$square?>м<sup><small>2</small></sup></span></span>
             <form action="book-room.php" method="POST">
-                <input type="hidden" value="<?=$id_room?>" name="idRoom">
-                <input id='bookRoomButton' type="submit" value="Забронировать">
+                <input type='hidden' value='<?=$date_arrival?>' name='date_arrival'>
+                <input type='hidden' value='<?=$date_depart?>' name='date_departure'>
+                <input type='hidden' value='<?=$id_room?>' name='idRoom'>
+                <input id='bookRoomButton' type="submit" value="К бронированию">
             </form>
         </div>
     </div>
