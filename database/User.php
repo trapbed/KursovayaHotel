@@ -18,11 +18,12 @@ class User extends Connect {
     protected $adult;
 
     public function user_exist($email, $pass){
+        $user_exist_valid = false;
         $user_exist = mysqli_query($this->conn, "SELECT id_user, email, password, role FROM users WHERE email ='$email'");
         if(mysqli_num_rows($user_exist) != 0){
             $user_exist_valid = true;
-            return $user_exist_valid;
         }
+        return $user_exist_valid;
     }
 
     public function check_bday($bday){
@@ -292,6 +293,31 @@ class User extends Connect {
             ";
         }
         
+    }
+
+    public function user_exist_email($email){
+        $res = false;
+        $query = mysqli_num_rows(mysqli_query($this->conn, "SELECT * FROM users WHERE email='$email'"));
+        if($query>0){
+            $res = true;
+        }
+        return $res;
+    }
+
+    public function recoverAcc($email, $pass){
+        $query = mysqli_query($this->conn, "UPDATE `users` SET `password` = '$new_pass' WHERE `users`.`email` = '$email';");
+        if($query){
+            $_SESSION['message'] = "Сообщение отправлено!";
+            echo "<script>
+                location.href=../index.php';
+            </script>";
+        }
+        else{
+            $_SESSION['message'] = "Не удалось отправить сообщение!";
+            echo "<script>
+                location.href='../index.php';
+            </script>";
+        }
     }
 }
 

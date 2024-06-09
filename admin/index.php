@@ -65,8 +65,9 @@ echo "<div id='modalInfoAdmin'></div>";
                 </tr>
             </table>";
         }
+        // createAdmin.php?act=catRoom&page_admin=catRooms
         if($_GET['page_admin'] == 'catRooms'){
-            echo "<a class='adminButtonAdd' href='createAdmin.php?act=catRoom&page_admin=catRooms'><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
+            echo "<a class='adminButtonAdd' href='createCatRoom.php'><img class='adminButtonAdd' src='../img/admin/add.svg' alt='add'></a>";
             
             echo "<div class='empty14'></div>";
 
@@ -189,7 +190,16 @@ echo "<div id='modalInfoAdmin'></div>";
                     <td class='adminNumPers'>".$cats[4]."</td>
                     <td class='adminNumRooms'>".$cats[2]."</td>
                     <td class='adminPrice'>".$price."</td>
-                    <td class='adminAction'><a href='deleteCatRoom.php'><img src='../img/admin/bin.svg' alt='delete'></a><a href='updateCatRoom.php'><img src='../img/admin/update.svg' alt='update'></a></td>
+                    <td class='adminAction'>";
+                    if($cats[7] == '1'){
+                        echo "<a href='actStatusCatRoom.php?id=$cats[0]&act=delete'><img src='../img/admin/bin.svg' alt='delete'></a>";
+                    }
+                    else{
+                        echo "<a href='actStatusCatRoom.php?id=$cats[0]&act=recover'><img src='../img/admin/recover.png' alt='recover'></a>";
+                    }
+                    
+                    echo "<a href='updateCatRoom.php?id=$cats[0]'><img src='../img/admin/update.svg' alt='update'></a>
+                    </td>
                 </tr>
             </table><hr>";
             }
@@ -335,6 +345,16 @@ echo "<div id='modalInfoAdmin'></div>";
                 $status = 'Заблокирован';
                 $imgStatus = 'unblock';
             }
+
+            $role = $user[3];
+            if($role == 'user'){
+                $imgRole = 'user';
+                $act = 'toAdmin';
+            }
+            else{
+                $imgRole = 'admin';
+                $act = 'toUser';
+            }
             //
             echo "<table>
             <tr id='tableHeadUsersInfo'>
@@ -343,9 +363,12 @@ echo "<div id='modalInfoAdmin'></div>";
                 <td class='adminUserBday'>".$bday."</td>
                 <td class='adminUserPhone'>".$phone."</td>
                 <td class='adminUserEmail'>".$user[1]."</td>
-                <td class='adminUserRole'>".$user[3]."</td>
+                <td class='adminUserRole'>".$role."</td>
                 <td class='adminUserSatus'>".$status."</td>
-                <td class='adminUserAction'><a href='changeUser.php?action=".$imgStatus."&&id=".$user[0]."'><img class='imgStatusUser' src='../img/admin/".$imgStatus.".svg' alt='".$imgStatus."'></a></td>
+                <td class='adminUserAction'>
+                    <a href='changeUser.php?action=".$imgStatus."&id=".$user[0]."'><img class='imgStatusUser' src='../img/admin/".$imgStatus.".svg' alt='".$imgStatus."'></a>
+                    <a href='changeUser.php?action=".$act."&id=".$user[0]."'><img class='imgStatusUser' src='../img/admin/".$imgRole.".png' alt='".$act."'></a>
+                </td>
             </tr>
         </table><hr>";
         }

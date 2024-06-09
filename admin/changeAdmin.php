@@ -3,7 +3,7 @@ require_once "../database/Admin_change.php";
 
 if(!isset($_POST['action'])){
     $_SESSION['message'] = "Нет действия!";
-    header("Location: ../admin/index.php?page_admin=services");
+    header("Location: ../admin/index.php");
 }
 else{
     $act = $_POST['action'];
@@ -13,7 +13,7 @@ else{
         $desc = isset($_POST['desc']) ? $_POST['desc'] : false;
         $cat = isset($_POST['cat']) ? $_POST['cat'] : false;
         $price = isset($_POST['price']) ? $_POST['price'] : false;
-        $img = $_FILES['img']['name']!= "" ? $_FILES['img']['name'] : $_POST['oldImg'];
+        $img = $_FILES['img']['name']!= "" ? $_FILES['img'] : $_POST['oldImg'];
         if(substr($_FILES['img']['type'], 0, 5) != 'image'){
             $_SESSION['message'] = 'Тип отправленного файла не является изображением. Пожалуйста отправьте изображение! ';
             header("Location: ../admin/index.php?page_admin=services");
@@ -55,7 +55,7 @@ else{
         $long = isset($_POST['long']) ? $_POST['long'] : false;
         $short = isset($_POST['short']) ? $_POST['short'] : false;
         $desc = isset($_POST['desc']) ? $_POST['desc'] : false;
-        $img = isset($_FILES['img']) ? $_FILES['img']['name'] : false;
+        $img = isset($_FILES['img']) ? $_FILES['img'] : false;
         $cat = isset($_POST['cat']) ? $_POST['cat'] : false;
         $amount = isset($_POST['amount']) ? $_POST['amount'] : false;
         $old_room = $old_room->get_info_room_by_id($id);
@@ -92,6 +92,35 @@ else{
         $cat,
         $amount;
         // if()
+    }
+    if($act == 'updateCatRoom'){
+        $id = isset($_POST['id']) ? $_POST['id'] : false ;
+        $name = isset($_POST['name']) ? $_POST['name'] : false;
+        $square = isset($_POST['square']) ? $_POST['square'] : false;
+        $max = isset($_POST['max']) ? $_POST['max'] : false;
+        $amount_room_in_room = isset($_POST['amount_room_in_room']) ? $_POST['amount_room_in_room'] : false;
+        $price = isset($_POST['price']) ? $_POST['price'] : false;
+        // echo $act, $id, $name;
+        
+        $check_old = new Info();
+        $check_old = $check_old->get_info_cat_room_by_id($id);
+        // print_r($check_old);
+
+        $check_exist = new Info();
+        $check_exist = $check_exist->get_info_cat_room_by_name($name);
+
+        if($check_old[1] == $name){
+            $_SESSION['message'] = "Данные актуальны!";
+            header("Location: ../admin/index.php?page_admin=catServices");
+        }
+        if($check_exist['array'][1] == $name){
+            $_SESSION['message'] = "Такая категория уже существует!";
+            header("Location: ../admin/updateCatRoom.php?id=$id");
+        }
+        else{
+            $update_cat_serv = new Change();
+            $update_cat_serv = $update_cat_serv->update_name_cat_room($id, $name, $square, $max, $amount_room_in_room, $price);
+        }
     }
 }
 

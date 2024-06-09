@@ -1,7 +1,7 @@
 <?php
 session_start();
 // include "C:\OSPanel\domains\coursework\connect\connection.php";
-
+// echo substr($_SERVER['REQUEST_URI'], 0, 6);
 if(isset($_SESSION['message'])){
     echo "<script>
         alert('".$_SESSION['message']."');
@@ -64,10 +64,10 @@ if(isset($_SESSION['message'])){
     <!-- <a href='../admin/index.php'>Админ панель</a> -->
 
     <?php
-    if(isset($_SESSION['id_user']) && $_SESSION['role'] == 'admin'){
+    if(isset($_SESSION['id_user']) && $_SESSION['role'] == 'admin' && substr($_SERVER['REQUEST_URI'], 0,6) == '/admin'){
         echo"
             <nav id='headerNav'>
-            <img src='../img/logo.png' alt='logo' id='logoNav'>
+            <a href='../index.php'><img src='../img/logo.png' alt='logo' id='logoNav'></a>
             <div id='headerNavSpans'>
                 <div id='headerNavigationAdmin'>
                     <a href='../admin/index.php?page_admin=users' class='";
@@ -123,14 +123,17 @@ if(isset($_SESSION['message'])){
         else{
             echo"
                 <nav id='headerNav'>
-                <img src='../img/logo.png' alt='logo' id='logoNav'>
+                <a href='../index.php'><img src='../img/logo.png' alt='logo' id='logoNav'></a>
                 <div id='headerNavSpans'>
                     <div id='headerNavigation'>
                         <a href='../'>Главная</a>
                         <a href='../catalog.php'>Каталог</a>
                         <a href='../contacts.php'>Контакты</a>
-                        <a href='../services.php'>Услуги</a>
-                    </div>
+                        <a href='../services.php'>Услуги</a>";
+                    if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
+                        echo "<a href='../admin/index.php' id='' >Админ панель</a>";
+                    }
+                    echo "</div>
                     <div id='sign'>";
 
                         if(isset($_SESSION['id_user'])){

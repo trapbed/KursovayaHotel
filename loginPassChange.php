@@ -10,6 +10,10 @@ include "./database/User.php";
 
     $user = new User();
     $user = $user->get_email_pass($_SESSION['id_user']);
+    
+    // if($_SESSION['role'] == 'admin'){
+    //     echo "<a href='../admin/index.php' id='' >Перейти в админ панель</a>";
+    // }
 
 ?>
 <form id='changeLPform' action="/user/loginPassChange-db.php" method="post">

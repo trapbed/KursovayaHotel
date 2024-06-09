@@ -7,7 +7,9 @@
 body{
     align-items: center;
 }
-
+input{
+    outline: transparent;
+}
 
 
 /* MODAL WINDOWS */
@@ -257,7 +259,7 @@ body{
     width: 90vmax;
     height: 10vmax;
 }
-#logoNav{
+#headerNav>a>#logoNav{
     width: 10.5vmax;
 }
 #headerNavSpans{
@@ -349,6 +351,8 @@ body{
 }
 #inputsDatePeople>input[type=date]::-webkit-calendar-picker-indicator{
     background: url("/img/calendar.png") no-repeat;
+    width: 1.6vmax;
+    height: 1.6vmax;
     background-size: cover;
 }
 #forSelect{
@@ -370,7 +374,7 @@ body{
     /* background-color: white; */
     background: url("/img/people.png") no-repeat;
     background-position: 95%;
-    background-size: 1vmax;
+    background-size: 1.4vmax;
     margin-right: 5vmax;
 }
 #formGeneralMain>input[type=submit]{
@@ -629,20 +633,27 @@ body{
     color: #9D7C3C;
     border-bottom: 0.1vmax solid #9D7C3C;
 }
-.priceSort{
+.dateSort{
     flex-direction: row;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.6vmax;
     color: #9D7C3C;
     border-bottom: 0.1vmax solid #9D7C3C;
 }
-.priceSort>input{
+.dateSort>input{
     background-color: transparent;
     border: transparent;
     outline: transparent;
-    width: 8.5vmax;
+    width: 10vmax;
     padding-left: 0.5vmax;
-    font-size: 1.6vmax;
+    font-size: 1.4vmax;
+    color: #9D7C3C;
+}
+.dateSort>input[type=date]::-webkit-calendar-picker-indicator{
+    background: url("/img/calendar.png") no-repeat;
+    width: 1.2vmax;
+    height: 1.2vmax;
+    background-size: cover;
 }
 #submitSortCat{
     width: 2vmax;
@@ -828,10 +839,12 @@ footer{
     width: 12vmax;
     height: 5.4vmax;
 }
-.columnFoo>span{
+.columnFoo>span, .columnFoo>a{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1vmax;
     line-height: 220%;
+    text-decoration: transparent;
+    color: #1E1E1E;
 }
 #coopyright{
     display: block;
@@ -1527,7 +1540,14 @@ footer{
 }
 .adminUserAction{
     width: 5vmax;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    gap: 1vmax;
+    /* justify-content: space-between; */
+}
+.adminUserAction>a>img{
+    width: 2.2vmax;
 }
 .imgStatusUser{
     width: 3.2vmax;
@@ -1647,6 +1667,9 @@ footer{
 }
 .adminAction{
     width: 8.2vmax;
+}
+.adminAction>a>img{
+    width: 2.4vmax;
 }
 #scrollContainerAdmin>*>*>*{
     display: flex;
@@ -1852,6 +1875,12 @@ footer{
     color: #A0895D;
     font-weight: 500;
     font-family: 'Times New Roman', Times, serif;
+}
+.changeAdminDiv>span{
+    font-family: 'Times New Roman', Times, serif;
+    color: #1E1E1E;
+    font-size: 1.2vmax;
+    width: 50vmax;
 }
 #formNOldImg{
     display: flex;

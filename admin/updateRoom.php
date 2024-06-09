@@ -34,7 +34,7 @@ print_r($room);
                 Название категории номера
                 <select name='cat'>";
                 $cat_room = new Info();
-                $cat_room = $cat_room->get_cats_room();
+                $cat_room = $cat_room->get_cats_room_exist();
                 foreach($cat_room as $cr){
                     echo "<option value='$cr[0]' ";
                     if($cr[0] == $room[5]){

@@ -1,10 +1,8 @@
 <?php
-
 include "header.php";
-
 require "C:\OSPanel\domains\coursework\database\Rooms.php";
 
-$id_room = $_POST['idRoom'];
+$id_room = isset($_POST['idRoom']) ? $_POST['idRoom'] : $_GET['idRoom'];
 $room = new Rooms();
 $room = $room->get_one_room($id_room);
 
@@ -16,7 +14,6 @@ $numPers = $room[9];
 $price = substr($room[11], 0, -3);
 $square = $room[10];
 $desc = $room[3];
-
 ?>
 
 <div id="mainOneRoom">
@@ -29,12 +26,13 @@ $desc = $room[3];
             <span>Количество гостей :<span><?=$numPers?></span></span>
             <span>Стоимость :<span><?=$price?>&nbsp; руб/ночь</span></span>
             <span>Площадь :<span><?=$square?>м<sup><small>2</small></sup></span></span>
-            <form action="" method="POST">
+            <form action="book-room.php" method="POST">
                 <input type="hidden" value="<?=$id_room?>" name="idRoom">
                 <input id='bookRoomButton' type="submit" value="Забронировать">
             </form>
         </div>
     </div>
+
     <span id='descRoom'><?=$desc?></span>
     <div id='constantRoom'>
         <div class="oneConstRoom"><span class="goldCR">24  /  7</span><span class="descCR">работает стойка регистрации</span></div>

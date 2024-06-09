@@ -1,40 +1,42 @@
-
-<div class="emtyBetweenContactsFooter"></div>
-<hr id="upFooter">
-<div class="emtyUpFooter"></div>
+<?php
+echo "<div class='emtyBetweenContactsFooter'></div>
+<hr id='upFooter'>
+<div class='emtyUpFooter'></div>
 
 <footer>
-    <div id="columnFooter">
-    <img id="logoFoo" src="/img/logoFoo.png" alt="logo footer">
-    <div class="columnFoo">
+    <div id='columnFooter'>
+        <img id='logoFoo' src='/img/logoFoo.png' alt='logo footer'>
+        <div class='columnFoo'>
             <span>Главная</span>
-            <span>Номера</span>
-            <span>Расторан</span>
+            <span>Каталог</span>
+            <span>Услуги</span>
             <span>Контакты</span>
-            <span>Наш персонал</span>
+            <span>Номера</span>
         </div>
-        <div class="columnFoo">
-            <span>Правила проживания</span>
+        <div class='columnFoo'>
+            <a href='recoverAcc.php'>Восстановить аккаунт</a>
             <span>О нас</span>
-            <span>Наш персонал</span>
-            <span>Компании партнеры</span>
+            <span>Забота о посетителях</span>
             <span>Мы в ВК</span>
+            <span>Желаем хорошего дня</span>
         </div>
-        <div class="columnFoo">
+        <div class='columnFoo'>
             <span>Комфортные номера</span>
             <span>Чистота</span>
             <span>Уют как дома</span>
             <span>Хочется вернуться</span>
         </div>
     </div>
-    <span id="coopyright">(c) 2024 hotel <span>LION</span></span>
-</footer>
+    <span id='coopyright'>(c) 2024 hotel <span>LION</span></span>
+</footer>";
+echo"
 <script src='../js/sign.js'></script>
 <script>
-    $("#roomSelect").change(function() {
-        $("#roomAdminForm").submit();
+    $('#roomSelect').change(function () {
+        $('#roomAdminForm').submit();
     });
-    $("#servSelect").change(function() {
-        $("#servAdminForm").submit();
+    $('#servSelect').change(function () {
+        $('#servAdminForm').submit();
     });
-</script>
+</script>';";
+?>

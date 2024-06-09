@@ -23,7 +23,12 @@ class Info extends Connect{
             $query_buyer = mysqli_fetch_array(mysqli_query($this->conn, "SELECT buyer.name, buyer.sname, buyer.pathronymic, buyer.birthday, buyer.phone FROM buyer JOIN users ON users.id_user= buyer.id_user  WHERE buyer.id_user = $id;"));
             return $query_buyer;
         }
-    //ВСЕ КАТЕГОРИИ НОМЕРОВ
+    //ВСЕ КАТЕГОРИИ НОМЕРОВ СУЩЕСТВУЮЩИЕ
+        public function get_cats_room_exist(){
+            $query_cat_room = mysqli_fetch_all(mysqli_query($this->conn, "SELECT * FROM `cat_rooms` WHERE exist = '1'"));
+            return $query_cat_room;
+        }
+    // 
         public function get_cats_room(){
             $query_cat_room = mysqli_fetch_all(mysqli_query($this->conn, "SELECT * FROM `cat_rooms`"));
             return $query_cat_room;
@@ -130,4 +135,29 @@ class Info extends Connect{
                 'array'=>$array
             ];
         }
+    // 
+        public function check_exist_room_with_cat($id_cat_room){
+            $num_row = mysqli_num_rows(mysqli_query($this->conn, "SELECT * FROM rooms WHERE id_cat_room = $id_cat_room AND exist='1'"));
+            return $num_row;
+        }
+    // 
+        public function get_info_cat_room_by_id($id){
+            $cat_room_by_id = mysqli_fetch_array(mysqli_query($this->conn, "SELECT * FROM `cat_rooms` WHERE id_cat_room = $id"));
+            return $cat_room_by_id;
+        }
+    // 
+        public function get_info_cat_room_by_name($name){
+            $query = mysqli_query($this->conn, "SELECT * FROM cat_rooms WHERE name_cat_room = '$name'");
+            $num_row = mysqli_num_rows($query);
+            $array = mysqli_fetch_array($query) ;
+            return [
+                'num_row'=>$num_row,
+                'array'=>$array
+            ];
+        }
+    // 
+        // public function get_occ_room($date){
+        //     $query = mysqli_fetch_array(mysqli_query($this->conn, "SELECT * FROM occupied_rooms WHERE date='$date'"));
+        //     print_r($query);
+        // }
 }

@@ -2,25 +2,31 @@
 <?php
     include "header.php";
     // print_r($_SESSION);
+    $current_date = date('Y-m-d');
+    $ten = strtotime("$current_date +10 days");
+    $tommorow = strtotime("$current_date +1 day");
+    $tommorow = date("Y-m-d", $tommorow);
+    $max_date = date('Y-m-d',$ten);
 ?> 
 <!-- MAIN -->
     <main id="general">
-        <!-- <div class="emtyGeneralMain"></div>
+        <div class="emtyGeneralMain"></div>
         <form id='formGeneralMain' action="catalog.php" method='POST'>
             <div id='inputsDatePeople'>
-                <input class='fontArial' type="date" name="date" id="" value='2024-04-04'>
-                <input class='fontArial' type="date" name="" id="" value=''>
+                <input class='fontArial' type="date" name="date" id="" value='<?=$current_date?>' min='<?=$current_date?>' max='<?=$max_date?>' required>
+                <input class='fontArial' type="date" name="" id="" value='<?=$tommorow?>' min='<?=$current_date?>' max='<?=$max_date?>' reqired>
                 <div id='forSelect'>
                     <select class='fontArial' name="numPers" id="">
-                        <option value=""></option>
-                        <option value="">1 гость</option>
-                        <option value="">2 гость</option>
-                        <option value="">3 гость</option>
+                        <option value="">Количество гостей</option>
+                        <option value="1">1 гость</option>
+                        <option value="2">2 гостя</option>
+                        <option value="3">3 гостя</option>
+                        <option value="4">4 гостя</option>
                     </select>
                 </div>
             </div>
             <input class='fontArial' type="submit" value="Искать">
-        </form> -->
+        </form>
     </main>
 <!-- SERVICES TEXT -->
     <div id='services'>
@@ -111,7 +117,7 @@
                 </div>
                 <div id="emil" class="infoContact">
                     <span class="goldContact">Адрес Эл. Почты : </span>
-                    <span class="blackContact">trapbedovich@gmail.com</span>
+                    <span class="blackContact">hotelion@gmail.com</span>
                 </div>
             </div>
         </div>

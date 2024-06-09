@@ -141,11 +141,12 @@ class Change extends Info{
         $result = mysqli_query($this->conn, $query);
         if($result){
             $_SESSION['message'] = "Название категории успешно изменено!";
+            header("Location: ../admin/index.php?page_admin=catServices");
         }
         else{
             $_SESSION['message'] = "Не удалось изменить название категории!";
+            header("Location: ../admin/index.php?page_admin=catServices");
         }
-        header("Location: ../admin/index.php?page_admin=catServices");
     }
     // 
     public function update_status_room($id, $act){
@@ -176,6 +177,67 @@ class Change extends Info{
             $_SESSION['message'] = "Данные успешно обновлены!";
             header("Location: ../admin/index.php?page_admin=rooms");
         }
+    }
+
+    public function change_status_cat_room($id_cat_room, $act){
+        if($act == 'delete'){
+            $query = mysqli_query($this->conn, "UPDATE `cat_rooms` SET `exist` = '0' WHERE `cat_rooms`.`id_cat_room` = $id_cat_room;");
+        }
+        if($act == 'recover'){
+            $query = mysqli_query($this->conn, "UPDATE `cat_rooms` SET `exist` = '1' WHERE `cat_rooms`.`id_cat_room` = $id_cat_room;");
+        }
+        if($query){
+            $_SESSION['message'] = "Статус категории изменен!";
+            echo "<script>
+                location.href = '../admin/index.php?page_admin=catRooms';
+            </script>";
+        }
+    }
+
+    public function update_name_cat_room($id, $name, $square, $max, $amount_room_in_room, $price){
+        if($max == 1){
+            $num_pers = '1';
+        }
+        else{
+            $num_pers = "";
+            while($count < $max){
+                $count++;
+                $num_pers .= " $count" ;
+                if($count<$max){
+                    $num_pers .= ", ";
+                }
+            }
+        }
+        $query = mysqli_query($this->conn, "UPDATE `cat_rooms` SET `name_cat_room` = '$name', `amount_room_in_room` = '$amount_room_in_room', `number_pers` = '$num_pers', `max_pers` = '$max', `square_cat_room` = '$square', `price_cat_room` = '$price' WHERE `cat_rooms`.`id_cat_room` = $id");
+        if($query){
+            $_SESSION['message'] = "Данные успешно обновлены!";
+            header("Location: ../admin/index.php?page_admin=rooms");
+        }
+        else{
+            $_SESSION['message'] = "Данные успешно обновлены!";
+            header("Location: ../admin/index.php?page_admin=rooms");
+        }
+    }
+    // 
+    public function change_role($to, $id){
+        $query = "UPDATE `users` SET `role` = ";
+        if($to == 'user'){
+            $query .= "'user'";
+        }
+        else{
+            $query .= "'admin'";
+        }
+        $query .= " WHERE `users`.`id_user` = $id";
+        $result = mysqli_query($this->conn, $query);
+        if($result){
+            $_SESSION['message'] = "Пользователь №$id теперь $to !";
+        }
+        else{
+            $_SESSION['message'] = "Не удалось сменить роль!";
+        }
+        echo "<script>
+            location.href = '../admin/index.php';
+        </script>";
     }
 }
 ?>
