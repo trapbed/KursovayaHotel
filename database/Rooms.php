@@ -1,6 +1,7 @@
 <?php
 
 require_once "Connect.php";
+require_once "Booking.php";
 
 class Rooms extends Connect{
 
@@ -76,64 +77,64 @@ class Rooms extends Connect{
         $query = "SELECT id_room, long_name_room, short_name_room, desc_room, img_room, rooms.id_cat_room, amount_in_hotel , name_cat_room, amount_room_in_room, max_pers, square_cat_room, price_cat_room FROM rooms JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room WHERE rooms.exist='1'";
            
         if($numPers){
-                $check_and =true;
-                if($check_and == true){
-                    $query .= " AND ";
-                }
-                else{
-                    $query .= " WHERE ";
-                }
-                $query .= " max_pers = $numPers ";
-            }
-            if($numRooms){
-                $check_and =true;
-                if($check_and == true){
-                    $query .= " AND ";
-                }
-                else{
-                    $query .= " WHERE ";
-                }
-                $query .= " amount_room_in_room = $numRooms ";
-            }
-            if($cat){
-                $check_and =true;
-                if($check_and == true){
-                    $query .= " AND ";
-                }
-                else{
-                    $query .= " WHERE ";
-                }
-                $query .= " cat_rooms.id_cat_room = $cat ";
-            }
-            if($dateArrival){
-                $check_and =true;
-                if($check_and == true){
-                    $query .= " AND ";
-                }
-                else{
-                    $query .= " WHERE ";
-                }
-                $query .= " cat_rooms.price_cat_room >= $dateArrival ";
-            }
-            if($dateDeparture){
-                $check_and =true;
-                if($check_and == true){
-                    $query .= " AND ";
-                }
-                else{
-                    $query .= " WHERE ";
-                }
-                $query .= "cat_rooms.price_cat_room <= $dateDeparture";
-            }
-            $rooms = mysqli_query($this->conn, $query);
-            $check_rows = $this -> exist_rows($rooms);
-            if($check_rows){
-                return [$check_rows, $query];
+            $check_and =true;
+            if($check_and == true){
+                $query .= " AND ";
             }
             else{
-                return $check_rows;
+                $query .= " WHERE ";
             }
+            $query .= " max_pers = $numPers ";
+        }
+        if($numRooms){
+            $check_and =true;
+            if($check_and == true){
+                $query .= " AND ";
+            }
+            else{
+                $query .= " WHERE ";
+            }
+            $query .= " amount_room_in_room = $numRooms ";
+        }
+        if($cat){
+            $check_and =true;
+            if($check_and == true){
+                $query .= " AND ";
+            }
+            else{
+                $query .= " WHERE ";
+            }
+            $query .= " cat_rooms.id_cat_room = $cat ";
+        }
+        if($dateArrival && $dateDeparture){
+            $check_date = new Book();
+            $check_date = $check_date->check_date($dateArrival, $dateDeparture);
+            foreach ($check_date as $without){
+                if($check_and == true){
+                    $query .= " AND ";
+                }
+                else{
+                    $query .= " WHERE ";
+                    $check_and = true;
+                }
+                $query .= "id_room != $without";
+            }
+        }
+        // if($dateDeparture){
 
+        // }
+        $rooms = mysqli_query($this->conn, $query);
+        $check_rows = $this -> exist_rows($rooms);
+        if($check_rows){
+            return [$check_rows, $query];
+        }
+        else{
+            return $check_rows;
         }
     }
+    // 
+    // public function get_rooms_by_filter($){
+
+    // }
+}
 ?>
