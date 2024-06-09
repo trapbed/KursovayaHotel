@@ -1943,6 +1943,118 @@ footer{
 .deleteServ{
     border: transparent !important; 
 }
+
+/* BOOKIG */
+#bookRoom{
+    display: flex;
+    flex-direction: column;
+    gap: 4vmax;
+    width: 90vmax;
+    /* background-color: #105D1D; */
+}
+#bookRoom>h4{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.35vmax;
+    font-weight: 300;
+}
+#bookInfoRoom, #userInfoRoom{
+    display: flex;
+    flex-direction: column;
+    gap: 2vmax;
+    background-color: #EDF0F4;
+    border-radius: 1vmax;
+    width: 86vmax;
+    padding: 2vmax;
+}
+#bookNameRoom{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2vmax;
+}
+#bookContentRoom{
+    display: flex;
+    flex-direction: row;
+    gap: 5vmax;
+    width: 100%;
+}
+#bookContentRoom>img{
+    width: auto;
+    height: 10vmax;
+    border-radius: 0.5vmax;
+}
+#intoBookContentRoom{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5vmax;
+    width: 59vmax;
+}
+#bookDates{
+    display: flex;
+    flex-direction: row;
+    gap: 4vmax;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+#bookDates>span{
+    width: 17vmax;
+    /* background-color: #105D1D; */
+}
+#bookContentInfoRoom{
+    display: flex;
+    flex-direction: row;
+    gap: 4vmax;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+#intoBookContentRoom>span{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4vmax;
+    align-self: flex-end;
+    width: 14vmax;
+    /* background-color: pink; */
+}
+#bookContentInfoRoom>span{
+    width: 17vmax;
+    /* background-color: #105D1D; */
+}
+#bookUserName{
+    display: flex;
+    flex-direction: row;
+    gap: 10vmax;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4vmax;
+}
+#bookUserName>span{
+    width: 22vmax;
+    /* background-color: #105D1D; */
+}
+#bookUserInfoEmailPhone{
+    display: flex;
+    flex-direction: row;
+    gap: 10vmax;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+#bookUserInfoEmailPhone>span{
+    width: 22vmax;
+    /* background-color: #105D1D; */
+}
+#bookForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+#bookForm>input{
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5vmax;
+    background-color: transparent;
+    width: 20vmax;
+    height: 4vmax;
+    border: 0.1vmax solid #A0895D;
+    color: #A0895D;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2vmax;
+}
 @font-face {
     font-family: 'TNR';
     src: url(/fonts/ofont.ru_Times\ New\ Roman.ttf);
