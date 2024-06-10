@@ -47,6 +47,13 @@ echo "
     })
 </script>";
 // ADMIN
+echo "<script>
+    $(document).on('click', '#submitToBook', function(){
+        $.get('http://coursework/book-room.php', function(){
+            alert('Подождите немного, собираем информацию о номере!');
+        })
+    })
+</script>";
 echo"
 <script src='../js/sign.js'></script>
 <script>
