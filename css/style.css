@@ -20,7 +20,7 @@ input{
     left: 50vmax;
     z-index: 3;
     width: 100vmax;
-    height: 100vmin;
+    height: 100vmax;
     background-color: rgba(217, 217, 217, 0.4);
 }
         #signinDiv{
@@ -2005,12 +2005,25 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2vmax;
 }
-#intoBookContentRoom>span{
+#bookInfoPrice>span{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.4vmax;
+    font-size: 1.3vmax;
     align-self: flex-end;
-    width: 14vmax;
+    width: 18vmax;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vmax;
     /* background-color: pink; */
+}
+#bookInfoSum{
+    color: #A0895D;
+    font-size: 1.4vmax;
+}
+#bookInfoPrice{
+    display: flex;
+    flex-direction: row;
+    gap: 4vmax;
 }
 #bookContentInfoRoom>span{
     width: 17vmax;
