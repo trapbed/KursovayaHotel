@@ -4,7 +4,7 @@ include "header.php";
 include "./database/User.php";
 ?>
 
-<h1 id='titleChangeLP'>Смена логина и пароля</h1>
+<h1 id='titleChangeLP'>Смена почты и пароля</h1>
 <div class="empty26"></div>
 <?php
 

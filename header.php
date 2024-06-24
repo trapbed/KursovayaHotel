@@ -38,6 +38,12 @@ if(isset($_SESSION['message'])){
                         <input type="password" name="pass">
                     </label>
                         <input id="signinBtn" type="submit" value="Войти">
+                    <?php if(isset($_SESSION['check_no_success'])){
+                            echo "<a id='recoverInModalAcc' href='../recoverAcc.php'>Восстановить аккаунт</a>";
+                            unset($_SESSION["check_no_success"]);
+                        }
+
+                    ?>
                     <span id="toSignup">Еще нет аккаунта? <span id="toSignupBtn"> Зарегистрируйтесь</span></span>
 
                 </form>

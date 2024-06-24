@@ -38,7 +38,7 @@ else{
             $_SESSION['message'] = "Выберите даты заезда и выезда!";
             header("Location: ../catalog.php");
         }
-        if($info_user[1] == "" || $info_user[2] == "" || $info_user[3] =="" || $info_user[6] == "" ||  $info_user[5] == ""){
+        if($info_user[1] == "" || $info_user[2] == "" || $info_user[6] == "" ||  $info_user[5] == ""){
             $_SESSION['message'] = "Заполните профиль перед бронированием!";
             header("Location: ../room.php?idRoom=$id");
         }else{
@@ -105,3 +105,4 @@ else{
 
 require_once "footer.php";
 ?>
+<script src='../js/ajaxBook.js'></script>

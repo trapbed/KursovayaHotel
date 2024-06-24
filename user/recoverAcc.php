@@ -3,7 +3,7 @@
 require_once "../database/User.php";
 session_start();
 
-$email = isset($_POST['email']) ? $_POST['email'] : false ;
+$email = isset($_POST['email']) && $_POST['email']  != ""  ? $_POST['email'] : false ;
 
 if($email == false){
     $_SESSION['message'] = "Заполните все поля!";

@@ -22,13 +22,13 @@
     $tommorow = strtotime("$current_date +1 day");
     $tommorow = date("Y-m-d", $tommorow);
 
-    $ten = strtotime("$current_date +10 days");
+    $ten = strtotime("$current_date +30 days");
     $max_date = date('Y-m-d',$ten);
 
     $min_date = strtotime("$date_arrival+ 1 day");
     $min_date = date('Y-m-d', $min_date);
 
-    $max_date_arrival = strtotime("$current_date +9 days");
+    $max_date_arrival = strtotime("$current_date +29 days");
     $max_date_arrival = date('Y-m-d',$max_date_arrival);
     
 ?>
@@ -147,3 +147,4 @@
         ?>
     </div>
 <?php include "footer.php"; ?>
+<script src= '../js/ajaxCatalog.js'></script>

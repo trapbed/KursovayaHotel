@@ -46,10 +46,6 @@ $user = $user->get_info_user($_SESSION['id_user']);
                         Телефонный номер
                         <input type="text" name='phone' placeholder='81234567890'value='<?=$user[5]?>' pattern='[0-9]{11}' title='Введите телефонный номер' required>
                     </label>
-                    <label>
-                        Почта
-                        <input type="text" name='email' placeholder='Введите почту' title='Введите почту' value='<?=$user[6]?>' required>
-                    </label>
                 </div>
                 <!-- <br><br> -->
                 <!-- <div id="headerUserData"><span>Безопасность &nbsp;&nbsp;&nbsp;</span><hr></div> -->

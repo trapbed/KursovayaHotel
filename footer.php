@@ -29,39 +29,10 @@ echo "<div class='emtyBetweenContactsFooter'></div>
     </div>
     <span id='coopyright'>(c) 2024 hotel <span>LION</span></span>
 </footer>";
-// CATALOG
-echo "
-<script>
-    $('#selectCatCatalog').change(function(){
-        $('#formCatalog').submit();
-    })
 
-    $('#selectNumPersCatalog').change(function(){
-        $('#formCatalog').submit();
-    })
-    $('.fontArial').change(function(){
-        $('#formCatalog').submit();
-    })
-    $('#selectNumRoomsCatalog').change(function(){
-        $('#formCatalog').submit();
-    })
-</script>";
-// ADMIN
-echo "<script>
-    $(document).on('click', '#submitToBook', function(){
-        $.get('http://coursework/book-room.php', function(){
-            alert('Подождите немного, собираем информацию о номере!');
-        })
-    })
-</script>";
-echo"
-<script src='../js/sign.js'></script>
-<script>
-    $('#roomSelect').change(function () {
-        $('#roomAdminForm').submit();
-    });
-    $('#servSelect').change(function () {
-        $('#servAdminForm').submit();
-    });
-</script>';";
+// echo "<script src='../js/ajax.js'></script>";
+// echo "<script src='../js/ajaxIndex.js'></script>";
 ?>
+<script src='../js/sign.js'></script>
+<script src='../js/eye.js'></script>
+<script src='../js/ajaxAdmin.js'></script>
