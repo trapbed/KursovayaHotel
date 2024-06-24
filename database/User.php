@@ -41,21 +41,21 @@ class User extends Connect {
 
     public function signin($pass, $email){
 
-        if($email && $pass){
+        if($email && $pass ){
             $user_exist = $this->user_exist($email, $pass);
             if($user_exist == true){
-                $user = mysqli_fetch_array(mysqli_query($this->conn, "SELECT id_user, email, password, role, blocked FROM users WHERE email ='$email' AND password= '$pass'"));
+                $user = mysqli_fetch_array(mysqli_query($this->conn, "SELECT id_user, email, password, role, blocked FROM users WHERE email ='$email'"));
+                print_r($user);
                 if($user[4] == 1){
                     $_SESSION['message'] = "Вы заблокированны и не можете войти в аккаунт";
                     header("Location: ../index.php");
                 }
                 else{
+                    $user = mysqli_fetch_array(mysqli_query($this->conn, "SELECT id_user, email, password, role, blocked FROM users WHERE email ='$email' AND password = '$pass'"));
                     if($user){
                         $_SESSION['id_user'] = $user['id_user'];
                         $_SESSION['email'] = $user['email'];
                         $_SESSION['role'] = $user['role'];
-                        echo $_SESSION['id_user'];
-                        echo $user['role'];
                         echo "<script>
                             alert('Вы успешно зашли в свой аккаунт!');";
                         if($user['role']== 'user'){
@@ -67,6 +67,13 @@ class User extends Connect {
                         echo "</script>";
                     }
                     else{
+                        if(!isset($_SESSION['check_no_success'])){
+                            $check_no_success = 0;
+                        }
+                        else{
+                            $check_no_success = 1;
+                        }
+                        $_SESSION['check_no_success'] = $check_no_success;
                         echo "
                         <script>
                             alert('Неверный пароль!');
@@ -87,13 +94,13 @@ class User extends Connect {
 
         }
         else{
-            if(!$email){
+            if(!$email || $email == ""){
                 $error = 'Введите логин';
             }
-            if(!$pass){
+            if(!$pass || $pass == ""){
                 $error = 'Введите пароль ';
             }
-            if(!$email && !$pass){
+            if((!$email || $email != "") && (!$pass || $pass != "" )){
                 $error = 'Введите данные';
             }
             echo "
@@ -108,40 +115,35 @@ class User extends Connect {
     public function signup( $email,$bday, $pass){
         $user_exist = $this->user_exist($email, $pass);
         $check_bday = $this->check_bday($bday);
-
-        if(!$bday || !$email || !$pass){
-            $error = "Введите данные!";
-        }
         
-        $today =date('Y-m-d');
-        echo $today;
-        echo "<br>";
-        echo $bday;
-        $res = strtotime($today)-strtotime($bday);
-        $res = $res/31536000;
-        echo "<br>";
-        echo $res;
         
-        if($res > 0 ){
-            if($user_exist == true){
-                $error = "Такой пользователь существует! Войдите в аккаунт!";
-            }
-            else{
-                $insert_user = mysqli_query($this->conn,"INSERT INTO users (email, password) VALUES ('$email','$pass')");
-                $id_user = mysqli_insert_id($this->conn);
-                $insert_byuer = mysqli_query($this->conn,"INSERT INTO buyer (id_user ,birthday) VALUES ($id_user, '$bday')");
-                $_SESSION['id_user'] = $id_user;
-                $_SESSION['email'] = $email;
-                $_SESSION['role'] = $user['role'];
-                $error = "Вы успешно зарегистрировались!";
-                if($check_bday == false){
-                    $error .= "Вам еще нет 18! Вы не сможете забронировать номер!";
+            $today =date('Y-m-d');
+            $res = strtotime($today)-strtotime($bday);
+            $res = $res/31536000;
+            
+            if($res > 0 ){
+                if($user_exist == true){
+                    $error = "Такой пользователь существует! Войдите в аккаунт!";
+                }
+                else{
+                    $insert_user = mysqli_query($this->conn,"INSERT INTO users (email, password) VALUES ('$email','$pass')");
+                    $id_user = mysqli_insert_id($this->conn);
+                    $insert_byuer = mysqli_query($this->conn,"INSERT INTO buyer (id_user ,birthday) VALUES ($id_user, '$bday')");
+                    $_SESSION['id_user'] = $id_user;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['role'] = 'user';
+                    $error = "Вы успешно зарегистрировались!";
+                    if($check_bday == false){
+                        $error .= "Вам еще нет 18! Вы не сможете забронировать номер!";
+                    }
                 }
             }
-        }
-        else{
-            $error = "Вы слишком молоды чтобы пользоваться нашей системой!";
-        }
+            else{
+                $error = "Вы слишком молоды чтобы пользоваться нашей системой!";
+            }
+
+        
+        
         echo "<script>
         alert('$error');
         location.href = '/'; 
@@ -162,16 +164,16 @@ class User extends Connect {
         return $user_info;
     }
 
-    public function add_info($id, $name, $sname, $path, $bday, $phone, $email){
+    public function add_info($id, $name, $sname, $path, $bday, $phone){
         $check_user = $this->get_info_user($id);
-        if($check_user[1] !=  $name || $check_user[2] !=  $sname || $check_user[3] != $path || $check_user[4] != $bday || $check_user[5] != $phone || $check_user[6] != $email ){
+        if($check_user[1] !=  $name || $check_user[2] !=  $sname || $check_user[3] != $path || $check_user[4] != $bday || $check_user[5] != $phone ){
             $check_comma = false;        
             $query = "UPDATE buyer SET ";
             if($name != $check_user[1]){
                 if($check_comma == true){
                     $query .= ", ";
                 }
-                $query .= "name = '$name' ";
+                $query .= " name = '$name' ";
                 $check_comma = true;
             }
             if($sname != $check_user[2]){
@@ -179,37 +181,31 @@ class User extends Connect {
                     $query .= ", ";
                 }
                 $check_comma = true;
-                $query .= "sname = '$sname' ";
+                $query .= " sname = '$sname' ";
             }
             if($path != $check_user[3]){
                 if($check_comma == true){
                     $query .= ", ";
                 }
                 $check_comma = true;
-                $query .= "pathronymic = '$path' ";
+                $query .= " pathronymic = '$path' ";
             }
             if($bday != $check_user[4]){
                 if($check_comma == true){
                     $query .= ", ";
                 }
                 $check_comma = true;
-                $query .= "birthday = '$bday' ";
+                $query .= " birthday = '$bday' ";
             }
             if($phone != $check_user[5]){
                 if($check_comma == true){
                     $query .= ", ";
                 }
                 $check_comma = true;
-                $query .= "phone = '$phone' ";
-            }
-            if($email != $check_user[6]){
-                if($check_comma == true){
-                    $query .= ", ";
-                }
-                $check_comma = true;
-                $query .= "mail = '$email' ";
+                $query .= " phone = '$phone' ";
             }
             $query .= " WHERE buyer.id_user =".$id;
+            print_r($query);
             $query = mysqli_query($this->conn, $query);
             if($query){
                 echo "
@@ -282,7 +278,6 @@ class User extends Connect {
                 </script>
                 ";
             }
-            
         }
         else{
             echo "
@@ -292,7 +287,6 @@ class User extends Connect {
             </script>
             ";
         }
-        
     }
 
     public function user_exist_email($email){
@@ -305,7 +299,7 @@ class User extends Connect {
     }
 
     public function recoverAcc($email, $pass){
-        $query = mysqli_query($this->conn, "UPDATE `users` SET `password` = '$new_pass' WHERE `users`.`email` = '$email';");
+        $query = mysqli_query($this->conn, "UPDATE `users` SET `password` = '$pass' WHERE `users`.`email` = '$email';");
         if($query){
             $_SESSION['message'] = "Сообщение отправлено!";
             echo "<script>
@@ -319,6 +313,19 @@ class User extends Connect {
             </script>";
         }
     }
+
+    public function get_info_user_books($id_user){
+        $sql = "SELECT `id_book`, `id_user`, book.`id_room`, `date_arrival`, `date_departure`, `status`, `long_name_room`, `short_name_room`, `desc_room`, `img_room`, `name_cat_room`, `amount_in_hotel`, cat_rooms.max_pers FROM `book` JOIN rooms ON book.id_room = rooms.id_room JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room WHERE id_user = $id_user";
+        $num_row = mysqli_num_rows(mysqli_query($this->conn, $sql));
+        $array = mysqli_fetch_all(mysqli_query($this->conn, $sql));
+        return [
+            'num_row'=>$num_row,
+            'array'=>$array
+        ];
+    }
+    // public function get_info_one_book(){
+
+    // }
 }
 
 ?>

@@ -132,9 +132,5 @@ class Rooms extends Connect{
             return $check_rows;
         }
     }
-    // 
-    // public function get_rooms_by_filter($){
-
-    // }
 }
 ?>

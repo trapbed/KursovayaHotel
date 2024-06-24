@@ -30,12 +30,12 @@ class Info extends Connect{
         }
     // 
         public function get_cats_room(){
-            $query_cat_room = mysqli_fetch_all(mysqli_query($this->conn, "SELECT * FROM `cat_rooms`"));
+            $query_cat_room = mysqli_fetch_all(mysqli_query($this->conn, "SELECT * FROM `cat_rooms` WHERE exist= '1'"));
             return $query_cat_room;
         }
     // ИНФОРМАЦИЯ О ВСЕХ НОМЕРАХ
         public function get_all_book(){
-            $book = mysqli_fetch_all(mysqli_query($this->conn, "SELECT id_book, users.email, rooms.short_name_room, date_arrival, date_departure, book.status, cat_rooms.price_cat_room FROM `book` JOIN users ON users.id_user=book.id_user JOIN rooms ON rooms.id_room=book.id_room JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room"));
+            $book = mysqli_fetch_all(mysqli_query($this->conn, "SELECT id_book, users.email, rooms.short_name_room, date_arrival, date_departure, book.status, cat_rooms.price_cat_room, rooms.id_room FROM `book` JOIN users ON users.id_user=book.id_user JOIN rooms ON rooms.id_room=book.id_room JOIN cat_rooms ON cat_rooms.id_cat_room=rooms.id_cat_room"));
             return $book;
         }
     // ИНФА О НОМЕРЕ ГДЕ ДЛИННОЕ ИЛИ КОРОТКОЕ ИМЯ
@@ -155,9 +155,4 @@ class Info extends Connect{
                 'array'=>$array
             ];
         }
-    // 
-        // public function get_occ_room($date){
-        //     $query = mysqli_fetch_array(mysqli_query($this->conn, "SELECT * FROM occupied_rooms WHERE date='$date'"));
-        //     print_r($query);
-        // }
 }

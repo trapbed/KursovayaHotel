@@ -308,6 +308,14 @@ input{
     flex-direction: row;
     gap: 2vmax;
 }
+#recoverInModalAcc{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #EDF0F4;
+}
 #sign>a{
     font-family: 'Times New Roman';
     font-size: 1.3vmax;
@@ -965,7 +973,6 @@ footer{
 #AddrCoorIndex>div>span{
     font-size: 1.4vmax;
     line-height: 160%;
-    width: ;
 }
 
 
@@ -988,7 +995,11 @@ footer{
     flex-direction: column;
     gap: 1.2vmax;
 }
-
+.undefinedService{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+    color: #741818;
+}
 .nameHrCatServ{
     align-items: center;
     flex-direction: row;
@@ -1036,7 +1047,7 @@ footer{
     width: 100%;
     height: 100%;
     border-radius: 1vmax;
-    filter: grayscale(20%);
+    filter: brightness(60%);
     background-image: url(../img/services/dummy.png);
     background-size: cover;
 }
@@ -1052,6 +1063,10 @@ footer{
     border: transparent;
     width: 21vmax;
     height: 16vmax;
+}
+.oneService>form>input[type=submit]:focus{
+    border: 0.3vmax solid #A0895D;
+    border-radius: 1vmax;
 }
 .nameService{
     position: absolute;
@@ -1179,6 +1194,7 @@ footer{
 #noActivePageUser{
     text-decoration: transparent;
 }
+/* USER PAGE */
 #infoAcc{
     display: flex;
     flex-direction: column;
@@ -1395,6 +1411,152 @@ footer{
 #penChangePass{
     width: 2.6vmax;
 }
+
+/* USER HISTORY */
+#accountHistory{
+    width: 70vmax;
+}
+#accountHistory>h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 300;
+    color: #1E1E1E;
+    line-height: 160%;
+    font-size: 2.35vmax;
+}
+#scrollAccauntHistory{
+    display: flex;
+    flex-direction: column;
+    gap: 2.7vmax;
+    width: 70vmax;
+    height: 30vmax;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.userBookCart{
+    gap: 0.8vmax;
+    width: 100%;
+}
+.userBookCart>h4{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2vmax;
+    font-weight: 500;
+    line-height: 160%;
+    color: #A0895D;
+}
+.bookNameDel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 64vmax;
+    align-items: center;
+}
+.bookCartInfoRoom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 66vmax;
+    height: 10vmax;
+    border: 0.1vmax solid #1E1E1E;
+    border-radius: 0.5vmax;
+}
+.bookNameDel>div:not(.statusBlockBook){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-size: 1.55vmax; */
+    /* font-weight: 500; */
+    width: 58vmax;
+    height: 5vmax;
+}
+.bookNameDel>div>span{
+    font-size: 1vmax;
+}
+.bookNameDel>div>p{
+    font-size: 1.55vmax;
+}
+.bookNameDel>a>img, .statusBlockBook>img{
+    height: 2vmax;
+    width: 2vmax;
+}
+.datesStatusPersBook{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 64vmax;
+    height: 5vmax;
+    font-size: 1.2vmax;
+    font-family: 'Times New Roman', Times, serif;
+}
+.personRoomHistory{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+}
+.bookColumnDate{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.bookColumnDate>span{
+    font-size: 0.9vmax;
+}
+.bookColumnDate>p{
+    font-size: 1.2vmax;
+}
+.statusred>p{
+    color: #741818;
+}
+.statusgreen>p{
+    color: #105D1D;
+}
+.statusblack>p{
+    color: #1E1E1E;
+}
+.statusblack, .statusgreen, .statusred{
+    text-transform: capitalize;
+    font-size: 1.4vmax;
+}
+.statusblack>span, .statusgreen>span, .statusred>span{
+    font-size: 0.9vmax;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.bookForm>input[type=submit]{
+    width: 12vmax;
+    height: 3vmax;
+    border: 0.1vmax solid #9D7C3C;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    font-size: 1.4vmax;
+    background-color: transparent;
+    border-radius: 0.5vmax;
+    color: #9D7C3C;
+}
+#goToAccFromInfoOeRoom{
+    height: 8vmax;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+#goToAccFromInfoOeRoom>a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #A0895D;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vmax;
+    border-radius: 1vmax;
+    border: 0.1vmax solid #A0895D;
+    width: 15vmax;
+    height: 5vmax;
+}
 /* EMPTYS */
 .serImgEmty, .empty14{
     width: 100%;
@@ -1546,7 +1708,7 @@ footer{
     gap: 1vmax;
     /* justify-content: space-between; */
 }
-.adminUserAction>a>img{
+.adminUserAction>a>img, .adminUserAction>div>img{
     width: 2.2vmax;
 }
 .imgStatusUser{
@@ -1830,7 +1992,7 @@ footer{
     background-color: rgba(30, 30, 30, 0.4);
 }
 #seeMoreAdmin{
-    position: absolute;
+    position: fixed;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;

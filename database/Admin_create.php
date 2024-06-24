@@ -10,10 +10,9 @@ require_once "Admin_info.php";
                 header("Location: createService.php");
             }
             else{
-                // $img = $img['img'];
-                $service = mysqli_query($this->conn, "INSERT INTO `service`(`name_service`, `desc_service`, `cat_service`, `img_service`, `price_service`) VALUES ('$name','$desc','$cat','$img',$price)");
+                $service = mysqli_query($this->conn, "INSERT INTO `service`(`name_service`, `desc_service`, `cat_service`, `img_service`, `price_service`) VALUES ('$name','$desc','$cat','".$img['name']."',$price)");
                 if($service){
-                    move_uploaded_file($img['tmp_name'], "img/services/".$img['name'].")");
+                    move_uploaded_file($img['tmp_name'], "C:/OSPanel/domains/coursework/img/services/".$img['name']);
                     $_SESSION['message'] = "Успешное создание услуги!";
                     header("Location:../admin/index.php?page_admin=services");
                     unset($_SESSION['create_serv']);
@@ -36,13 +35,15 @@ require_once "Admin_info.php";
                 header("Location: ../admin/index.php");
             }
         }
-
-        public function create_room($long_name, $short_name, $desc, $cat, $amount_rooms, $img, $tmp){
-            $query = "INSERT INTO `rooms`(`long_name_room`, `short_name_room`, `desc_room`, `img_room`, `id_cat_room`, `amount_in_hotel`) VALUES ('$long_name','$short_name','$desc','$img', $cat,$amount_rooms)";
+        public function create_room($long_name, $short_name, $desc, $cat, $amount_rooms, $img){
+            $img = $img['img'];
+            // print_r($img);
+            // echo $img['tmp_name']."<br>", "C:/OSPanel/domains/coursework/img/rooms/".$img['name'];
+            $query = "INSERT INTO `rooms`(`long_name_room`, `short_name_room`, `desc_room`, `img_room`, `id_cat_room`, `amount_in_hotel`) VALUES ('$long_name','$short_name','$desc','".$img['name']."', $cat,$amount_rooms)";
             $result = mysqli_query($this->conn, $query);
             if($result){
                 $_SESSION['message'] = 'Успешное создание номера!';
-                move_uploaded_file($tmp, "img/rooms/".$img.")");
+                move_uploaded_file($img['tmp_name'], "C:/OSPanel/domains/coursework/img/rooms/".$img['name']);
                 unset($_SESSION['create_serv']);
                 unset($_SESSION['create_room']);
                 header("Location: ../admin/index.php?page_admin=rooms");
@@ -53,7 +54,6 @@ require_once "Admin_info.php";
                 header("Location: ../admin/createRoom.php");
             }
         }
-
         public function create_cat_room($name, $square, $max, $amount_room_in_room, $price, $count){
             if($max == 1){
                 $num_pers = '1';

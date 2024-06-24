@@ -25,7 +25,7 @@ class Change extends Info{
         }
     }
     // СМЕНА СТАТУСА БРОНИ
-    public function change_book_status($action, $id_book){
+    public function change_book_status($action, $id_book, $email){
         if($action == 'reject'){
             $act = 'отменен';
         }
@@ -34,7 +34,12 @@ class Change extends Info{
         }
         $query_change_status_book = mysqli_query($this->conn, "UPDATE `book` SET `status`='$act' WHERE id_book=$id_book;");
         if($query_change_status_book){
-            $_SESSION['message'] = "Статус изменен на $act";
+            if(mail($email,"Бронь выполнена на сайте 'LION'", "Бронь № $id_book \nСтатус: выполнен \nСпасибо что пользуетесь нашими услугами!")){
+                $_SESSION['message'] = "Статус изменен на $act! Сообщение отправлено на почту $email";
+            }
+            else{
+                $_SESSION['message'] = "Статус изменен на $act! Не удалось отправить сообщение на почту $email";
+            }
         }
         else{
             $_SESSION['message'] = "Не удалось изменить статус";
@@ -43,6 +48,7 @@ class Change extends Info{
     }
     // 
     public function update_serv($id_serv, $name, $desc, $cat, $price, $img){
+        
         $check = new Info();
         $check = $check->get_info_one_serv($id_serv);
 
@@ -69,11 +75,13 @@ class Change extends Info{
             $query .= "cat_service = $cat";
             $bool = true;
         }
-        if($check[4] != $img){
+        $img = $img['img'];
+        if($check[4] != $img['name']){
             if($bool==true){
                 $query .= ", ";
             }
-            $query .= "img_service = '$img'";
+            $img_name = $img['name']; 
+            $query .= "img_service = '$img_name'";
             $bool = true;
         }
         if($check[5] != $price){
@@ -87,7 +95,7 @@ class Change extends Info{
         $result = mysqli_query($this->conn, $query);
         if($result){
             $_SESSION['message'] = "Данные обновлены!";
-            move_uploaded_file($img, "img/services/".$img.")");
+            move_uploaded_file($img['tmp_name'], "C:/OSPanel/domains/coursework/img/services/".$img['name']);
             header("Location:../admin/index.php?page_admin=services");
         }
         else{
@@ -168,13 +176,14 @@ class Change extends Info{
         header("Location: ../admin/index.php?page_admin=rooms");
     }
     public function update_room($id, $long, $short, $desc, $img, $cat, $amount){
-        $query = mysqli_query($this->conn, "UPDATE `rooms` SET `long_name_room` = '$long', `short_name_room` = '$short', `desc_room` = '$desc', `img_room` = '$img', `id_cat_room` = $cat, `amount_in_hotel` = $amount WHERE `rooms`.`id_room` = $id;");
+        $query = mysqli_query($this->conn, "UPDATE `rooms` SET `long_name_room` = '$long', `short_name_room` = '$short', `desc_room` = '$desc', `img_room` = '".$img['name']."', `id_cat_room` = $cat, `amount_in_hotel` = $amount WHERE `rooms`.`id_room` = $id;");
         if($query){
             $_SESSION['message'] = "Данные успешно обновлены!";
+            move_uploaded_file($img['tmp_name'], "C:/OSPanel/domains/coursework/img/rooms/".$img['name']);
             header("Location: ../admin/index.php?page_admin=rooms");
         }
         else{
-            $_SESSION['message'] = "Данные успешно обновлены!";
+            $_SESSION['message'] = "Не удалось обновить данные!";
             header("Location: ../admin/index.php?page_admin=rooms");
         }
     }
@@ -218,28 +227,5 @@ class Change extends Info{
             header("Location: ../admin/index.php?page_admin=rooms");
         }
     }
-    // 
-    public function change_role($to, $id){
-        $query = "UPDATE `users` SET `role` = ";
-        if($to == 'user'){
-            $query .= "'user'";
-        }
-        else{
-            $query .= "'admin'";
-        }
-        $query .= " WHERE `users`.`id_user` = $id";
-        $result = mysqli_query($this->conn, $query);
-        if($result){
-            $_SESSION['message'] = "Пользователь №$id теперь $to !";
-        }
-        else{
-            $_SESSION['message'] = "Не удалось сменить роль!";
-        }
-        echo "<script>
-            location.href = '../admin/index.php';
-        </script>";
     }
-}
 ?>
-
-<!-- eckeu -->

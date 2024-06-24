@@ -3,11 +3,11 @@ require_once "Connect.php";
 session_start();
 
 class Book extends Connect{
+    
     public function get_email_user($idUser){
         $user_email = mysqli_fetch_array(mysqli_query($this->conn, "SELECT email FROM `users` WHERE id_user=$idUser"))[0];
         return $user_email;
     }
-    
     public function get_name_room($idRoom){
         $room_name = mysqli_fetch_array(mysqli_query($this->conn, "SELECT long_name_room FROM `rooms` WHERE id_room=$idRoom"))[0];
         return $room_name;
@@ -33,7 +33,6 @@ class Book extends Connect{
         }
         return $arr_no_exist;
     }
-    
     public function get_array_book($idRoom){
         $array_book = [];
         $query = mysqli_query($this->conn, "SELECT id_room FROM rooms ORDER BY `rooms`.`id_room` ASC");
@@ -52,7 +51,6 @@ class Book extends Connect{
         $array_book = json_encode($array_book);
         return $array_book;
     }
-
     public  function get_exist_dates($dateArrival, $dateDepart){
         $exist_dates = [];
         $get_dates = mysqli_query($this->conn, "SELECT date FROM occupied_rooms WHERE date<='$dateDepart' AND date>='$dateArrival'");
@@ -60,21 +58,14 @@ class Book extends Connect{
         $num_dates = mysqli_num_rows($get_dates);
         // многомерный массив в одномерный
         $exist = array();
-        echo "<hr>";
-        print_r($array_dates);
         foreach($array_dates as $date){
             $exist = array_merge($exist,$date);
         }
-        echo "<br>";
-        print_r($exist);
-        print_r($num_dates);
-
         return [
             'array_dates'=>$exist ,
             'num_rows'=>$num_dates 
         ];
     }
-
     public function all_dates_between($dateArrival, $dateDepart){
         // массив из всех дат между заселением и выселением
         $arr_between_dates = [];
@@ -85,12 +76,10 @@ class Book extends Connect{
         }
         return $arr_between_dates;
     }
-    
     public function crate_arr_non_exist_dates($dateArrival, $dateDepart, $exist, $array_between_dates){
         $non_exist_dates = array_diff($array_between_dates, $exist);
         return $non_exist_dates;
     }
-
     public function check_key($date, $id_room){
         $book = mysqli_fetch_array(mysqli_query($this->conn, "SELECT book FROM occupied_rooms WHERE date='$date'"))[0];
         $book_array = (array) json_decode($book);
@@ -108,7 +97,6 @@ class Book extends Connect{
             'old_room' => $old_room
         ];
     }
-
     public function insert_book($array_between_dates, $exist_dates, $non_exist_dates, $array_rooms, $id_room){
         $array_result = [];
         $array_sql = [];
@@ -132,12 +120,10 @@ class Book extends Connect{
                     $query = "INSERT INTO `occupied_rooms` (`date`, `book`) VALUES ('$all_dates', '$array_rooms')";
                     $old_info["$all_dates"] = $array_rooms;
                     array_push($array_sql, $query);
-
                 }
             }
 
-        }
-       
+        }       
         
         foreach($array_sql as $sql){
             $end_query = mysqli_query($this->conn, $sql);
@@ -159,7 +145,6 @@ class Book extends Connect{
         return ['result' =>$result, 
                 'old_info' => $old_info];
     }
-    
     public function insert_into_book($idUser, $idRoom, $dateArrival, $dateDepart, $old_info){
         $result = false;
         $sql = "INSERT INTO `book`(`id_user`, `id_room`, `date_arrival`, `date_departure`) VALUES ($idUser,$idRoom,'$dateArrival','$dateDepart')";
@@ -175,8 +160,57 @@ class Book extends Connect{
         }
         return $result;
     }
+    public function get_book_by_date($date){
+        $books_by_date = mysqli_fetch_array(mysqli_query($this->conn,"SELECT book FROM occupied_rooms WHERE date = '$date'"))[0];
+        $books_by_date = (array) json_decode($books_by_date);
+        return $books_by_date;
+    }
+    public function delete_book($id_book, $dateA, $dateD,$room, $email, $role){
+        // echo $id_book, $dateA, $dateD;
+        $between = $this->all_dates_between($dateA, $dateD);
+        // print_r($between);
+        foreach($between as $date){
+            $new_occupied = [];
+            $book = $this->get_book_by_date($date);
+            foreach($book as $one_room => $amount){
+                // echo "<br>".$room, $one_room." ", $amount;
+                if($one_room == $room ){
+                    $amount--;
+                }
+                // echo $amount;
+                $new_occupied["$one_room"] = $amount;
+                // echo "<br>";
+            }
+            // echo "<br>";
+            $new_occupied = json_encode( $new_occupied );
+            // print_r( $new_occupied );
+            $query = mysqli_query($this->conn, "UPDATE occupied_rooms SET book = '$new_occupied' WHERE date = '$date'");
+            // echo $query;
+            // echo "<br>";
+        }
+        
+        $delete_book = mysqli_query($this->conn, "UPDATE `book` SET `status`='отменен' WHERE id_book = ".$id_book);
+        if($delete_book){
+            if(mail($email,"Отмена бронирования номера на сайте LION", "Бронь № $id_book \nДата заезда: $dateA, Дата выезда: $dateD \nСтатус: отменен")){
+                $_SESSION['message'] = "Бронь отменена, сообщение отправлено на почту $email!";
+            }
+            else{  
+                $_SESSION['message'] = "Бронь отменена, не удалось отправить сообщение!";
+            }
 
-    
+        }
+        else{
+            $_SESSION['message'] = "Бронь все еще оформлена на $email!";
+        }
+
+
+        if($role == 'user'){
+            header("Location: ../account.php?page=history");
+        }
+        else{
+            header("Location: ../admin/index.php?page_admin=bookings");
+        }
+    }
 }
 
 

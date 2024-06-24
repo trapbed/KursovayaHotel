@@ -1,8 +1,10 @@
 <?php
-unset($_SESSION['create_serv']);
-unset($_SESSION['create_room']);
 include "../header.php";
 require_once "../database/Admin_info.php";
+
+unset($_SESSION['create_serv']);
+unset($_SESSION['create_room']);
+
 if(isset($_GET['page_admin'])){
     $_SESSION['page_admin'] = $_GET['page_admin'];
 }
@@ -292,8 +294,8 @@ echo "<div id='modalInfoAdmin'></div>";
                             <td class='adminBooksChangeStatus'>";
                             if($book[5] == 'принят'){
                                 echo "
-                                <a class='completedBook' href='../admin/action-book.php?act=completed&id=$book[0]'>Выполнить</a>
-                                <a class='rejectBook' href='../admin/action-book.php?act=reject&id=$book[0]'>Отклонить</a>";
+                                <a class='completedBook' href='../admin/action-book.php?act=completed&id=$book[0]&email=$book[1]'>Выполнить</a>
+                                <a class='rejectBook' href='../admin/action-book.php?act=reject&id=$book[0]&dateA=$book[3]&dateD=$book[4]&room=$book[7]&email=$book[1]'>Отклонить</a>";
                             }
                             else{
                                 echo "<span class='NoActionBooks'>Нет действий</span>";
@@ -367,7 +369,6 @@ echo "<div id='modalInfoAdmin'></div>";
                 <td class='adminUserSatus'>".$status."</td>
                 <td class='adminUserAction'>
                     <a href='changeUser.php?action=".$imgStatus."&id=".$user[0]."'><img class='imgStatusUser' src='../img/admin/".$imgStatus.".svg' alt='".$imgStatus."'></a>
-                    <a href='changeUser.php?action=".$act."&id=".$user[0]."'><img class='imgStatusUser' src='../img/admin/".$imgRole.".png' alt='".$act."'></a>
                 </td>
             </tr>
         </table><hr>";
@@ -382,4 +383,3 @@ echo "<div id='modalInfoAdmin'></div>";
 <?php
 include "../footer.php";
 ?>
-

@@ -5,7 +5,6 @@ require_once "../database/Admin_info.php";
 $id = isset($_GET['id']) ? $_GET['id'] : false;
 $room = new Info();
 $room = $room->get_info_room_by_id($id);
-print_r($room);
 // print_r($saved);
     echo "<section class='changeAdminDiv'>
     <h4>Редактирование номера</h4>

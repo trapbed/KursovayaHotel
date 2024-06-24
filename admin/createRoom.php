@@ -18,7 +18,7 @@ $img =   ($saved != false) ? $saved['img']:false;
     <h4>Создание номера</h4>
     <div id='formNOldImg'>
         <form action='createAdmin.php' method='POST' id='changeServAdmin' enctype='multipart/form-data'>
-                <input type='hidden' name='act' value='room'>
+                <input type='hidden' name='act' value='room' required>
             <label for='long_name' class='labelAdminChange'>
                 Длинное название номера
                 <input type='text' name='long_name' value='$long_name'>
@@ -40,7 +40,7 @@ $img =   ($saved != false) ? $saved['img']:false;
                         }
                         echo ">".$cs[1]."</option>";
                     }
-                echo "</select>";
+                echo "</select></label>";
                 echo "<label for='amount_rooms' class='labelAdminChange'>
                     Количество номеров
                     <input type='number' name='amount_rooms' value='$amount_rooms'>
